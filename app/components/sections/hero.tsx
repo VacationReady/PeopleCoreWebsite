@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/app/components/ui/button"
 import { ArrowRight, Sparkles } from "lucide-react"
@@ -100,6 +100,43 @@ function Navigation() {
 
 export function Hero() {
   const [isCapabilitiesOpen, setIsCapabilitiesOpen] = useState(false)
+  const [isThinking, setIsThinking] = useState(true)
+  const [thinkingText, setThinkingText] = useState("PeopleCore is thinking")
+
+  // Thinking animation effect
+  useEffect(() => {
+    const thinkingMessages = [
+      "PeopleCore is thinking",
+      "Analyzing your HR needs",
+      "Optimizing workflows", 
+      "Preparing your dashboard",
+      "Almost ready"
+    ]
+    
+    let messageIndex = 0
+    let dotCount = 0
+    
+    const thinkingInterval = setInterval(() => {
+      dotCount = (dotCount + 1) % 4
+      const dots = ".".repeat(dotCount)
+      setThinkingText(thinkingMessages[messageIndex] + dots)
+      
+      if (dotCount === 0) {
+        messageIndex = (messageIndex + 1) % thinkingMessages.length
+      }
+    }, 500)
+
+    // Stop thinking after 4 seconds
+    const stopThinking = setTimeout(() => {
+      setIsThinking(false)
+      clearInterval(thinkingInterval)
+    }, 4000)
+
+    return () => {
+      clearInterval(thinkingInterval)
+      clearTimeout(stopThinking)
+    }
+  }, [])
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
@@ -113,7 +150,6 @@ export function Hero() {
           <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
         </div>
       </div>
-
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0" style={{
@@ -121,17 +157,83 @@ export function Hero() {
         }} />
       </div>
 
+      {/* Thinking Overlay */}
+      <AnimatePresence>
+        {isThinking && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-sm"
+          >
+            <div className="text-center">
+              <motion.div
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  rotate: [0, 5, -5, 0]
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 mx-auto"
+              >
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                  className="w-8 h-8 border-2 border-white border-t-transparent rounded-full"
+                />
+              </motion.div>
+              
+              <motion.h2
+                key={thinkingText}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-2xl font-semibold text-white mb-2"
+              >
+                {thinkingText}
+              </motion.h2>
+              
+              <p className="text-white/70">
+                Preparing your personalized HR experience...
+              </p>
+
+              {/* Floating particles around thinking animation */}
+              {[...Array(8)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-2 h-2 bg-blue-400 rounded-full"
+                  style={{
+                    left: `calc(50% + ${Math.cos(i * Math.PI / 4) * 100}px)`,
+                    top: `calc(50% + ${Math.sin(i * Math.PI / 4) * 100}px)`,
+                  }}
+                  animate={{
+                    scale: [0, 1, 0],
+                    opacity: [0, 1, 0],
+                  }}
+                  transition={{
+                    duration: 2,
+                    delay: i * 0.2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Main content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          animate={{ opacity: isThinking ? 0 : 1, y: isThinking ? 20 : 0 }}
+          transition={{ duration: 0.8, delay: isThinking ? 0 : 4.2 }}
           className="space-y-8"
         >
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
+            animate={{ opacity: isThinking ? 0 : 1, scale: isThinking ? 0.8 : 1 }}
+            transition={{ duration: 0.8, delay: isThinking ? 0 : 4.2 }}
             transition={{ delay: 0.2, duration: 0.6 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium"
           >

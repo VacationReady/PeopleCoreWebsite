@@ -67,6 +67,7 @@ const testimonials = [
     avatar: "JP",
     rating: 5
   }
+]
 
 export function SocialProof() {
   return (
