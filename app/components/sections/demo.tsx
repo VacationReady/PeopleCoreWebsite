@@ -830,6 +830,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
         )
       }
       break
+    }
   }
 
   return null
@@ -869,7 +870,7 @@ function WorkflowNode({ node, index, isActive }: { node: any, index: number, isA
 
       {/* Immersive step animation */}
       <AnimatePresence>
-        <StepAnimation step={node} isActive={isActive} />
+        <StepAnimation step={node} isActive={isActive} workflowType="onboarding" />
       </AnimatePresence>
     </motion.div>
   )
