@@ -21,7 +21,7 @@ const valueProps = [
   },
   {
     icon: Shield,
-    title: "100% Customisable Platform",
+    title: "100% Customisable Platform", 
     subtitle: "Unlimited flexibility and complete control",
     description: "Fully customisable to your needs with unlimited flexibility, complete control over workflows, and the ability to adapt to any business requirement.",
     gradient: "from-green-500 to-emerald-600"

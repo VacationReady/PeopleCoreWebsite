@@ -717,12 +717,19 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             exit={{ opacity: 0, scale: 0.8 }}
             className="absolute -right-80 top-0 bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg z-10 w-48"
           >
-            <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-6 max-w-sm mx-4">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-2xl">📚</span>
-                <h3 className="font-semibold text-slate-900">Training Schedule</h3>
-              </div>
-              <div className="space-y-2">
+            <div className="text-center mb-3">
+              <motion.div
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 1, repeat: Infinity }}
+                className="text-2xl mb-2"
+              >
+                📚
+              </motion.div>
+              <div className="text-sm font-bold text-blue-700">Training Schedule</div>
+            </div>
+            
+            <div className="bg-white rounded-lg p-3">
+              <div className="space-y-1">
                 {[
                   "Company Culture 101",
                   "HR Policies Overview", 
@@ -731,14 +738,14 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
                 ].map((training, i) => (
                   <motion.div
                     key={training}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.2 }}
-                    className="flex items-center gap-3 p-2 bg-slate-50 rounded-lg"
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-center gap-2 p-1 bg-slate-50 rounded text-xs"
                   >
-                    <Calendar className="w-4 h-4 text-blue-600" />
-                    <span className="text-sm text-slate-700">{training}</span>
-                    <span className="text-xs text-slate-500 ml-auto">Day {i + 1}</span>
+                    <span className="text-blue-600">📅</span>
+                    <span className="text-slate-700">{training}</span>
+                    <span className="text-slate-500 ml-auto">Day {i + 1}</span>
                   </motion.div>
                 ))}
               </div>
@@ -757,59 +764,31 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             exit={{ opacity: 0, scale: 0.8 }}
             className="absolute -right-80 top-0 bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg z-10 w-48"
           >
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl shadow-2xl border border-green-200 p-8 max-w-sm mx-4 text-center relative overflow-hidden">
-              {/* Confetti animation */}
-              {[...Array(15)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ 
-                    opacity: 1,
-                    scale: 0,
-                    x: 0,
-                    y: 0
-                  }}
-                  animate={{ 
-                    opacity: [1, 1, 0],
-                    scale: [0, 1, 0.5],
-                    x: [0, (Math.random() - 0.5) * 200],
-                    y: [0, -100, -200]
-                  }}
-                  transition={{ 
-                    duration: 2,
-                    delay: i * 0.1,
-                    ease: "easeOut"
-                  }}
-                  className="absolute text-lg"
-                  style={{
-                    left: '50%',
-                    top: '50%'
-                  }}
-                >
-                  {['🎉', '✨', '🎊', '⭐', '💫', '🌟'][i % 6]}
-                </motion.div>
-              ))}
-
+            <div className="text-center mb-3">
               <motion.div
                 animate={{ 
-                  scale: [1, 1.1, 1],
-                  rotate: [0, 5, -5, 0]
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 10, -10, 0]
                 }}
-                transition={{ duration: 0.5, repeat: 3 }}
-                className="text-6xl mb-4"
+                transition={{ duration: 0.8, repeat: Infinity }}
+                className="text-2xl mb-2"
               >
                 🎉
               </motion.div>
-              <h3 className="text-xl font-bold text-green-900 mb-2">Congratulations James!</h3>
-              <p className="text-green-700 mb-4">
-                You've completed your onboarding journey. Welcome to the team!
-              </p>
-              <motion.button
+              <div className="text-sm font-bold text-green-700">Completion Celebration</div>
+            </div>
+            
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-3 text-center border border-green-200">
+              <div className="text-xs font-bold text-green-900 mb-1">Congratulations James!</div>
+              <div className="text-xs text-green-700 mb-2">
+                Onboarding complete! Welcome to the team!
+              </div>
+              <motion.div
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-lg font-medium"
+                className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-3 py-1 rounded text-xs font-medium"
               >
                 Start Your First Day! 🚀
-              </motion.button>
+              </motion.div>
             </div>
           </motion.div>
         )
@@ -822,7 +801,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
 }
 
 // Custom workflow visualization component (no external dependencies)
-function WorkflowNode({ node, index, isActive, workflowType }: { node: any, index: number, isActive: boolean, workflowType: string }) {
+function WorkflowNode({ node, index, isActive, workflowType, activeStep }: { node: any, index: number, isActive: boolean, workflowType: string, activeStep: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
@@ -853,9 +832,11 @@ function WorkflowNode({ node, index, isActive, workflowType }: { node: any, inde
         </motion.div>
       )}
 
-      {/* Immersive step animation */}
+      {/* Sequential step animation - only show for CURRENT active step */}
       <AnimatePresence>
-        <StepAnimation step={node} isActive={isActive} workflowType={workflowType} />
+        {index === activeStep && (
+          <StepAnimation step={node} isActive={true} workflowType={workflowType} />
+        )}
       </AnimatePresence>
     </motion.div>
   )
@@ -1155,7 +1136,8 @@ export function Demo() {
                       node={step} 
                       index={index} 
                       isActive={index <= activeStep}
-                      workflowType={currentPrompt.workflowType || "onboarding"} 
+                      workflowType={currentPrompt.workflowType || "onboarding"}
+                      activeStep={activeStep}
                     />
                     {index < currentPrompt.workflow.length - 1 && (
                       <motion.div
