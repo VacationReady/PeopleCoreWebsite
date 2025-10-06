@@ -18,7 +18,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 1.0, ease: "easeInOut" }}
             className="bg-red-50 border-2 border-red-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="flex items-center gap-2 mb-2">
@@ -48,7 +48,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 1.0, ease: "easeInOut" }}
             className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -96,7 +96,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 1.0, ease: "easeInOut" }}
             className="bg-purple-50 border-2 border-purple-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -149,7 +149,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 1.0, ease: "easeInOut" }}
             className="bg-green-50 border-2 border-green-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -211,7 +211,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 1.0, ease: "easeInOut" }}
             className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="flex items-center gap-2 mb-3">
@@ -265,7 +265,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 1.0, ease: "easeInOut" }}
             className="bg-emerald-50 border-2 border-emerald-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="flex items-center gap-2 mb-3">
@@ -299,7 +299,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 1.0, ease: "easeInOut" }}
             className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -349,7 +349,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 1.0, ease: "easeInOut" }}
             className="bg-purple-50 border-2 border-purple-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -391,7 +391,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 1.0, ease: "easeInOut" }}
             className="bg-indigo-50 border-2 border-indigo-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -451,7 +451,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 1.0, ease: "easeInOut" }}
             className="bg-orange-50 border-2 border-orange-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="flex items-center gap-2 mb-3">
@@ -512,13 +512,12 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
   if (workflowType === "onboarding") {
     switch (step.id) {
       case 1: // Welcome Email
-        if (step.label === "Welcome Email") {
-          return (
+        return (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
+              transition={{ duration: 1.0, ease: "easeInOut" }}
               className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
             >
               <div className="text-center mb-3">
@@ -532,34 +531,29 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
                 <div className="text-sm font-bold text-blue-700">Welcome Email</div>
               </div>
               
-              <div className="bg-white rounded-lg p-3">
-                <div className="text-xs font-bold text-slate-900 mb-1">Hi James, welcome to PeopleCore! 👋</div>
-                <div className="text-xs text-slate-600 mb-2">from hr@peoplecore.com</div>
-                <div className="bg-slate-50 rounded p-2 mb-2">
+              <div className="bg-white rounded-lg p-2">
+                <div className="text-xs font-bold text-slate-900 mb-1">Hi James, welcome! 👋</div>
+                <div className="text-xs text-slate-600 mb-1">from hr@peoplecore.com</div>
+                <div className="bg-slate-50 rounded p-1 text-center">
                   <div className="text-xs text-slate-700 mb-1">
-                    We're excited to have you join our team. Your onboarding journey starts now!
+                    Your onboarding starts now!
                   </div>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-2 py-1 rounded text-xs font-medium"
-                  >
-                    Begin onboarding →
-                  </motion.div>
+                  <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-2 py-1 rounded text-xs">
+                    Begin →
+                  </div>
                 </div>
               </div>
             </motion.div>
           )
-        }
         break
 
     case 2: // Create Checklist
-      if (step.label === "Create Checklist") {
-        return (
+      return (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 1.0, ease: "easeInOut" }}
             className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-2">
@@ -567,45 +561,43 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
               <div className="text-sm font-bold text-blue-700">Onboarding Checklist</div>
             </div>
             <div className="bg-white rounded-lg p-2">
-              <div className="space-y-3">
+              <div className="space-y-1">
                 {[
-                  "Notify IT to issue laptop",
-                  "Update Payroll system", 
-                  "Send Onboarding Template"
+                  "IT Laptop",
+                  "Payroll Setup", 
+                  "Templates"
                 ].map((task, i) => (
                   <motion.div
                     key={task}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.3 }}
-                    className="flex items-center gap-3"
+                    transition={{ delay: i * 0.2 }}
+                    className="flex items-center gap-2"
                   >
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      transition={{ delay: i * 0.3 + 0.2 }}
-                      className="w-5 h-5 bg-green-500 rounded flex items-center justify-center"
+                      transition={{ delay: i * 0.2 + 0.1 }}
+                      className="w-3 h-3 bg-green-500 rounded flex items-center justify-center"
                     >
-                      <CheckCircle className="w-3 h-3 text-white" />
+                      <CheckCircle className="w-2 h-2 text-white" />
                     </motion.div>
-                    <span className="text-sm text-slate-700">{task}</span>
+                    <span className="text-xs text-slate-700">{task}</span>
                   </motion.div>
                 ))}
               </div>
             </div>
           </motion.div>
         )
-      }
       break
 
     case 3: // Document Upload
-      if (step.label === "Document Upload") {
-        return (
+      return (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 1.0, ease: "easeInOut" }}
             className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-2">
@@ -613,44 +605,31 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
               <div className="text-sm font-bold text-blue-700">Document Upload</div>
             </div>
             <div className="bg-white rounded-lg p-2">
-              <div className="space-y-3">
-                {["ID_Document.pdf", "Contract_Signed.pdf", "Tax_Form.pdf"].map((doc, i) => (
+              <div className="space-y-1">
+                {["ID.pdf", "Contract.pdf", "Tax.pdf"].map((doc, i) => (
                   <motion.div
                     key={doc}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.2 }}
-                    className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg"
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-center gap-2 p-1 bg-slate-50 rounded"
                   >
-                    <motion.div
-                      animate={{ 
-                        y: [0, -5, 0],
-                        rotate: [0, 5, -5, 0]
-                      }}
-                      transition={{ 
-                        duration: 0.5,
-                        delay: i * 0.2 + 0.3,
-                        repeat: 1
-                      }}
-                      className="text-blue-600"
-                    >
-                      📄
-                    </motion.div>
+                    <span className="text-blue-600">📄</span>
                     <div className="flex-1">
-                      <div className="text-sm font-medium text-slate-900">{doc}</div>
+                      <div className="text-xs font-medium text-slate-900">{doc}</div>
                       <motion.div
                         initial={{ width: "0%" }}
                         animate={{ width: "100%" }}
-                        transition={{ delay: i * 0.2 + 0.5, duration: 0.8 }}
-                        className="h-1 bg-green-500 rounded-full mt-1"
+                        transition={{ delay: i * 0.1 + 0.2, duration: 0.5 }}
+                        className="h-0.5 bg-green-500 rounded-full mt-0.5"
                       />
                     </div>
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      transition={{ delay: i * 0.2 + 1.3 }}
+                      transition={{ delay: i * 0.1 + 0.7 }}
                     >
-                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <CheckCircle className="w-3 h-3 text-green-500" />
                     </motion.div>
                   </motion.div>
                 ))}
@@ -658,17 +637,15 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             </div>
           </motion.div>
         )
-      }
       break
 
     case 4: // Verify Documents
-      if (step.label === "Verify Documents") {
-        return (
+      return (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 1.0, ease: "easeInOut" }}
             className="bg-green-50 border-2 border-green-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -711,17 +688,15 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             </div>
           </motion.div>
         )
-      }
       break
 
     case 5: // Assign Buddy
-      if (step.label === "Assign Buddy") {
-        return (
+      return (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 1.0, ease: "easeInOut" }}
             className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -774,17 +749,15 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             </div>
           </motion.div>
         )
-      }
       break
 
     case 6: // Training Schedule
-      if (step.label === "Training Schedule") {
-        return (
+      return (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 1.0, ease: "easeInOut" }}
             className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -801,10 +774,10 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             <div className="bg-white rounded-lg p-3">
               <div className="space-y-1">
                 {[
-                  "Company Culture 101",
-                  "HR Policies Overview", 
-                  "System Access Training",
-                  "Department Introduction"
+                  "Culture 101",
+                  "HR Policies", 
+                  "System Access",
+                  "Dept Intro"
                 ].map((training, i) => (
                   <motion.div
                     key={training}
@@ -822,17 +795,15 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             </div>
           </motion.div>
         )
-      }
       break
 
     case 7: // Completion Celebration
-      if (step.label === "Completion Celebration") {
-        return (
+      return (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 1.0, ease: "easeInOut" }}
             className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -863,7 +834,6 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             </div>
           </motion.div>
         )
-      }
       break
     }
   }
@@ -1218,7 +1188,7 @@ export function Demo() {
                 </div>
                 
                 {/* Right side - Animation area */}
-                <div className="w-64 h-32 relative flex items-center justify-center border-2 border-dashed border-slate-300 rounded-lg bg-slate-50 mt-16 overflow-hidden">
+                <div className="w-72 h-36 relative flex items-center justify-center border-2 border-dashed border-slate-300 rounded-lg bg-slate-50 mt-16 overflow-hidden">
                   <AnimatePresence mode="wait">
                     {currentPrompt.workflow.map((step, index) => (
                       index === activeStep && (
