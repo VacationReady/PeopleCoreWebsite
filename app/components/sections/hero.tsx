@@ -6,7 +6,7 @@ import { Button } from "@/app/components/ui/button"
 import { ArrowRight, Sparkles } from "lucide-react"
 // Navigation component
 function Navigation() {
-  const [isCapabilitiesOpen, setIsCapabilitiesOpen] = useState(false)
+  const [isCapabilitiesOpen, setIsCapabilitiesOpen] = useState(true) // Auto-open
 
   const capabilities = [
     { name: "Absence Management", icon: "🌴", description: "Smart leave tracking & approvals" },
@@ -17,7 +17,8 @@ function Navigation() {
     { name: "Performance", icon: "✨", description: "Reviews & goal tracking" },
     { name: "Document Management", icon: "📱", description: "Digital document hub" },
     { name: "Org Chart", icon: "🌐", description: "Visual organisation structure" },
-    { name: "Reporting", icon: "📊", description: "Analytics & insights" }
+    { name: "Reporting", icon: "📊", description: "Analytics & insights" },
+    { name: "Bulk Actions", icon: "⚡", description: "Mass operations & updates" }
   ]
 
   return (
@@ -50,31 +51,48 @@ function Navigation() {
                 {isCapabilitiesOpen && (
                   <motion.div
                     initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden"
+                    className="absolute top-full left-1/2 transform -translate-x-1/2 w-[600px] bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 p-6"
                   >
-                    <div className="p-4 bg-gradient-to-r from-blue-50 to-purple-50">
-                      <h3 className="font-semibold text-slate-900 mb-1">HR Capabilities</h3>
-                      <p className="text-sm text-slate-600">Everything you need for modern HR</p>
-                    </div>
-                    <div className="grid grid-cols-1 gap-1 p-2">
-                      {capabilities.map((capability, index) => (
-                        <motion.div
-                          key={capability.name}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.05 }}
-                          className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer"
-                        >
-                          <span className="text-xl">{capability.icon}</span>
-                          <div>
-                            <div className="font-medium text-slate-900">{capability.name}</div>
-                            <div className="text-xs text-slate-500">{capability.description}</div>
-                          </div>
-                        </motion.div>
-                      ))}
+                    <div className="grid grid-cols-2 gap-4">
+                      {/* Left Column - First 5 */}
+                      <div className="space-y-2">
+                        {capabilities.slice(0, 5).map((capability, index) => (
+                          <motion.div
+                            key={capability.name}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.05 }}
+                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer"
+                          >
+                            <span className="text-lg">{capability.icon}</span>
+                            <div>
+                              <div className="font-medium text-slate-900 text-sm">{capability.name}</div>
+                              <div className="text-xs text-slate-600">{capability.description}</div>
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
+                      
+                      {/* Right Column - Last 5 */}
+                      <div className="space-y-2">
+                        {capabilities.slice(5).map((capability, index) => (
+                          <motion.div
+                            key={capability.name}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: (index + 5) * 0.05 }}
+                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer"
+                          >
+                            <span className="text-lg">{capability.icon}</span>
+                            <div>
+                              <div className="font-medium text-slate-900 text-sm">{capability.name}</div>
+                              <div className="text-xs text-slate-600">{capability.description}</div>
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
                     </div>
                   </motion.div>
                 )}
@@ -84,11 +102,9 @@ function Navigation() {
             <button className="text-white hover:text-blue-200 transition-colors duration-200">
               Pricing
             </button>
-            <button className="text-white hover:text-blue-200 transition-colors duration-200">
-              About Us
-            </button>
-            <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
+            <Button className="bg-white text-slate-900 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white transition-all duration-300">
               Get Started
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
         </div>
