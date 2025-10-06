@@ -18,7 +18,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.0, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="bg-red-50 border-2 border-red-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="flex items-center gap-2 mb-2">
@@ -48,7 +48,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.0, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -96,7 +96,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.0, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="bg-purple-50 border-2 border-purple-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -149,7 +149,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.0, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="bg-green-50 border-2 border-green-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -211,7 +211,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.0, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="flex items-center gap-2 mb-3">
@@ -265,7 +265,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.0, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="bg-emerald-50 border-2 border-emerald-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="flex items-center gap-2 mb-3">
@@ -299,7 +299,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.0, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -349,7 +349,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.0, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="bg-purple-50 border-2 border-purple-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -391,7 +391,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.0, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="bg-indigo-50 border-2 border-indigo-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -451,7 +451,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.0, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="bg-orange-50 border-2 border-orange-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="flex items-center gap-2 mb-3">
@@ -517,7 +517,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 1.0, ease: "easeInOut" }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
               className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
             >
               <div className="text-center mb-3">
@@ -553,7 +553,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.0, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-2">
@@ -597,7 +597,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.0, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-2">
@@ -645,7 +645,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.0, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="bg-green-50 border-2 border-green-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -696,7 +696,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.0, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -757,7 +757,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.0, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -803,7 +803,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.0, ease: "easeInOut" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
@@ -948,7 +948,7 @@ export function Demo() {
     setIsCompleted(false)
     const interval = setInterval(() => {
       setActiveStep(prev => {
-        if (prev >= currentPrompt.workflow.length - 1) {
+        if (prev >= currentPrompt.workflow.length) {
           clearInterval(interval)
           setIsCompleted(true)
           setShowCelebration(true)
@@ -960,7 +960,7 @@ export function Demo() {
         }
         return prev + 1
       })
-    }, 1200) // Slower for better visibility
+    }, 2000) // Much slower - 2 seconds per step for proper visibility
   }, [currentPrompt])
 
   const handleCustomInput = useCallback(() => {
