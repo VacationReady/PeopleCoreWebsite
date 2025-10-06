@@ -3,7 +3,7 @@
 import { useState, useCallback, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import dynamic from "next/dynamic"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/app/components/ui/button"
 import { Send, MessageSquare, Zap, BarChart3, Users, FileText } from "lucide-react"
 
 // Lazy load React Flow to improve initial page load
@@ -16,14 +16,10 @@ const ReactFlow = dynamic(() => import("@xyflow/react").then(mod => mod.ReactFlo
   )
 })
 
-const { Background, Controls, MiniMap } = dynamic(() => 
-  import("@xyflow/react").then(mod => ({
-    Background: mod.Background,
-    Controls: mod.Controls,
-    MiniMap: mod.MiniMap
-  })), 
-  { ssr: false }
-)
+// Import React Flow components separately to avoid dynamic import issues
+const Background = dynamic(() => import("@xyflow/react").then(mod => mod.Background), { ssr: false })
+const Controls = dynamic(() => import("@xyflow/react").then(mod => mod.Controls), { ssr: false })
+const MiniMap = dynamic(() => import("@xyflow/react").then(mod => mod.MiniMap), { ssr: false })
 
 const demoPrompts = [
   {

@@ -2,8 +2,8 @@
 
 import { useState, useTransition } from "react"
 import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { joinWaitlist } from "@/actions/waitlist"
+import { Button } from "@/app/components/ui/button"
+import { joinWaitlist } from "@/app/actions/waitlist"
 import { Mail, User, Building, Briefcase, CheckCircle, AlertCircle } from "lucide-react"
 
 export function Waitlist() {
