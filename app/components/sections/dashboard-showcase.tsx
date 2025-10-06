@@ -165,19 +165,201 @@ export function DashboardShowcase() {
                 </div>
               </div>
 
-              {/* Dashboard Screenshot Placeholder */}
-              <div className="relative w-full h-full bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mb-4 mx-auto">
-                    <Monitor className="w-8 h-8 text-white" />
+              {/* Beautiful Dashboard UI Showcase */}
+              <div className="relative w-full h-full bg-white overflow-hidden">
+                {activeTab === 0 && (
+                  // Main Dashboard - Based on your Susan Bentley screenshot
+                  <div className="p-4 space-y-4">
+                    {/* Header with user profile */}
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                          <span className="text-white font-semibold">SB</span>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-slate-900">Susan Bentley</h3>
+                          <p className="text-xs text-slate-500">admin@peoplecore.co.nz</p>
+                        </div>
+                      </div>
+                      <div className="flex gap-2">
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          className="px-3 py-1 bg-blue-500 text-white rounded-full text-xs"
+                        >
+                          View Profile
+                        </motion.button>
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          className="px-3 py-1 bg-green-500 text-white rounded-full text-xs"
+                        >
+                          Email Employee
+                        </motion.button>
+                      </div>
+                    </div>
+
+                    {/* Dashboard Cards */}
+                    <div className="grid grid-cols-3 gap-3">
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="bg-blue-50 rounded-lg p-3"
+                      >
+                        <div className="text-lg font-bold text-blue-600">25 days</div>
+                        <div className="text-xs text-slate-600">Annual Leave Balance</div>
+                      </motion.div>
+                      
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="bg-green-50 rounded-lg p-3"
+                      >
+                        <div className="text-lg font-bold text-green-600">Quick Actions</div>
+                        <div className="text-xs text-slate-600">Post News, Add Employee</div>
+                      </motion.div>
+                      
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                        className="bg-purple-50 rounded-lg p-3"
+                      >
+                        <div className="text-lg font-bold text-purple-600">People Metrics</div>
+                        <div className="text-xs text-slate-600">21 Active, 8 Managers</div>
+                      </motion.div>
+                    </div>
+
+                    {/* Action Items */}
+                    <div className="bg-slate-50 rounded-lg p-3">
+                      <h4 className="font-semibold text-slate-900 mb-2">Action Items</h4>
+                      <div className="space-y-2">
+                        {[
+                          { task: "IT Policy", status: "Review", color: "blue" },
+                          { task: "Bank payroll change request", status: "Approve", color: "green" },
+                          { task: "Trudy Jenkins - Annual Leave", status: "Approve", color: "green" }
+                        ].map((item, i) => (
+                          <motion.div
+                            key={item.task}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.4 + i * 0.1 }}
+                            className="flex items-center justify-between bg-white rounded p-2"
+                          >
+                            <span className="text-sm text-slate-700">{item.task}</span>
+                            <span className={`px-2 py-1 rounded text-xs text-white bg-${item.color}-500`}>
+                              {item.status}
+                            </span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-slate-600 font-medium">
-                    {dashboardFeatures[activeTab].title}
-                  </p>
-                  <p className="text-sm text-slate-500 mt-1">
-                    Live Dashboard Preview
-                  </p>
-                </div>
+                )}
+
+                {activeTab === 1 && (
+                  // Payroll Dashboard - Based on your payroll screenshot
+                  <div className="p-4 space-y-4">
+                    <h3 className="font-semibold text-slate-900">Payroll Summary</h3>
+                    
+                    {/* Employee List */}
+                    <div className="space-y-2">
+                      {[
+                        { name: "Carl Hendon", gross: "£138,901", net: "£143,046", tax: "£37" },
+                        { name: "Ivy Smith", gross: "£126,661", net: "£132,084", tax: "£39" },
+                        { name: "Niko White", gross: "£97,076", net: "£101,320", tax: "£92" },
+                        { name: "Alex Ward", gross: "£78,347", net: "£82,488", tax: "£61" }
+                      ].map((employee, i) => (
+                        <motion.div
+                          key={employee.name}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: i * 0.1 }}
+                          className="flex items-center justify-between bg-white rounded-lg p-2 border"
+                        >
+                          <div className="flex items-center gap-2">
+                            <div className="w-6 h-6 bg-blue-500 rounded-full"></div>
+                            <span className="text-sm font-medium">{employee.name}</span>
+                          </div>
+                          <div className="flex gap-4 text-xs">
+                            <span className="text-slate-600">{employee.gross}</span>
+                            <span className="text-green-600 font-semibold">{employee.net}</span>
+                            <span className="text-slate-500">{employee.tax}</span>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* Summary */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                      className="bg-blue-50 rounded-lg p-4"
+                    >
+                      <h4 className="font-semibold text-slate-900 mb-2">Annual Salary Payroll Summary</h4>
+                      <div className="grid grid-cols-3 gap-4 text-center">
+                        <div>
+                          <div className="text-2xl font-bold text-slate-900">£8,637,596</div>
+                          <div className="text-xs text-slate-600">Total before tax</div>
+                        </div>
+                        <div>
+                          <div className="text-2xl font-bold text-slate-900">£9,069,476</div>
+                          <div className="text-xs text-slate-600">After adjustment</div>
+                        </div>
+                        <div>
+                          <div className="text-2xl font-bold text-green-600">+£431,880</div>
+                          <div className="text-xs text-slate-600">Cost of increase</div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+                )}
+
+                {activeTab === 2 && (
+                  // App Store - Based on your workflow screenshot
+                  <div className="p-4 space-y-4">
+                    <div className="text-center mb-4">
+                      <h3 className="font-semibold text-slate-900">HR Automation App Store</h3>
+                      <p className="text-xs text-slate-600">78 Ready-to-Use Automation Workflows</p>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      {[
+                        { name: "New Employee Onboarding", icon: "👋", saves: "~4 hours", tags: ["onboarding", "new-starter"] },
+                        { name: "30-60-90 Day Review", icon: "📊", saves: "~2 hours", tags: ["probation", "review"] },
+                        { name: "Leave Request Approval", icon: "🏖️", saves: "~30 mins", tags: ["leave", "approval"] },
+                        { name: "Performance Review Cycle", icon: "⭐", saves: "~6 hours", tags: ["performance", "review"] }
+                      ].map((workflow, i) => (
+                        <motion.div
+                          key={workflow.name}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: i * 0.1 }}
+                          className="bg-white rounded-lg p-3 border hover:shadow-lg transition-shadow cursor-pointer"
+                        >
+                          <div className="text-2xl mb-2">{workflow.icon}</div>
+                          <h4 className="font-semibold text-slate-900 text-sm mb-1">{workflow.name}</h4>
+                          <p className="text-xs text-green-600 mb-2">Saves {workflow.saves}</p>
+                          <div className="flex gap-1 mb-2">
+                            {workflow.tags.map(tag => (
+                              <span key={tag} className="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="w-full bg-blue-500 text-white rounded py-1 text-xs font-medium"
+                          >
+                            + Add
+                          </motion.button>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Floating UI Elements */}

@@ -39,6 +39,13 @@ const valueProps = [
     subtitle: "Most advanced conversational HR AI ever built",
     description: "Experience the future of HR technology. Our conversational interface feels natural while delivering unprecedented power and flexibility.",
     gradient: "from-yellow-500 to-orange-500"
+  },
+  {
+    icon: Shield,
+    title: "Complete Autonomy",
+    subtitle: "Unmatched autonomous functionality - do everything yourself",
+    description: "Full control over every aspect of your HR operations. Comprehensive tools, unlimited customisation, and complete data ownership - all included.",
+    gradient: "from-indigo-500 to-purple-500"
   }
 ]
 

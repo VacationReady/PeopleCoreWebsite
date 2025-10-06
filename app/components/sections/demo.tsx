@@ -5,13 +5,14 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/app/components/ui/button"
 import { Send, MessageSquare, Zap, BarChart3, Users, FileText, CheckCircle, Upload, Calendar, Mail, Sparkles, PartyPopper } from "lucide-react"
 
-// Immersive step animation component
-function StepAnimation({ step, isActive }: { step: any, isActive: boolean }) {
+// Enhanced immersive step animation component
+function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: boolean, workflowType: string }) {
   if (!isActive) return null
 
-  switch (step.id) {
-    case 1: // Welcome Email
-      if (step.label === "Welcome Email") {
+  // eNPS Survey Workflow Animations
+  if (workflowType === "enps") {
+    switch (step.id) {
+      case 1: // Survey Time!
         return (
           <motion.div
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -21,32 +22,544 @@ function StepAnimation({ step, isActive }: { step: any, isActive: boolean }) {
           >
             <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-6 max-w-sm mx-4">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm">📧</span>
-                </div>
+                <motion.div 
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 0.5, repeat: 3 }}
+                  className="w-12 h-12 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center"
+                >
+                  <span className="text-white text-lg">📅</span>
+                </motion.div>
                 <div>
-                  <div className="font-semibold text-slate-900">Welcome Email</div>
-                  <div className="text-xs text-slate-500">from hr@peoplecore.com</div>
+                  <div className="font-bold text-slate-900">Survey Time!</div>
+                  <div className="text-xs text-slate-500">Monthly eNPS Survey</div>
                 </div>
               </div>
-              <div className="bg-slate-50 rounded-lg p-4 mb-4">
-                <h3 className="font-semibold text-slate-900 mb-2">Hi James, welcome to PeopleCore! 👋</h3>
-                <p className="text-sm text-slate-600 mb-3">
-                  We're excited to have you join our team. Your onboarding journey starts now!
+              <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-lg p-4">
+                <h3 className="font-semibold text-slate-900 mb-2">📊 Time for your monthly pulse check!</h3>
+                <p className="text-sm text-slate-600">
+                  Gathering employee sentiment across all departments...
                 </p>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium"
-                >
-                  Click here to begin onboarding! →
-                </motion.button>
               </div>
             </div>
           </motion.div>
         )
-      }
-      break
+      
+      case 2: // eNPS Distribution
+        return (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="fixed inset-0 flex items-center justify-center pointer-events-none z-50 bg-black/20"
+          >
+            <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-6 max-w-md mx-4">
+              <div className="text-center mb-4">
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                  className="text-4xl mb-2"
+                >
+                  📧
+                </motion.div>
+                <h3 className="font-bold text-slate-900">eNPS Survey Distributed!</h3>
+              </div>
+              <div className="space-y-2">
+                {["Engineering", "Sales", "Marketing", "HR", "Finance"].map((dept, i) => (
+                  <motion.div
+                    key={dept}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.2 }}
+                    className="flex items-center gap-2 bg-blue-50 rounded-lg p-2"
+                  >
+                    <motion.div
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ delay: i * 0.2 + 0.5 }}
+                      className="w-2 h-2 bg-blue-500 rounded-full"
+                    />
+                    <span className="text-sm text-slate-700">{dept} Department</span>
+                    <motion.span
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: i * 0.2 + 0.7 }}
+                      className="text-xs text-green-600 ml-auto"
+                    >
+                      ✓ Sent
+                    </motion.span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )
+
+      case 3: // Anonymous Responses
+        return (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="fixed inset-0 flex items-center justify-center pointer-events-none z-50 bg-black/20"
+          >
+            <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-6 max-w-md mx-4">
+              <div className="text-center mb-4">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                  className="text-4xl mb-2"
+                >
+                  🔒
+                </motion.div>
+                <h3 className="font-bold text-slate-900">Anonymous Responses</h3>
+                <p className="text-sm text-slate-600">Protecting employee privacy</p>
+              </div>
+              
+              <div className="bg-slate-50 rounded-lg p-4 mb-4">
+                <div className="text-sm font-medium text-slate-700 mb-2">Sample Question:</div>
+                <div className="bg-white rounded p-3 mb-3 border">
+                  <p className="text-sm text-slate-600">"How likely are you to recommend PeopleCore as a place to work?"</p>
+                </div>
+                
+                <div className="flex gap-2 mb-2">
+                  {[0,1,2,3,4,5,6,7,8,9,10].map((num) => (
+                    <motion.button
+                      key={num}
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: num * 0.1 }}
+                      whileHover={{ scale: 1.1 }}
+                      className="w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-600 text-white text-xs rounded flex items-center justify-center"
+                    >
+                      {num}
+                    </motion.button>
+                  ))}
+                </div>
+                
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.5 }}
+                  className="text-center"
+                >
+                  <span className="text-xs text-green-600 font-medium">✓ Response submitted anonymously</span>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+        )
+
+      case 4: // AI Analysis
+        return (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="fixed inset-0 flex items-center justify-center pointer-events-none z-50 bg-black/20"
+          >
+            <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-6 max-w-md mx-4">
+              <div className="text-center mb-4">
+                <motion.div
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    rotate: [0, 180, 360]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="text-4xl mb-2"
+                >
+                  🤖
+                </motion.div>
+                <h3 className="font-bold text-slate-900">AI Analysing Results</h3>
+                <p className="text-sm text-slate-600">Processing 247 responses...</p>
+              </div>
+              
+              <div className="space-y-3">
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-3">
+                  <div className="flex items-center gap-2 mb-2">
+                    <motion.div
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 1, repeat: Infinity }}
+                      className="w-2 h-2 bg-blue-500 rounded-full"
+                    />
+                    <span className="text-sm font-medium text-slate-700">Sentiment Analysis</span>
+                  </div>
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: "85%" }}
+                    transition={{ duration: 1.5 }}
+                    className="h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"
+                  />
+                </div>
+                
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-3">
+                  <div className="flex items-center gap-2 mb-2">
+                    <motion.div
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 1, repeat: Infinity, delay: 0.5 }}
+                      className="w-2 h-2 bg-green-500 rounded-full"
+                    />
+                    <span className="text-sm font-medium text-slate-700">Trend Detection</span>
+                  </div>
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: "92%" }}
+                    transition={{ duration: 1.5, delay: 0.5 }}
+                    className="h-2 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full"
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )
+
+      case 5: // CEO Report
+        return (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="fixed inset-0 flex items-center justify-center pointer-events-none z-50 bg-black/20"
+          >
+            <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-6 max-w-lg mx-4">
+              <div className="flex items-center gap-3 mb-4">
+                <motion.div
+                  animate={{ y: [0, -5, 0] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                  className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center"
+                >
+                  <span className="text-white text-lg">📊</span>
+                </motion.div>
+                <div>
+                  <div className="font-bold text-slate-900">Executive Summary</div>
+                  <div className="text-xs text-slate-500">Sent to CEO & Leadership Team</div>
+                </div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg p-4">
+                <h3 className="font-semibold text-slate-900 mb-3">📈 eNPS Report - March 2024</h3>
+                
+                <div className="grid grid-cols-2 gap-3 mb-3">
+                  <div className="bg-white rounded p-2 text-center">
+                    <div className="text-2xl font-bold text-green-600">+42</div>
+                    <div className="text-xs text-slate-600">Overall eNPS</div>
+                  </div>
+                  <div className="bg-white rounded p-2 text-center">
+                    <div className="text-2xl font-bold text-blue-600">89%</div>
+                    <div className="text-xs text-slate-600">Response Rate</div>
+                  </div>
+                </div>
+                
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1 }}
+                  className="text-xs text-slate-600 bg-white rounded p-2"
+                >
+                  <strong>Key Insights:</strong> Employee satisfaction up 12% vs last quarter. Engineering team shows highest engagement (+67).
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+        )
+    }
+  }
+
+  // Performance Review Workflow Animations  
+  if (workflowType === "performance") {
+    switch (step.id) {
+      case 1: // Q1 Results Time!
+        return (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: -20 }}
+            className="fixed inset-0 flex items-center justify-center pointer-events-none z-50 bg-black/20"
+          >
+            <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-6 max-w-sm mx-4">
+              <div className="flex items-center gap-3 mb-4">
+                <motion.div 
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    rotate: [0, 10, -10, 0] 
+                  }}
+                  transition={{ duration: 0.8, repeat: 2 }}
+                  className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center"
+                >
+                  <span className="text-white text-lg">📅</span>
+                </motion.div>
+                <div>
+                  <div className="font-bold text-slate-900">Q1 Results Time!</div>
+                  <div className="text-xs text-slate-500">Quarterly Performance Review</div>
+                </div>
+              </div>
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-4">
+                <h3 className="font-semibold text-slate-900 mb-2">🎯 Q1 Performance Data Ready</h3>
+                <p className="text-sm text-slate-600">
+                  Compiling performance metrics across all departments...
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )
+
+      case 2: // Data Compilation
+        return (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="fixed inset-0 flex items-center justify-center pointer-events-none z-50 bg-black/20"
+          >
+            <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-6 max-w-md mx-4">
+              <div className="text-center mb-4">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                  className="text-4xl mb-2"
+                >
+                  📊
+                </motion.div>
+                <h3 className="font-bold text-slate-900">Data Compilation</h3>
+                <p className="text-sm text-slate-600">Gathering performance metrics...</p>
+              </div>
+              
+              <div className="space-y-2">
+                {[
+                  { name: "Goal Completion", value: "94%" },
+                  { name: "Project Delivery", value: "87%" },
+                  { name: "Team Collaboration", value: "91%" },
+                  { name: "Innovation Score", value: "89%" }
+                ].map((metric, i) => (
+                  <motion.div
+                    key={metric.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.3 }}
+                    className="flex items-center justify-between bg-slate-50 rounded-lg p-2"
+                  >
+                    <span className="text-sm text-slate-700">{metric.name}</span>
+                    <motion.span
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: i * 0.3 + 0.5 }}
+                      className="text-sm font-bold text-green-600"
+                    >
+                      {metric.value}
+                    </motion.span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )
+
+      case 3: // Department Grouping
+        return (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="fixed inset-0 flex items-center justify-center pointer-events-none z-50 bg-black/20"
+          >
+            <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-6 max-w-md mx-4">
+              <div className="text-center mb-4">
+                <motion.div
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                  className="text-4xl mb-2"
+                >
+                  🏢
+                </motion.div>
+                <h3 className="font-bold text-slate-900">Grouping by Department</h3>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { dept: "Engineering", color: "blue", count: "23" },
+                  { dept: "Sales", color: "green", count: "18" },
+                  { dept: "Marketing", color: "purple", count: "12" },
+                  { dept: "HR", color: "pink", count: "8" }
+                ].map((item, i) => (
+                  <motion.div
+                    key={item.dept}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: i * 0.2 }}
+                    className={`bg-${item.color}-50 border border-${item.color}-200 rounded-lg p-3 text-center`}
+                  >
+                    <div className={`text-lg font-bold text-${item.color}-600`}>{item.count}</div>
+                    <div className="text-xs text-slate-600">{item.dept}</div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )
+
+      case 4: // Dashboard Generation
+        return (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="fixed inset-0 flex items-center justify-center pointer-events-none z-50 bg-black/20"
+          >
+            <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-6 max-w-lg mx-4">
+              <div className="text-center mb-4">
+                <motion.div
+                  animate={{ 
+                    rotate: [0, 90, 180, 270, 360],
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="text-4xl mb-2"
+                >
+                  📈
+                </motion.div>
+                <h3 className="font-bold text-slate-900">Generating Dashboards</h3>
+                <p className="text-sm text-slate-600">Creating visualisations...</p>
+              </div>
+              
+              <div className="bg-slate-50 rounded-lg p-4">
+                <div className="grid grid-cols-2 gap-3 mb-3">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="bg-white rounded p-2 text-center"
+                  >
+                    <div className="h-8 bg-gradient-to-r from-blue-400 to-blue-600 rounded mb-1"></div>
+                    <div className="text-xs text-slate-600">Performance Trends</div>
+                  </motion.div>
+                  
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 }}
+                    className="bg-white rounded p-2 text-center"
+                  >
+                    <div className="h-8 bg-gradient-to-r from-green-400 to-green-600 rounded mb-1"></div>
+                    <div className="text-xs text-slate-600">Goal Achievement</div>
+                  </motion.div>
+                </div>
+                
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1 }}
+                  className="bg-white rounded p-2"
+                >
+                  <div className="h-12 bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 rounded mb-1"></div>
+                  <div className="text-xs text-slate-600 text-center">Department Comparison</div>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+        )
+
+      case 5: // Manager Review
+        return (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="fixed inset-0 flex items-center justify-center pointer-events-none z-50 bg-black/20"
+          >
+            <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-6 max-w-md mx-4">
+              <div className="flex items-center gap-3 mb-4">
+                <motion.div
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                  className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center"
+                >
+                  <span className="text-white text-lg">👥</span>
+                </motion.div>
+                <div>
+                  <div className="font-bold text-slate-900">Manager Review</div>
+                  <div className="text-xs text-slate-500">Dashboard distributed to managers</div>
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                {[
+                  { name: "Sarah Johnson", role: "Engineering Manager", status: "Reviewing" },
+                  { name: "Mike Chen", role: "Sales Director", status: "Completed" },
+                  { name: "Emma Wilson", role: "Marketing Lead", status: "In Progress" }
+                ].map((manager, i) => (
+                  <motion.div
+                    key={manager.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.3 }}
+                    className="flex items-center gap-3 bg-slate-50 rounded-lg p-2"
+                  >
+                    <div className="w-8 h-8 bg-gradient-to-br from-slate-400 to-slate-600 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs">{manager.name.split(' ').map(n => n[0]).join('')}</span>
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-sm font-medium text-slate-900">{manager.name}</div>
+                      <div className="text-xs text-slate-600">{manager.role}</div>
+                    </div>
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: i * 0.3 + 0.5 }}
+                      className={`text-xs px-2 py-1 rounded-full ${
+                        manager.status === 'Completed' ? 'bg-green-100 text-green-700' :
+                        manager.status === 'In Progress' ? 'bg-yellow-100 text-yellow-700' :
+                        'bg-blue-100 text-blue-700'
+                      }`}
+                    >
+                      {manager.status}
+                    </motion.div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )
+    }
+  }
+
+  // Onboarding Workflow Animations (existing)
+  if (workflowType === "onboarding") {
+    switch (step.id) {
+      case 1: // Welcome Email
+        if (step.label === "Welcome Email") {
+          return (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: -20 }}
+              className="fixed inset-0 flex items-center justify-center pointer-events-none z-50 bg-black/20"
+            >
+              <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-6 max-w-sm mx-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                    <span className="text-white text-sm">📧</span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-slate-900">Welcome Email</div>
+                    <div className="text-xs text-slate-500">from hr@peoplecore.com</div>
+                  </div>
+                </div>
+                <div className="bg-slate-50 rounded-lg p-4 mb-4">
+                  <h3 className="font-semibold text-slate-900 mb-2">Hi James, welcome to PeopleCore! 👋</h3>
+                  <p className="text-sm text-slate-600 mb-3">
+                    We're excited to have you join our team. Your onboarding journey starts now!
+                  </p>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium"
+                  >
+                    Click here to begin onboarding! →
+                  </motion.button>
+                </div>
+              </div>
+            </motion.div>
+          )
+        }
+        break
 
     case 2: // Create Checklist
       if (step.label === "Create Checklist") {

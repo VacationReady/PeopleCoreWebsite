@@ -4,21 +4,20 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/app/components/ui/button"
 import { ArrowRight, Sparkles } from "lucide-react"
-
 // Navigation component
 function Navigation() {
   const [isCapabilitiesOpen, setIsCapabilitiesOpen] = useState(false)
 
   const capabilities = [
-    { name: "Absence Management", icon: "🏖️", description: "Smart leave tracking & approvals" },
-    { name: "Customisation", icon: "⚙️", description: "Tailor to your needs" },
-    { name: "Self Service", icon: "🔧", description: "Employee empowerment" },
-    { name: "Surveys", icon: "📊", description: "Pulse & engagement surveys" },
-    { name: "Workflows", icon: "🔄", description: "Automated processes" },
-    { name: "Performance", icon: "📈", description: "Reviews & goal tracking" },
-    { name: "Document Management", icon: "📄", description: "Digital document hub" },
-    { name: "Org Chart", icon: "🏢", description: "Visual organization structure" },
-    { name: "Reporting", icon: "📋", description: "Analytics & insights" }
+    { name: "Absence Management", icon: "🌴", description: "Smart leave tracking & approvals" },
+    { name: "Customisation", icon: "⚡", description: "Tailor to your needs" },
+    { name: "Self Service", icon: "🚀", description: "Employee empowerment" },
+    { name: "Surveys", icon: "💫", description: "Pulse & engagement surveys" },
+    { name: "Workflows", icon: "🔮", description: "Automated processes" },
+    { name: "Performance", icon: "✨", description: "Reviews & goal tracking" },
+    { name: "Document Management", icon: "📱", description: "Digital document hub" },
+    { name: "Org Chart", icon: "🌐", description: "Visual organisation structure" },
+    { name: "Reporting", icon: "📊", description: "Analytics & insights" }
   ]
 
   return (
@@ -157,65 +156,64 @@ export function Hero() {
         }} />
       </div>
 
-      {/* Thinking Overlay */}
+      {/* AI Thinking Banner - Simulating AI Response */}
       <AnimatePresence>
         {isThinking && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-sm"
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -100 }}
+            className="absolute top-20 left-1/2 transform -translate-x-1/2 z-50 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-200 p-4 max-w-md mx-4"
           >
-            <div className="text-center">
+            <div className="flex items-center gap-3">
               <motion.div
                 animate={{ 
                   scale: [1, 1.1, 1],
-                  rotate: [0, 5, -5, 0]
+                  rotate: [0, 360]
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 mx-auto"
+                className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0"
               >
                 <motion.div
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  className="w-8 h-8 border-2 border-white border-t-transparent rounded-full"
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                  className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
                 />
               </motion.div>
               
-              <motion.h2
-                key={thinkingText}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-2xl font-semibold text-white mb-2"
-              >
-                {thinkingText}
-              </motion.h2>
-              
-              <p className="text-white/70">
-                Preparing your personalized HR experience...
-              </p>
-
-              {/* Floating particles around thinking animation */}
-              {[...Array(8)].map((_, i) => (
+              <div className="flex-1">
                 <motion.div
-                  key={i}
-                  className="absolute w-2 h-2 bg-blue-400 rounded-full"
-                  style={{
-                    left: `calc(50% + ${Math.cos(i * Math.PI / 4) * 100}px)`,
-                    top: `calc(50% + ${Math.sin(i * Math.PI / 4) * 100}px)`,
-                  }}
-                  animate={{
-                    scale: [0, 1, 0],
-                    opacity: [0, 1, 0],
-                  }}
-                  transition={{
-                    duration: 2,
-                    delay: i * 0.2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-              ))}
+                  key={thinkingText}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="font-semibold text-slate-900 text-sm"
+                >
+                  {thinkingText}
+                </motion.div>
+                <p className="text-xs text-slate-600">
+                  Analysing your HR query...
+                </p>
+              </div>
+
+              {/* Floating dots */}
+              <div className="flex gap-1">
+                {[...Array(3)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="w-2 h-2 bg-blue-400 rounded-full"
+                    animate={{
+                      scale: [0.8, 1.2, 0.8],
+                      opacity: [0.5, 1, 0.5],
+                    }}
+                    transition={{
+                      duration: 1,
+                      delay: i * 0.2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                ))}
+              </div>
             </div>
           </motion.div>
         )}
