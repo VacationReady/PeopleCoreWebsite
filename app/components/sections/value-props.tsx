@@ -70,8 +70,8 @@ export function ValueProps() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="group relative bg-white rounded-2xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300"
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative bg-white rounded-2xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 overflow-hidden"
               >
                 {/* Gradient background on hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${prop.gradient} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`} />
@@ -92,6 +92,31 @@ export function ValueProps() {
                   <p className="text-slate-600 leading-relaxed">
                     {prop.description}
                   </p>
+                </div>
+
+                {/* Floating particles on hover */}
+                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {[...Array(6)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className={`absolute w-2 h-2 bg-gradient-to-br ${prop.gradient} rounded-full`}
+                      style={{
+                        left: `${20 + i * 15}%`,
+                        top: `${30 + (i % 2) * 40}%`,
+                      }}
+                      animate={{
+                        y: [-10, -20, -10],
+                        opacity: [0.3, 0.8, 0.3],
+                        scale: [0.8, 1.2, 0.8],
+                      }}
+                      transition={{
+                        duration: 2,
+                        delay: i * 0.2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                  ))}
                 </div>
 
                 {/* Decorative element */}
