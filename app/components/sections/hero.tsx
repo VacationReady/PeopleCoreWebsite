@@ -234,7 +234,6 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: isThinking ? 0 : 1, scale: isThinking ? 0.8 : 1 }}
             transition={{ duration: 0.8, delay: isThinking ? 0 : 4.2 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium"
           >
             <Sparkles className="w-4 h-4" />
