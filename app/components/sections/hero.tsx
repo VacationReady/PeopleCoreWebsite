@@ -1,12 +1,110 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/app/components/ui/button"
 import { ArrowRight, Sparkles } from "lucide-react"
 
+// Navigation component
+function Navigation() {
+  const [isCapabilitiesOpen, setIsCapabilitiesOpen] = useState(false)
+
+  const capabilities = [
+    { name: "Absence Management", icon: "🏖️", description: "Smart leave tracking & approvals" },
+    { name: "Customisation", icon: "⚙️", description: "Tailor to your needs" },
+    { name: "Self Service", icon: "🔧", description: "Employee empowerment" },
+    { name: "Surveys", icon: "📊", description: "Pulse & engagement surveys" },
+    { name: "Workflows", icon: "🔄", description: "Automated processes" },
+    { name: "Performance", icon: "📈", description: "Reviews & goal tracking" },
+    { name: "Document Management", icon: "📄", description: "Digital document hub" },
+    { name: "Org Chart", icon: "🏢", description: "Visual organization structure" },
+    { name: "Reporting", icon: "📋", description: "Analytics & insights" }
+  ]
+
+  return (
+    <nav className="absolute top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm">PC</span>
+            </div>
+            <span className="text-white font-semibold text-lg">PeopleCore</span>
+          </div>
+
+          <div className="flex items-center gap-8">
+            <div className="relative">
+              <button
+                onClick={() => setIsCapabilitiesOpen(!isCapabilitiesOpen)}
+                className="text-white hover:text-blue-200 transition-colors duration-200 flex items-center gap-1"
+              >
+                Capabilities
+                <motion.div
+                  animate={{ rotate: isCapabilitiesOpen ? 180 : 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  ▼
+                </motion.div>
+              </button>
+
+              <AnimatePresence>
+                {isCapabilitiesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden"
+                  >
+                    <div className="p-4 bg-gradient-to-r from-blue-50 to-purple-50">
+                      <h3 className="font-semibold text-slate-900 mb-1">HR Capabilities</h3>
+                      <p className="text-sm text-slate-600">Everything you need for modern HR</p>
+                    </div>
+                    <div className="grid grid-cols-1 gap-1 p-2">
+                      {capabilities.map((capability, index) => (
+                        <motion.div
+                          key={capability.name}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.05 }}
+                          className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer"
+                        >
+                          <span className="text-xl">{capability.icon}</span>
+                          <div>
+                            <div className="font-medium text-slate-900">{capability.name}</div>
+                            <div className="text-xs text-slate-500">{capability.description}</div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <button className="text-white hover:text-blue-200 transition-colors duration-200">
+              Pricing
+            </button>
+            <button className="text-white hover:text-blue-200 transition-colors duration-200">
+              About Us
+            </button>
+            <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
+              Get Started
+            </Button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  )
+}
+
 export function Hero() {
+  const [isCapabilitiesOpen, setIsCapabilitiesOpen] = useState(false)
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      <Navigation />
+      
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -inset-10 opacity-50">

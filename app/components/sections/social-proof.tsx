@@ -67,38 +67,52 @@ const testimonials = [
     avatar: "JP",
     rating: 5
   }
-]
 
 export function SocialProof() {
   return (
     <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Logo Strip */}
+        {/* Company logos */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-20"
         >
-          <p className="text-slate-600 font-medium mb-8">
+          <p className="text-center text-slate-600 mb-8">
             Trusted by forward-thinking companies worldwide
           </p>
-          
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60">
-            {logos.map((logo, index) => (
+          <div className="flex flex-wrap justify-center items-center gap-8">
+            {/* Enhanced company logos with hover animations */}
+            {[
+              { name: "TechCorp", icon: "🚀" },
+              { name: "InnovateLab", icon: "⚡" },
+              { name: "FutureWorks", icon: "🌟" },
+              { name: "NextGen", icon: "💫" },
+              { name: "SmartSys", icon: "🔮" },
+              { name: "CloudFirst", icon: "☁️" }
+            ].map((company, i) => (
               <motion.div
-                key={logo.name}
+                key={company.name}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
+                whileHover={{ scale: 1.05, y: -2 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex items-center justify-center"
-                style={{ width: logo.width }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="group relative w-32 h-16 bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg flex items-center justify-center border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300"
               >
-                <div className="bg-slate-200 rounded-lg px-4 py-2 text-slate-600 font-semibold text-sm">
-                  {logo.name}
+                <div className="flex items-center gap-2">
+                  <span className="text-xl group-hover:scale-110 transition-transform duration-300">
+                    {company.icon}
+                  </span>
+                  <span className="text-slate-600 font-semibold text-sm group-hover:text-blue-600 transition-colors duration-300">
+                    {company.name}
+                  </span>
                 </div>
+                
+                {/* Subtle glow effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.div>
             ))}
           </div>

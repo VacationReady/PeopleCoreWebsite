@@ -92,25 +92,24 @@ export function Pricing() {
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => {
-            const BadgeIcon = plan.badge.icon
             return (
               <motion.div
                 key={plan.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -8, scale: 1.02 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`relative bg-white rounded-2xl border-2 p-8 ${
+                className={`group relative rounded-2xl p-8 overflow-hidden ${
                   plan.popular 
-                    ? 'border-blue-500 shadow-xl scale-105' 
-                    : 'border-slate-200 shadow-lg hover:shadow-xl'
-                } transition-all duration-300`}
+                    ? 'bg-gradient-to-br from-blue-50 to-purple-50 border-2 border-blue-200 shadow-xl' 
+                    : 'bg-white border border-slate-200 shadow-lg'
+                } hover:shadow-xl transition-all duration-300`}
               >
                 {/* Popular badge */}
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <div className={`bg-gradient-to-r ${plan.badge.color} text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2`}>
-                      <BadgeIcon className="w-4 h-4" />
                       {plan.badge.text}
                     </div>
                   </div>
@@ -130,10 +129,48 @@ export function Pricing() {
 
                   {!plan.popular && (
                     <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r ${plan.badge.color} text-white text-sm font-medium`}>
-                      <BadgeIcon className="w-3 h-3" />
+                      <plan.badge.icon className="w-3 h-3" />
                       {plan.badge.text}
                     </div>
                   )}
+                </div>
+
+                {/* Floating particles on hover */}
+                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {[...Array(8)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-1 h-1 bg-blue-400 rounded-full"
+                      style={{
+                        left: `${20 + i * 10}%`,
+                        top: `${30 + (i % 2) * 40}%`,
+                      }}
+                      animate={{
+                        y: [-10, -20, -10],
+                        opacity: [0.3, 0.8, 0.3],
+                        scale: [0.8, 1.2, 0.8],
+                      }}
+                      transition={{
+                        duration: 2,
+                        delay: i * 0.2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                  ))}
+                </div>
+
+                {/* Plan header */}
+                <div className="relative z-10 text-center mb-8">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">{plan.name}</h3>
+                  <p className="text-slate-600 mb-4">{plan.description}</p>
+                  
+                  <div className="mb-4">
+                    <span className="text-4xl font-bold text-slate-900">{plan.price}</span>
+                    {plan.period && (
+                      <span className="text-slate-600 ml-2">/{plan.period}</span>
+                    )}
+                  </div>
                 </div>
 
                 {/* Features */}
