@@ -18,7 +18,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            className="absolute -right-80 top-1/2 -translate-y-1/2 bg-red-50 border-2 border-red-200 rounded-lg p-3 shadow-lg z-10 w-48 h-auto"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-red-50 border-2 border-red-200 rounded-lg p-3 shadow-lg z-10 w-56 h-32"
           >
             <div className="flex items-center gap-2 mb-2">
               <motion.div 
@@ -47,7 +47,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
-            className="absolute -right-80 top-1/2 -translate-y-1/2 bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg z-10 w-48"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg z-10 w-56 h-32"
           >
             <div className="text-center mb-3">
               <motion.div
@@ -146,7 +146,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
-            className="absolute -right-80 top-1/2 -translate-y-1/2 bg-green-50 border-2 border-green-200 rounded-lg p-3 shadow-lg z-10 w-48"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-green-50 border-2 border-green-200 rounded-lg p-3 shadow-lg z-10 w-56 h-32"
           >
             <div className="text-center mb-3">
               <motion.div
@@ -207,7 +207,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
-            className="absolute -right-80 top-1/2 -translate-y-1/2 bg-yellow-50 border-2 border-yellow-200 rounded-lg p-3 shadow-lg z-10 w-48"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-yellow-50 border-2 border-yellow-200 rounded-lg p-3 shadow-lg z-10 w-56 h-32"
           >
             <div className="flex items-center gap-2 mb-3">
               <motion.div
@@ -260,7 +260,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            className="absolute -right-80 top-1/2 -translate-y-1/2 bg-emerald-50 border-2 border-emerald-200 rounded-lg p-3 shadow-lg z-10 w-48"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-emerald-50 border-2 border-emerald-200 rounded-lg p-3 shadow-lg z-10 w-56 h-32"
           >
             <div className="flex items-center gap-2 mb-3">
               <motion.div 
@@ -293,7 +293,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
-            className="absolute -right-80 top-1/2 -translate-y-1/2 bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg z-10 w-48"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg z-10 w-56 h-32"
           >
             <div className="text-center mb-3">
               <motion.div
@@ -342,7 +342,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
-            className="absolute -right-80 top-1/2 -translate-y-1/2 bg-purple-50 border-2 border-purple-200 rounded-lg p-3 shadow-lg z-10 w-48"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-purple-50 border-2 border-purple-200 rounded-lg p-3 shadow-lg z-10 w-56 h-32"
           >
             <div className="text-center mb-3">
               <motion.div
@@ -383,7 +383,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
-            className="absolute -right-80 top-1/2 -translate-y-1/2 bg-indigo-50 border-2 border-indigo-200 rounded-lg p-3 shadow-lg z-10 w-48"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-indigo-50 border-2 border-indigo-200 rounded-lg p-3 shadow-lg z-10 w-56 h-32"
           >
             <div className="text-center mb-3">
               <motion.div
@@ -442,7 +442,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
-            className="absolute -right-80 top-1/2 -translate-y-1/2 bg-orange-50 border-2 border-orange-200 rounded-lg p-3 shadow-lg z-10 w-48"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-orange-50 border-2 border-orange-200 rounded-lg p-3 shadow-lg z-10 w-56 h-32"
           >
             <div className="flex items-center gap-2 mb-3">
               <motion.div
@@ -508,7 +508,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
               initial={{ opacity: 0, scale: 0.8, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.8, y: -20 }}
-              className="absolute -right-80 top-1/2 -translate-y-1/2 bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg z-10 w-48"
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg z-10 w-56 h-32"
             >
               <div className="text-center mb-3">
                 <motion.div
@@ -548,7 +548,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            className="absolute -right-80 top-1/2 -translate-y-1/2 bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg z-10 w-48"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg z-10 w-56 h-32"
           >
             <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-6 max-w-sm mx-4">
               <div className="flex items-center gap-2 mb-4">
@@ -593,7 +593,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            className="absolute -right-80 top-1/2 -translate-y-1/2 bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg z-10 w-48"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg z-10 w-56 h-32"
           >
             <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 p-6 max-w-sm mx-4">
               <div className="flex items-center gap-2 mb-4">
@@ -648,6 +648,58 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
       }
       break
 
+    case 4: // Verify Documents
+      if (step.label === "Verify Documents") {
+        return (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-green-50 border-2 border-green-200 rounded-lg p-3 shadow-lg z-10 w-56 h-32"
+          >
+            <div className="text-center mb-3">
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 1, repeat: Infinity }}
+                className="text-2xl mb-2"
+              >
+                ✅
+              </motion.div>
+              <div className="text-sm font-bold text-green-700">Document Verification</div>
+            </div>
+            
+            <div className="bg-white rounded-lg p-3">
+              <div className="space-y-1">
+                {[
+                  { doc: "ID Document", status: "✓ Verified" },
+                  { doc: "Contract", status: "✓ Signed" },
+                  { doc: "Tax Form", status: "✓ Complete" }
+                ].map((item, i) => (
+                  <motion.div
+                    key={item.doc}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.2 }}
+                    className="flex items-center justify-between text-xs"
+                  >
+                    <span className="text-slate-700">{item.doc}</span>
+                    <motion.span
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: i * 0.2 + 0.3 }}
+                      className="text-green-600 font-medium"
+                    >
+                      {item.status}
+                    </motion.span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )
+      }
+      break
+
     case 5: // Assign Buddy
       if (step.label === "Assign Buddy") {
         return (
@@ -655,7 +707,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            className="absolute -right-80 top-1/2 -translate-y-1/2 bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg z-10 w-48"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg z-10 w-56 h-32"
           >
             <div className="text-center mb-3">
               <motion.div
@@ -717,7 +769,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            className="absolute -right-80 top-1/2 -translate-y-1/2 bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg z-10 w-48"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg z-10 w-56 h-32"
           >
             <div className="text-center mb-3">
               <motion.div
@@ -764,7 +816,7 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            className="absolute -right-80 top-1/2 -translate-y-1/2 bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg z-10 w-48"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg z-10 w-56 h-32"
           >
             <div className="text-center mb-3">
               <motion.div
@@ -809,7 +861,7 @@ function WorkflowNode({ node, index, isActive, workflowType, activeStep }: { nod
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: index * 0.2, duration: 0.5 }}
-      className={`relative p-4 rounded-xl border-2 transition-all duration-300 ${
+      className={`relative p-4 rounded-xl border-2 transition-all duration-300 overflow-visible ${
         isActive 
           ? 'bg-blue-50 border-blue-300 shadow-lg' 
           : 'bg-white border-slate-200'
@@ -1123,7 +1175,7 @@ export function Demo() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden"
+            className="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-visible"
           >
             <div className="p-4 border-b border-slate-200">
               <h3 className="font-semibold text-slate-900">Generated Workflow</h3>
