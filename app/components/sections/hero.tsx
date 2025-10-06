@@ -6,7 +6,7 @@ import { Button } from "@/app/components/ui/button"
 import { ArrowRight, Sparkles } from "lucide-react"
 // Navigation component
 function Navigation() {
-  const [isCapabilitiesOpen, setIsCapabilitiesOpen] = useState(true) // Auto-open
+  const [isCapabilitiesOpen, setIsCapabilitiesOpen] = useState(false) // Auto-open
 
   const capabilities = [
     { name: "Absence Management", icon: "🌴", description: "Smart leave tracking & approvals" },
@@ -27,21 +27,24 @@ function Navigation() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">PC</span>
             </div>
             <span className="text-white font-semibold text-lg">PeopleCore</span>
           </div>
 
           <div className="flex items-center gap-8">
-            <div className="relative">
-              <button
-                onClick={() => setIsCapabilitiesOpen(!isCapabilitiesOpen)}
-                className="text-white hover:text-blue-200 transition-colors duration-200 flex items-center gap-1"
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsCapabilitiesOpen(true)}
+              onMouseLeave={() => setIsCapabilitiesOpen(false)}
+            >
+              <button 
+                className="text-white hover:text-blue-200 transition-colors duration-200 flex items-center gap-2"
               >
                 Capabilities
                 <motion.div
                   animate={{ rotate: isCapabilitiesOpen ? 180 : 0 }}
                   transition={{ duration: 0.2 }}
+                  className="transition-all duration-200"
                 >
                   ▼
                 </motion.div>
