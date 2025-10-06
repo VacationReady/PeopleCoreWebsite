@@ -15,10 +15,11 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
       case 1: // Survey Time! - Calendar ping
         return (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            className="bg-red-50 border-2 border-red-200 rounded-lg p-3 shadow-lg w-full h-full flex flex-col justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="bg-red-50 border-2 border-red-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="flex items-center gap-2 mb-2">
               <motion.div 
@@ -44,10 +45,11 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
       case 2: // eNPS shipped via email animation
         return (
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg w-full h-full flex flex-col justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
               <motion.div
@@ -91,10 +93,11 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
       case 3: // Simulate clicking through questions with anonymity
         return (
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            className="absolute -right-80 top-1/2 -translate-y-1/2 bg-purple-50 border-2 border-purple-200 rounded-lg p-3 shadow-lg z-10 w-48"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="bg-purple-50 border-2 border-purple-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
               <motion.div
@@ -143,10 +146,11 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
       case 4: // AI analysing results
         return (
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            className="bg-green-50 border-2 border-green-200 rounded-lg p-3 shadow-lg w-full h-full flex flex-col justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="bg-green-50 border-2 border-green-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
               <motion.div
@@ -204,10 +208,11 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
       case 5: // Report shipped to CEO
         return (
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-3 shadow-lg w-full h-full flex flex-col justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="flex items-center gap-2 mb-3">
               <motion.div
@@ -257,10 +262,11 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
       case 1: // Q1 Results Time! popup
         return (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            className="bg-emerald-50 border-2 border-emerald-200 rounded-lg p-3 shadow-lg w-full h-full flex flex-col justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="bg-emerald-50 border-2 border-emerald-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="flex items-center gap-2 mb-3">
               <motion.div 
@@ -290,10 +296,11 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
       case 2: // Data compiling animation
         return (
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg w-full h-full flex flex-col justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
               <motion.div
@@ -339,10 +346,11 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
       case 3: // Grouping by departments
         return (
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            className="bg-purple-50 border-2 border-purple-200 rounded-lg p-3 shadow-lg w-full h-full flex flex-col justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="bg-purple-50 border-2 border-purple-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
               <motion.div
@@ -380,10 +388,11 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
       case 4: // Charts and dashboards generated
         return (
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            className="bg-indigo-50 border-2 border-indigo-200 rounded-lg p-3 shadow-lg w-full h-full flex flex-col justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="bg-indigo-50 border-2 border-indigo-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
               <motion.div
@@ -439,10 +448,11 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
       case 5: // Animation of managers reviewing dashboard
         return (
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            className="bg-orange-50 border-2 border-orange-200 rounded-lg p-3 shadow-lg w-full h-full flex flex-col justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="bg-orange-50 border-2 border-orange-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="flex items-center gap-2 mb-3">
               <motion.div
@@ -505,10 +515,11 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
         if (step.label === "Welcome Email") {
           return (
             <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.8, y: -20 }}
-              className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg w-full h-full flex flex-col justify-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
             >
               <div className="text-center mb-3">
                 <motion.div
@@ -545,10 +556,11 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
       if (step.label === "Create Checklist") {
         return (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg w-full h-full flex flex-col justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-2">
               <span className="text-2xl">📋</span>
@@ -590,10 +602,11 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
       if (step.label === "Document Upload") {
         return (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg w-full h-full flex flex-col justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-2">
               <span className="text-2xl">📄</span>
@@ -652,10 +665,11 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
       if (step.label === "Verify Documents") {
         return (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            className="bg-green-50 border-2 border-green-200 rounded-lg p-3 shadow-lg w-full h-full flex flex-col justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="bg-green-50 border-2 border-green-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
               <motion.div
@@ -704,10 +718,11 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
       if (step.label === "Assign Buddy") {
         return (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg w-full h-full flex flex-col justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
               <motion.div
@@ -766,10 +781,11 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
       if (step.label === "Training Schedule") {
         return (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg w-full h-full flex flex-col justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
               <motion.div
@@ -813,10 +829,11 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
       if (step.label === "Completion Celebration") {
         return (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg w-full h-full flex flex-col justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="bg-blue-50 border-2 border-blue-200 rounded-lg p-2 shadow-lg w-full h-full flex flex-col justify-center overflow-hidden"
           >
             <div className="text-center mb-3">
               <motion.div
@@ -1201,8 +1218,8 @@ export function Demo() {
                 </div>
                 
                 {/* Right side - Animation area */}
-                <div className="w-64 h-40 relative flex items-center justify-center border-2 border-dashed border-slate-300 rounded-lg bg-slate-50">
-                  <AnimatePresence>
+                <div className="w-64 h-32 relative flex items-center justify-center border-2 border-dashed border-slate-300 rounded-lg bg-slate-50 mt-16 overflow-hidden">
+                  <AnimatePresence mode="wait">
                     {currentPrompt.workflow.map((step, index) => (
                       index === activeStep && (
                         <StepAnimation 
