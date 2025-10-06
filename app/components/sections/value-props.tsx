@@ -21,10 +21,10 @@ const valueProps = [
   },
   {
     icon: Shield,
-    title: "Enterprise Grade",
-    subtitle: "Bank-level security with SOC 2 compliance",
-    description: "Your data is protected with military-grade encryption, comprehensive audit trails, and enterprise security standards that Fortune 500 companies trust.",
-    gradient: "from-red-500 to-orange-500"
+    title: "100% Customisable Platform",
+    subtitle: "Unlimited flexibility and complete control",
+    description: "Fully customisable to your needs with unlimited flexibility, complete control over workflows, and the ability to adapt to any business requirement.",
+    gradient: "from-green-500 to-emerald-600"
   },
   {
     icon: Puzzle,

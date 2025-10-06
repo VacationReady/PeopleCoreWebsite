@@ -51,6 +51,7 @@ function Navigation() {
                 {isCapabilitiesOpen && (
                   <motion.div
                     initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
                     className="absolute top-full left-1/2 transform -translate-x-1/2 w-[600px] bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 p-6"
@@ -64,7 +65,7 @@ function Navigation() {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.05 }}
-                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer"
+                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-colors cursor-pointer"
                           >
                             <span className="text-lg">{capability.icon}</span>
                             <div>
@@ -83,7 +84,7 @@ function Navigation() {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: (index + 5) * 0.05 }}
-                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer"
+                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-colors cursor-pointer"
                           >
                             <span className="text-lg">{capability.icon}</span>
                             <div>
