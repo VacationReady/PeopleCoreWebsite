@@ -4,21 +4,22 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/app/components/ui/button"
 import { ArrowRight, Sparkles } from "lucide-react"
+import Link from "next/link"
 // Navigation component
 function Navigation() {
   const [isCapabilitiesOpen, setIsCapabilitiesOpen] = useState(false) // Auto-open
 
   const capabilities = [
-    { name: "Absence Management", icon: "🌴", description: "Smart leave tracking & approvals" },
-    { name: "Customisation", icon: "⚡", description: "Tailor to your needs" },
-    { name: "Self Service", icon: "🚀", description: "Employee empowerment" },
-    { name: "Surveys", icon: "💫", description: "Pulse & engagement surveys" },
-    { name: "Workflows", icon: "🔮", description: "Automated processes" },
-    { name: "Performance", icon: "✨", description: "Reviews & goal tracking" },
-    { name: "Document Management", icon: "📱", description: "Digital document hub" },
-    { name: "Org Chart", icon: "🌐", description: "Visual organisation structure" },
-    { name: "Reporting", icon: "📊", description: "Analytics & insights" },
-    { name: "Bulk Actions", icon: "⚡", description: "Mass operations & updates" }
+    { name: "Leave Management", icon: "🌴", description: "Smart leave tracking & approvals", href: "/leave" },
+    { name: "Customisation", icon: "⚡", description: "Tailor to your needs", href: "#" },
+    { name: "Self Service", icon: "🚀", description: "Employee empowerment", href: "#" },
+    { name: "Surveys", icon: "💫", description: "Pulse & engagement surveys", href: "#" },
+    { name: "Workflows", icon: "🔮", description: "Automated processes", href: "/workflows" },
+    { name: "Performance", icon: "✨", description: "Reviews & goal tracking", href: "#" },
+    { name: "Document Management", icon: "📱", description: "Digital document hub", href: "/documents" },
+    { name: "Org Chart", icon: "🌐", description: "Visual organisation structure", href: "#" },
+    { name: "Reporting", icon: "📊", description: "Analytics & insights", href: "/reporting" },
+    { name: "Approvals", icon: "✅", description: "Smart approval workflows", href: "/approvals" }
   ]
 
   return (
@@ -68,13 +69,24 @@ function Navigation() {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.05 }}
-                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-colors cursor-pointer"
                           >
-                            <span className="text-lg">{capability.icon}</span>
-                            <div>
-                              <div className="font-medium text-slate-900 text-sm">{capability.name}</div>
-                              <div className="text-xs text-slate-600">{capability.description}</div>
-                            </div>
+                            {capability.href !== "#" ? (
+                              <Link href={capability.href} className="flex items-center gap-3 p-3 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-colors cursor-pointer block">
+                                <span className="text-lg">{capability.icon}</span>
+                                <div>
+                                  <div className="font-medium text-slate-900 text-sm">{capability.name}</div>
+                                  <div className="text-xs text-slate-600">{capability.description}</div>
+                                </div>
+                              </Link>
+                            ) : (
+                              <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-colors cursor-pointer opacity-60">
+                                <span className="text-lg">{capability.icon}</span>
+                                <div>
+                                  <div className="font-medium text-slate-900 text-sm">{capability.name}</div>
+                                  <div className="text-xs text-slate-600">{capability.description}</div>
+                                </div>
+                              </div>
+                            )}
                           </motion.div>
                         ))}
                       </div>
@@ -87,13 +99,24 @@ function Navigation() {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: (index + 5) * 0.05 }}
-                            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-colors cursor-pointer"
                           >
-                            <span className="text-lg">{capability.icon}</span>
-                            <div>
-                              <div className="font-medium text-slate-900 text-sm">{capability.name}</div>
-                              <div className="text-xs text-slate-600">{capability.description}</div>
-                            </div>
+                            {capability.href !== "#" ? (
+                              <Link href={capability.href} className="flex items-center gap-3 p-3 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-colors cursor-pointer block">
+                                <span className="text-lg">{capability.icon}</span>
+                                <div>
+                                  <div className="font-medium text-slate-900 text-sm">{capability.name}</div>
+                                  <div className="text-xs text-slate-600">{capability.description}</div>
+                                </div>
+                              </Link>
+                            ) : (
+                              <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-colors cursor-pointer opacity-60">
+                                <span className="text-lg">{capability.icon}</span>
+                                <div>
+                                  <div className="font-medium text-slate-900 text-sm">{capability.name}</div>
+                                  <div className="text-xs text-slate-600">{capability.description}</div>
+                                </div>
+                              </div>
+                            )}
                           </motion.div>
                         ))}
                       </div>

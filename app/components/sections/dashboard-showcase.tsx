@@ -166,92 +166,245 @@ export function DashboardShowcase() {
               </div>
 
               {/* Beautiful Dashboard UI Showcase */}
-              <div className="relative w-full h-full bg-white overflow-hidden">
+              <div className="relative w-full h-full bg-slate-50 overflow-hidden">
                 {activeTab === 0 && (
-                  // Main Dashboard - Based on your Susan Bentley screenshot
-                  <div className="p-4 space-y-4">
-                    {/* Header with user profile */}
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                          <span className="text-white font-semibold">SB</span>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-slate-900">Susan Bentley</h3>
-                          <p className="text-xs text-slate-500">admin@peoplecore.co.nz</p>
-                        </div>
+                  // Main Dashboard - Comprehensive HR Dashboard matching uploaded screenshot
+                  <div className="flex h-full">
+                    {/* Left Sidebar */}
+                    <div className="w-16 bg-white border-r border-slate-200 flex flex-col items-center py-2 space-y-2">
+                      <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mb-2">
+                        <span className="text-white text-xs font-bold">PC</span>
                       </div>
-                      <div className="flex gap-2">
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          className="px-3 py-1 bg-blue-500 text-white rounded-full text-xs"
-                        >
-                          View Profile
-                        </motion.button>
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          className="px-3 py-1 bg-green-500 text-white rounded-full text-xs"
-                        >
-                          Email Employee
-                        </motion.button>
+                      {[
+                        { icon: "📊", active: true },
+                        { icon: "✅", active: false },
+                        { icon: "👥", active: false },
+                        { icon: "📅", active: false },
+                        { icon: "📄", active: false },
+                        { icon: "📈", active: false },
+                        { icon: "📰", active: false },
+                        { icon: "⚙️", active: false }
+                      ].map((item, i) => (
+                        <div key={i} className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs cursor-pointer ${item.active ? 'bg-blue-100 text-blue-600' : 'text-slate-400 hover:bg-slate-100'}`}>
+                          {item.icon}
+                        </div>
+                      ))}
+                      <div className="flex-1"></div>
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center text-xs text-slate-400 hover:bg-slate-100 cursor-pointer">
+                        🚪
                       </div>
                     </div>
 
-                    {/* Dashboard Cards */}
-                    <div className="grid grid-cols-3 gap-3">
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="bg-blue-50 rounded-lg p-3"
-                      >
-                        <div className="text-lg font-bold text-blue-600">25 days</div>
-                        <div className="text-xs text-slate-600">Annual Leave Balance</div>
-                      </motion.div>
-                      
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="bg-green-50 rounded-lg p-3"
-                      >
-                        <div className="text-lg font-bold text-green-600">Quick Actions</div>
-                        <div className="text-xs text-slate-600">Post News, Add Employee</div>
-                      </motion.div>
-                      
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                        className="bg-purple-50 rounded-lg p-3"
-                      >
-                        <div className="text-lg font-bold text-purple-600">People Metrics</div>
-                        <div className="text-xs text-slate-600">21 Active, 8 Managers</div>
-                      </motion.div>
-                    </div>
+                    {/* Main Content */}
+                    <div className="flex-1 flex flex-col">
+                      {/* Top Header */}
+                      <div className="bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-full overflow-hidden">
+                            <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                              <span className="text-white font-semibold text-sm">SB</span>
+                            </div>
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-slate-900 text-sm">Susan Bentley</h3>
+                            <p className="text-xs text-slate-500">admin@peoplecore.co.nz</p>
+                            <span className="inline-block px-2 py-0.5 bg-green-100 text-green-700 rounded-full text-xs font-medium">ADMIN</span>
+                          </div>
+                        </div>
+                        <div className="flex gap-2">
+                          <button className="px-3 py-1 bg-blue-500 text-white rounded-md text-xs font-medium">
+                            👁 View profile
+                          </button>
+                          <button className="px-3 py-1 bg-green-500 text-white rounded-md text-xs font-medium">
+                            ✉ Email Employee
+                          </button>
+                          <button className="px-3 py-1 bg-purple-500 text-white rounded-md text-xs font-medium">
+                            🤖 AI Chatbot
+                          </button>
+                          <input type="text" placeholder="Search..." className="px-3 py-1 border border-slate-300 rounded-md text-xs w-24" />
+                        </div>
+                      </div>
 
-                    {/* Action Items */}
-                    <div className="bg-slate-50 rounded-lg p-3">
-                      <h4 className="font-semibold text-slate-900 mb-2">Action Items</h4>
-                      <div className="space-y-2">
-                        {[
-                          { task: "IT Policy", status: "Review", color: "blue" },
-                          { task: "Bank payroll change request", status: "Approve", color: "green" },
-                          { task: "Trudy Jenkins - Annual Leave", status: "Approve", color: "green" }
-                        ].map((item, i) => (
-                          <motion.div
-                            key={item.task}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.4 + i * 0.1 }}
-                            className="flex items-center justify-between bg-white rounded p-2"
-                          >
-                            <span className="text-sm text-slate-700">{item.task}</span>
-                            <span className={`px-2 py-1 rounded text-xs text-white bg-${item.color}-500`}>
-                              {item.status}
-                            </span>
-                          </motion.div>
-                        ))}
+                      {/* Dashboard Content Grid */}
+                      <div className="flex-1 p-4 grid grid-cols-12 gap-4">
+                        {/* Annual Leave Balance */}
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.1 }}
+                          className="col-span-3 bg-white rounded-lg p-3 border border-slate-200"
+                        >
+                          <div className="flex items-center gap-2 mb-2">
+                            <Calendar className="w-4 h-4 text-blue-600" />
+                            <span className="text-xs font-semibold text-slate-700">Annual Leave Balance</span>
+                          </div>
+                          <div className="text-lg font-bold text-blue-600">25 days</div>
+                          <div className="text-xs text-slate-500">Total Allowance: 25 days</div>
+                          <div className="text-xs text-slate-500">Taken: 10 days</div>
+                          <div className="text-xs text-slate-500">Remaining: 15 days</div>
+                          <button className="w-full mt-2 px-3 py-1 bg-blue-500 text-white rounded text-xs font-medium">
+                            Book Leave
+                          </button>
+                        </motion.div>
+
+                        {/* Quick Actions */}
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.2 }}
+                          className="col-span-3 bg-white rounded-lg p-3 border border-slate-200"
+                        >
+                          <div className="flex items-center gap-2 mb-2">
+                            <Zap className="w-4 h-4 text-green-600" />
+                            <span className="text-xs font-semibold text-slate-700">Quick Actions</span>
+                          </div>
+                          <div className="space-y-2">
+                            <button className="w-full flex items-center gap-2 px-2 py-1 bg-slate-50 hover:bg-slate-100 rounded text-xs">
+                              📰 Post News
+                            </button>
+                            <button className="w-full flex items-center gap-2 px-2 py-1 bg-slate-50 hover:bg-slate-100 rounded text-xs">
+                              👥 Add Employee
+                            </button>
+                            <button className="w-full flex items-center gap-2 px-2 py-1 bg-slate-50 hover:bg-slate-100 rounded text-xs">
+                              📄 Add Document
+                            </button>
+                            <button className="w-full flex items-center gap-2 px-2 py-1 bg-slate-50 hover:bg-slate-100 rounded text-xs">
+                              ✏ Edit Employee
+                            </button>
+                          </div>
+                        </motion.div>
+
+                        {/* Calendar */}
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.3 }}
+                          className="col-span-3 bg-white rounded-lg p-3 border border-slate-200"
+                        >
+                          <div className="flex items-center gap-2 mb-2">
+                            <Calendar className="w-4 h-4 text-purple-600" />
+                            <span className="text-xs font-semibold text-slate-700">Calendar</span>
+                          </div>
+                          <div className="text-xs text-slate-600 mb-2">Upcoming</div>
+                          <div className="space-y-1">
+                            <div className="flex items-center gap-2 text-xs">
+                              <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
+                                <span className="text-blue-600 font-semibold">JC</span>
+                              </div>
+                              <div>
+                                <div className="font-medium">James Curtain</div>
+                                <div className="text-slate-500">21/10/2024 • Annual Leave - 4...</div>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-2 text-xs">
+                              <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center">
+                                <span className="text-green-600 font-semibold">JW</span>
+                              </div>
+                              <div>
+                                <div className="font-medium">James Walsh</div>
+                                <div className="text-slate-500">20/10/2024 • Annual Leave - 3...</div>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-2 text-xs">
+                              <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center">
+                                <span className="text-orange-600 font-semibold">SR</span>
+                              </div>
+                              <div>
+                                <div className="font-medium">Sarah Roberts</div>
+                                <div className="text-slate-500">20/10/2024 • Taking some time...</div>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+
+                        {/* People Metrics */}
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.4 }}
+                          className="col-span-3 bg-white rounded-lg p-3 border border-slate-200"
+                        >
+                          <div className="flex items-center gap-2 mb-2">
+                            <Users className="w-4 h-4 text-orange-600" />
+                            <span className="text-xs font-semibold text-slate-700">People Metrics</span>
+                          </div>
+                          <div className="text-xs text-slate-600 mb-1">All departments</div>
+                          <div className="space-y-2">
+                            <div className="flex justify-between items-center">
+                              <span className="text-xs text-slate-600">Active Employees</span>
+                              <span className="text-lg font-bold text-slate-900">21</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                              <span className="text-xs text-slate-600">Managers</span>
+                              <span className="text-lg font-bold text-slate-900">8</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                              <span className="text-xs text-slate-600">New Starters</span>
+                              <span className="text-lg font-bold text-blue-600">18</span>
+                            </div>
+                          </div>
+                        </motion.div>
+
+                        {/* Action Items */}
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.5 }}
+                          className="col-span-6 bg-white rounded-lg p-3 border border-slate-200"
+                        >
+                          <div className="flex items-center justify-between mb-3">
+                            <div className="flex items-center gap-2">
+                              <CheckCircle className="w-4 h-4 text-green-600" />
+                              <span className="text-xs font-semibold text-slate-700">Action Items</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span className="text-xs text-slate-500">3</span>
+                              <button className="text-xs text-blue-600 hover:underline">View all</button>
+                              <button className="px-2 py-1 bg-blue-500 text-white rounded text-xs">Quick Approve All</button>
+                            </div>
+                          </div>
+                          <div className="space-y-2">
+                            {[
+                              { task: "IT Policy", employee: "Policy Review", status: "Review", color: "blue" },
+                              { task: "bank-payroll change request", employee: "Employee Request", status: "Approve", color: "green" },
+                              { task: "Trudy Jenkins — Annual Leave", employee: "Trudy Jenkins", status: "Approve", color: "green" }
+                            ].map((item, i) => (
+                              <motion.div
+                                key={item.task}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.6 + i * 0.1 }}
+                                className="flex items-center justify-between bg-slate-50 rounded p-2"
+                              >
+                                <div className="flex-1">
+                                  <div className="text-sm font-medium text-slate-900">{item.task}</div>
+                                  <div className="text-xs text-slate-500">{item.employee}</div>
+                                </div>
+                                <button className={`px-3 py-1 rounded text-xs font-medium text-white ${item.color === 'blue' ? 'bg-blue-500' : 'bg-green-500'}`}>
+                                  {item.status}
+                                </button>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </motion.div>
+
+                        {/* Latest News */}
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.8 }}
+                          className="col-span-6 bg-white rounded-lg p-3 border border-slate-200"
+                        >
+                          <div className="flex items-center gap-2 mb-3">
+                            <FileText className="w-4 h-4 text-purple-600" />
+                            <span className="text-xs font-semibold text-slate-700">Latest News</span>
+                          </div>
+                          <div className="bg-gradient-to-r from-purple-500 to-blue-600 rounded-lg p-4 text-white">
+                            <div className="text-sm font-semibold mb-1">Coming soon...</div>
+                            <div className="text-xs opacity-90 mb-2">01/01/2025</div>
+                            <div className="text-xs">The most comprehensive, AI-powered, no-code automation HR System is almost here ✨</div>
+                          </div>
+                        </motion.div>
                       </div>
                     </div>
                   </div>

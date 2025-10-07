@@ -89,9 +89,10 @@ export function Demo() {
   const [currentPrompt, setCurrentPrompt] = useState(demoPrompts[0])
   const [inputValue, setInputValue] = useState("")
   const [isBuilding, setIsBuilding] = useState(false)
-  const [activeStep, setActiveStep] = useState(0)
+  const [activeStep, setActiveStep] = useState(-1) // Start with no active step
   const [isCompleted, setIsCompleted] = useState(false)
   const [showCelebration, setShowCelebration] = useState(false)
+  const [hasStarted, setHasStarted] = useState(false) // Track if workflow has been started
 
   const handlePromptSelect = useCallback((prompt: typeof demoPrompts[0]) => {
     setCurrentPrompt(prompt)
@@ -100,6 +101,7 @@ export function Demo() {
     setActiveStep(0)
     setIsCompleted(false)
     setShowCelebration(false)
+    setHasStarted(true)
     
     // Simulate workflow building
     setTimeout(() => {
@@ -131,16 +133,18 @@ export function Demo() {
     if (!inputValue.trim()) return
     
     setIsBuilding(true)
+    setHasStarted(true)
+    setActiveStep(0)
+    setIsCompleted(false)
+    setShowCelebration(false)
+    
     setTimeout(() => {
       setIsBuilding(false)
       startWorkflow()
     }, 1000)
   }, [inputValue, startWorkflow])
 
-  // Auto-start immediately - no delay
-  useEffect(() => {
-    startWorkflow()
-  }, [startWorkflow])
+  // Remove auto-start - only start when user clicks
 
   return (
     <section className="py-24 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
@@ -231,17 +235,19 @@ export function Demo() {
                   </div>
                 </div>
 
-                <div className="flex gap-3">
-                  <div className="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-slate-600 text-sm">You</span>
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-sm text-slate-600 mb-2">You</p>
-                    <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3">
-                      <p className="text-slate-800">{currentPrompt.text}</p>
+                {hasStarted && (
+                  <div className="flex gap-3">
+                    <div className="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-slate-600 text-sm">You</span>
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm text-slate-600 mb-2">You</p>
+                      <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3">
+                        <p className="text-slate-800">{inputValue || currentPrompt.text}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
 
                 {isBuilding && (
                   <div className="flex gap-3">
@@ -265,7 +271,7 @@ export function Demo() {
                   </div>
                 )}
 
-                {!isBuilding && (
+                {!isBuilding && hasStarted && isCompleted && (
                   <div className="flex gap-3">
                     <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
                       <Sparkles className="w-4 h-4 text-white" />
@@ -347,60 +353,74 @@ export function Demo() {
                 <div className="flex gap-6">
                   {/* Left side - Workflow steps */}
                   <div className="flex-1">
-                    {currentPrompt.workflow.map((step, index) => (
-                      <div key={step.id} className="flex items-start gap-4 mb-4 last:mb-0">
-                        <div className="flex flex-col items-center">
-                          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm transition-all duration-300 ${
-                            index < activeStep 
-                              ? 'bg-green-500 text-white' 
-                              : index === activeStep 
-                              ? 'bg-blue-500 text-white animate-pulse' 
-                              : 'bg-slate-200 text-slate-500'
-                          }`}>
-                            {index < activeStep ? (
-                              <CheckCircle className="w-4 h-4" />
-                            ) : (
-                              step.icon
+                    {hasStarted ? (
+                      currentPrompt.workflow.map((step, index) => (
+                        <div key={step.id} className="flex items-start gap-4 mb-4 last:mb-0">
+                          <div className="flex flex-col items-center">
+                            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm transition-all duration-300 ${
+                              index < activeStep 
+                                ? 'bg-green-500 text-white' 
+                                : index === activeStep 
+                                ? 'bg-blue-500 text-white animate-pulse' 
+                                : 'bg-slate-200 text-slate-500'
+                            }`}>
+                              {index < activeStep ? (
+                                <CheckCircle className="w-4 h-4" />
+                              ) : (
+                                step.icon
+                              )}
+                            </div>
+                            {index < currentPrompt.workflow.length - 1 && (
+                              <motion.div
+                                initial={{ scaleY: 0 }}
+                                animate={{ scaleY: index < activeStep ? 1 : 0 }}
+                                transition={{ duration: 0.3, delay: index * 0.2 }}
+                                className="w-0.5 h-8 bg-blue-300 origin-top mt-2"
+                              />
                             )}
                           </div>
-                          {index < currentPrompt.workflow.length - 1 && (
-                            <motion.div
-                              initial={{ scaleY: 0 }}
-                              animate={{ scaleY: index < activeStep ? 1 : 0 }}
-                              transition={{ duration: 0.3, delay: index * 0.2 }}
-                              className="w-0.5 h-8 bg-blue-300 origin-top mt-2"
-                            />
-                          )}
+                          <div className="flex-1 pb-8">
+                            <h4 className={`font-medium transition-colours duration-300 ${
+                              index <= activeStep ? 'text-slate-900' : 'text-slate-500'
+                            }`}>
+                              {step.label}
+                            </h4>
+                            <p className={`text-sm transition-colours duration-300 ${
+                              index <= activeStep ? 'text-slate-600' : 'text-slate-400'
+                            }`}>
+                              {step.description}
+                            </p>
+                          </div>
                         </div>
-                        <div className="flex-1 pb-8">
-                          <h4 className={`font-medium transition-colours duration-300 ${
-                            index <= activeStep ? 'text-slate-900' : 'text-slate-500'
-                          }`}>
-                            {step.label}
-                          </h4>
-                          <p className={`text-sm transition-colours duration-300 ${
-                            index <= activeStep ? 'text-slate-600' : 'text-slate-400'
-                          }`}>
-                            {step.description}
-                          </p>
-                        </div>
+                      ))
+                    ) : (
+                      <div className="text-center py-16 text-slate-500">
+                        <p className="text-lg font-medium mb-2">Ready to Build Your Workflow</p>
+                        <p className="text-sm">Click an example below or type your own request to see AI in action</p>
                       </div>
-                    ))}
+                    )}
                   </div>
                   
                   {/* Right side - Animation area */}
                   <div className="w-72 h-36 relative flex items-center justify-center border-2 border-dashed border-slate-300 rounded-lg bg-slate-50 mt-16 overflow-hidden">
                     <AnimatePresence mode="wait">
-                      {currentPrompt.workflow.map((step, index) => (
-                        index === activeStep && (
-                          <StepAnimation 
-                            key={`${step.id}-${index}`}
-                            step={step} 
-                            isActive={true} 
-                            workflowType={currentPrompt.workflowType || "onboarding"} 
-                          />
-                        )
-                      ))}
+                      {hasStarted ? (
+                        currentPrompt.workflow.map((step, index) => (
+                          index === activeStep && (
+                            <StepAnimation 
+                              key={`${step.id}-${index}`}
+                              step={step} 
+                              isActive={true} 
+                              workflowType={currentPrompt.workflowType || "onboarding"} 
+                            />
+                          )
+                        ))
+                      ) : (
+                        <div className="text-center text-slate-400">
+                          <div className="text-4xl mb-2">🤖</div>
+                          <div className="text-sm">Workflow Preview</div>
+                        </div>
+                      )}
                     </AnimatePresence>
                   </div>
                 </div>
