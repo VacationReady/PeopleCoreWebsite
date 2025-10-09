@@ -192,6 +192,42 @@ export function Hero() {
           <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
         </div>
       </div>
+      
+      {/* Floating capability words */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[
+          { text: "Workflows", x: "10%", y: "20%", duration: 20, delay: 0 },
+          { text: "Performance", x: "85%", y: "25%", duration: 25, delay: 2 },
+          { text: "Custom Forms", x: "15%", y: "70%", duration: 22, delay: 4 },
+          { text: "Onboarding", x: "80%", y: "65%", duration: 23, delay: 1 },
+          { text: "Reporting", x: "5%", y: "45%", duration: 21, delay: 3 },
+          { text: "Absence Management", x: "90%", y: "50%", duration: 24, delay: 5 },
+          { text: "Offboarding", x: "12%", y: "85%", duration: 26, delay: 2.5 },
+          { text: "High Security", x: "88%", y: "80%", duration: 22, delay: 4.5 },
+        ].map((word, index) => (
+          <motion.div
+            key={word.text}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ 
+              opacity: isThinking ? 0 : [0.3, 0.6, 0.3],
+              scale: isThinking ? 0 : 1,
+              y: isThinking ? 0 : [0, -30, 0],
+              rotate: [0, 5, -5, 0]
+            }}
+            transition={{
+              opacity: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+              y: { duration: word.duration, repeat: Infinity, ease: "easeInOut" },
+              rotate: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+              delay: isThinking ? 0 : 4 + word.delay,
+              scale: { duration: 0.5, delay: isThinking ? 0 : 4 + word.delay }
+            }}
+            className="absolute text-white/40 font-medium text-sm md:text-base whitespace-nowrap backdrop-blur-sm bg-white/5 px-3 py-1.5 rounded-full border border-white/10"
+            style={{ left: word.x, top: word.y }}
+          >
+            {word.text}
+          </motion.div>
+        ))}
+      </div>
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0" style={{
