@@ -189,7 +189,7 @@ export function Demo() {
           transition={{ duration: 0.3 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-6 leading-tight py-2">
             Ask PeopleCore Anything
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">

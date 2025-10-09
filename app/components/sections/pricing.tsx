@@ -47,7 +47,7 @@ const plans = [
     name: "Enterprise",
     price: "Custom",
     period: "Contact sales",
-    description: "White-glove service for large organizations",
+    description: "White-glove service for large organisations",
     badge: { text: "Premium", icon: Zap, color: "from-purple-500 to-pink-500" },
     features: [
       "Everything in Professional",

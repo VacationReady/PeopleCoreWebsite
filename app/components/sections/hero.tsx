@@ -5,23 +5,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/app/components/ui/button"
 import { WaitlistModal } from "@/app/components/sections/waitlist-modal"
 import { ArrowRight, Sparkles } from "lucide-react"
-import Link from "next/link"
 // Navigation component
 function Navigation() {
-  const [isCapabilitiesOpen, setIsCapabilitiesOpen] = useState(false) // Auto-open
-
-  const capabilities = [
-    { name: "Leave Management", icon: "🌴", description: "Smart leave tracking & approvals", href: "/leave" },
-    { name: "Customisation", icon: "⚡", description: "Tailor to your needs", href: "#" },
-    { name: "Self Service", icon: "🚀", description: "Employee empowerment", href: "#" },
-    { name: "Surveys", icon: "💫", description: "Pulse & engagement surveys", href: "#" },
-    { name: "Workflows", icon: "🔮", description: "Automated processes", href: "/workflows" },
-    { name: "Performance", icon: "✨", description: "Reviews & goal tracking", href: "#" },
-    { name: "Document Management", icon: "📱", description: "Digital document hub", href: "/documents" },
-    { name: "Org Chart", icon: "🌐", description: "Visual organisation structure", href: "#" },
-    { name: "Reporting", icon: "📊", description: "Analytics & insights", href: "/reporting" },
-    { name: "Approvals", icon: "✅", description: "Smart approval workflows", href: "/approvals" }
-  ]
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
@@ -33,107 +18,10 @@ function Navigation() {
             <span className="text-white font-semibold text-lg">PeopleCore</span>
           </div>
 
-          <div className="flex items-center gap-8">
-            <div 
-              className="relative"
-              onMouseEnter={() => setIsCapabilitiesOpen(true)}
-              onMouseLeave={() => setIsCapabilitiesOpen(false)}
-            >
-              <button 
-                className="text-white hover:text-blue-200 transition-colors duration-200 flex items-center gap-2"
-              >
-                Capabilities
-                <motion.div
-                  animate={{ rotate: isCapabilitiesOpen ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="transition-all duration-200"
-                >
-                  ▼
-                </motion.div>
-              </button>
-
-              <AnimatePresence>
-                {isCapabilitiesOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 transform -translate-x-1/2 w-[600px] bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20 p-6"
-                  >
-                    <div className="grid grid-cols-2 gap-4">
-                      {/* Left Column - First 5 */}
-                      <div className="space-y-2">
-                        {capabilities.slice(0, 5).map((capability, index) => (
-                          <motion.div
-                            key={capability.name}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.05 }}
-                          >
-                            {capability.href !== "#" ? (
-                              <Link href={capability.href} className="flex items-center gap-3 p-3 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-colors cursor-pointer block">
-                                <span className="text-lg">{capability.icon}</span>
-                                <div>
-                                  <div className="font-medium text-slate-900 text-sm">{capability.name}</div>
-                                  <div className="text-xs text-slate-600">{capability.description}</div>
-                                </div>
-                              </Link>
-                            ) : (
-                              <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-colors cursor-pointer opacity-60">
-                                <span className="text-lg">{capability.icon}</span>
-                                <div>
-                                  <div className="font-medium text-slate-900 text-sm">{capability.name}</div>
-                                  <div className="text-xs text-slate-600">{capability.description}</div>
-                                </div>
-                              </div>
-                            )}
-                          </motion.div>
-                        ))}
-                      </div>
-                      
-                      {/* Right Column - Last 5 */}
-                      <div className="space-y-2">
-                        {capabilities.slice(5).map((capability, index) => (
-                          <motion.div
-                            key={capability.name}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: (index + 5) * 0.05 }}
-                          >
-                            {capability.href !== "#" ? (
-                              <Link href={capability.href} className="flex items-center gap-3 p-3 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-colors cursor-pointer block">
-                                <span className="text-lg">{capability.icon}</span>
-                                <div>
-                                  <div className="font-medium text-slate-900 text-sm">{capability.name}</div>
-                                  <div className="text-xs text-slate-600">{capability.description}</div>
-                                </div>
-                              </Link>
-                            ) : (
-                              <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-colors cursor-pointer opacity-60">
-                                <span className="text-lg">{capability.icon}</span>
-                                <div>
-                                  <div className="font-medium text-slate-900 text-sm">{capability.name}</div>
-                                  <div className="text-xs text-slate-600">{capability.description}</div>
-                                </div>
-                              </div>
-                            )}
-                          </motion.div>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
+          <div className="flex items-center justify-center">
             <button className="text-white hover:text-blue-200 transition-colors duration-200">
               Pricing
             </button>
-            <Button className="bg-white text-slate-900 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white transition-all duration-300">
-              Get Started
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
           </div>
         </div>
       </div>
@@ -142,7 +30,6 @@ function Navigation() {
 }
 
 export function Hero() {
-  const [isCapabilitiesOpen, setIsCapabilitiesOpen] = useState(false)
   const [isThinking, setIsThinking] = useState(true)
   const [thinkingText, setThinkingText] = useState("PeopleCore is thinking")
   const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false)
@@ -151,8 +38,8 @@ export function Hero() {
   useEffect(() => {
     const thinkingMessages = [
       "PeopleCore is thinking",
-      "Analyzing your HR needs",
-      "Optimizing workflows", 
+      "Analysing your HR needs",
+      "Optimising workflows", 
       "Preparing your dashboard",
       "Almost ready"
     ]
@@ -363,7 +250,7 @@ export function Hero() {
               size="xl"
               className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
             >
-              Explore Capabilities
+              Watch 4 Minute Demo
             </Button>
           </motion.div>
 
