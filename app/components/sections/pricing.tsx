@@ -67,30 +67,30 @@ const plans = [
 
 export function Pricing() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-12 sm:py-16 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4 sm:mb-6">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+          <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto mb-6 sm:mb-8 px-4">
             Start free during our beta period. No hidden fees, no surprises. 
             Just powerful AI-driven HR automation.
           </p>
           
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 rounded-full border border-blue-200">
-            <Sparkles className="w-4 h-4 text-blue-600" />
-            <span className="text-slate-700 font-medium">Beta pricing available for early adopters</span>
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 rounded-full border border-blue-200">
+            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-blue-600" />
+            <span className="text-slate-700 font-medium text-sm sm:text-base">Beta pricing available for early adopters</span>
           </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => {
             return (
               <motion.div
@@ -100,7 +100,7 @@ export function Pricing() {
                 whileHover={{ y: -8, scale: 1.02 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`group relative rounded-2xl p-8 overflow-hidden ${
+                className={`group relative rounded-2xl p-6 sm:p-8 overflow-hidden ${
                   plan.popular 
                     ? 'bg-gradient-to-br from-blue-50 to-purple-50 border-2 border-blue-200 shadow-xl' 
                     : 'bg-white border border-slate-200 shadow-lg'
@@ -116,14 +116,14 @@ export function Pricing() {
                 )}
 
                 {/* Plan header */}
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">{plan.name}</h3>
-                  <p className="text-slate-600 mb-4">{plan.description}</p>
+                <div className="text-center mb-6 sm:mb-8">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">{plan.name}</h3>
+                  <p className="text-slate-600 mb-4 text-sm sm:text-base">{plan.description}</p>
                   
                   <div className="mb-4">
-                    <span className="text-4xl font-bold text-slate-900">{plan.price}</span>
+                    <span className="text-3xl sm:text-4xl font-bold text-slate-900">{plan.price}</span>
                     {plan.period && (
-                      <span className="text-slate-600 ml-2">/{plan.period}</span>
+                      <span className="text-slate-600 ml-2 text-sm sm:text-base">/{plan.period}</span>
                     )}
                   </div>
 
@@ -174,7 +174,7 @@ export function Pricing() {
                 </div>
 
                 {/* Features */}
-                <ul className="space-y-4 mb-8">
+                <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                   {plan.features.map((feature, featureIndex) => (
                     <motion.li
                       key={featureIndex}
@@ -182,12 +182,12 @@ export function Pricing() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: (index * 0.1) + (featureIndex * 0.05) }}
-                      className="flex items-center gap-3"
+                      className="flex items-center gap-2 sm:gap-3"
                     >
-                      <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                        <Check className="w-3 h-3 text-green-600" />
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Check className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-green-600" />
                       </div>
-                      <span className="text-slate-700">{feature}</span>
+                      <span className="text-slate-700 text-sm sm:text-base">{feature}</span>
                     </motion.li>
                   ))}
                 </ul>
@@ -196,7 +196,7 @@ export function Pricing() {
                 <Button
                   variant={plan.popular ? "gradient" : "outline"}
                   size="lg"
-                  className="w-full"
+                  className="w-full py-3 sm:py-4 text-sm sm:text-base touch-manipulation"
                 >
                   {plan.cta}
                 </Button>
@@ -211,45 +211,45 @@ export function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-20 text-center"
+          className="mt-16 sm:mt-20 text-center"
         >
-          <h3 className="text-2xl font-bold text-slate-900 mb-8">
+          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6 sm:mb-8">
             Frequently Asked Questions
           </h3>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
-            <div className="bg-slate-50 rounded-xl p-6">
-              <h4 className="font-semibold text-slate-900 mb-3">
+          <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto text-left">
+            <div className="bg-slate-50 rounded-xl p-4 sm:p-6">
+              <h4 className="font-semibold text-slate-900 mb-3 text-sm sm:text-base">
                 How long is the beta period?
               </h4>
-              <p className="text-slate-600">
+              <p className="text-slate-600 text-sm sm:text-base">
                 The beta period runs until Q2 2024. All beta users will receive special pricing when we launch.
               </p>
             </div>
             
-            <div className="bg-slate-50 rounded-xl p-6">
-              <h4 className="font-semibold text-slate-900 mb-3">
+            <div className="bg-slate-50 rounded-xl p-4 sm:p-6">
+              <h4 className="font-semibold text-slate-900 mb-3 text-sm sm:text-base">
                 Can I upgrade or downgrade anytime?
               </h4>
-              <p className="text-slate-600">
+              <p className="text-slate-600 text-sm sm:text-base">
                 Yes, you can change your plan at any time. Changes take effect immediately with prorated billing.
               </p>
             </div>
             
-            <div className="bg-slate-50 rounded-xl p-6">
-              <h4 className="font-semibold text-slate-900 mb-3">
+            <div className="bg-slate-50 rounded-xl p-4 sm:p-6">
+              <h4 className="font-semibold text-slate-900 mb-3 text-sm sm:text-base">
                 What integrations are included?
               </h4>
-              <p className="text-slate-600">
+              <p className="text-slate-600 text-sm sm:text-base">
                 We support 100+ integrations including Slack, Microsoft 365, Google Workspace, and major payroll systems.
               </p>
             </div>
             
-            <div className="bg-slate-50 rounded-xl p-6">
-              <h4 className="font-semibold text-slate-900 mb-3">
+            <div className="bg-slate-50 rounded-xl p-4 sm:p-6">
+              <h4 className="font-semibold text-slate-900 mb-3 text-sm sm:text-base">
                 Is my data secure?
               </h4>
-              <p className="text-slate-600">
+              <p className="text-slate-600 text-sm sm:text-base">
                 Absolutely. We're SOC 2 compliant with enterprise-grade security, encryption, and regular audits.
               </p>
             </div>
