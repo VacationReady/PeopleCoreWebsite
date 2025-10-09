@@ -1,4 +1,5 @@
 export { Hero } from './hero'
+export { HeroPricing } from './hero-pricing'
 export { Demo } from './demo'
 export { NotAllAI } from './not-all-ai'
 export { ValueProps } from './value-props'

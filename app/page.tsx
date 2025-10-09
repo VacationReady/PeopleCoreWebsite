@@ -5,7 +5,6 @@ import { ValueProps } from "./components/sections/value-props"
 import { Features } from "./components/sections/features"
 import { DashboardShowcase } from "./components/sections/dashboard-showcase"
 import { UseCases } from "./components/sections/use-cases"
-import { Pricing } from "./components/sections/pricing"
 import { Waitlist } from "./components/sections/waitlist"
 import { Footer } from "./components/sections/footer"
 
@@ -19,7 +18,6 @@ export default function Home() {
       <Features />
       <DashboardShowcase />
       <UseCases />
-      <Pricing />
       <Waitlist />
       <Footer />
     </main>

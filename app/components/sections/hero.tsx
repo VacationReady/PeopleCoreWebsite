@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/app/components/ui/button"
 import { WaitlistModal } from "@/app/components/sections/waitlist-modal"
+import { HeroPricing } from "@/app/components/sections/hero-pricing"
 import { ArrowRight, Sparkles } from "lucide-react"
 // Navigation component
 function Navigation() {
@@ -19,9 +20,12 @@ function Navigation() {
           </div>
 
           <div className="flex items-center justify-center">
-            <button className="text-white hover:text-blue-200 transition-colors duration-200">
+            <a 
+              href="/pricing"
+              className="text-white hover:text-blue-200 transition-colors duration-200"
+            >
               Pricing
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -195,6 +199,16 @@ export function Hero() {
           transition={{ duration: 0.8, delay: isThinking ? 0 : 4.2 }}
           className="space-y-8"
         >
+          {/* Pricing Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: isThinking ? 0 : 1, y: isThinking ? 20 : 0 }}
+            transition={{ duration: 0.8, delay: isThinking ? 0 : 4.0 }}
+            className="mb-12"
+          >
+            <HeroPricing />
+          </motion.div>
+
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
