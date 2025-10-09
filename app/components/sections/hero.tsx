@@ -288,9 +288,8 @@ export function Hero() {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight"
           >
-            Transform HR with{" "}
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Conversational AI
+              Transform your HR with extensive capabilities, powered with AI
             </span>
           </motion.h1>
 
