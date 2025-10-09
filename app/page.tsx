@@ -1,5 +1,6 @@
 import { Hero } from "@/app/components/sections/hero"
 import { Demo } from "./components/sections/demo"
+import { NotAllAI } from "./components/sections/not-all-ai"
 import { ValueProps } from "./components/sections/value-props"
 import { Features } from "./components/sections/features"
 import { DashboardShowcase } from "./components/sections/dashboard-showcase"
@@ -14,6 +15,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Hero />
       <Demo />
+      <NotAllAI />
       <ValueProps />
       <Features />
       <DashboardShowcase />

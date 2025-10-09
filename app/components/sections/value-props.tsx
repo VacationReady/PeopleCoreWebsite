@@ -1,8 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Button } from "@/app/components/ui/button"
-import { ArrowRight, Zap, Shield, Puzzle, Lightbulb, Clock } from "lucide-react"
+import { Zap, Shield, Puzzle, Lightbulb, Clock } from "lucide-react"
 
 const valueProps = [
   {
@@ -137,117 +136,6 @@ export function ValueProps() {
           })}
         </div>
 
-        {/* AI + Human Control Message */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-20 relative"
-        >
-          <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-3xl p-12 border border-slate-200 relative overflow-hidden">
-            {/* Background pattern */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute inset-0" style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000' fill-opacity='0.1'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E")`
-              }} />
-            </div>
-
-            <div className="relative z-10 text-center max-w-4xl mx-auto">
-              <div className="flex items-center justify-center gap-4 mb-8">
-                <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                  className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center"
-                >
-                  <span className="text-2xl">🤖</span>
-                </motion.div>
-                
-                <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="text-3xl font-bold text-slate-700"
-                >
-                  +
-                </motion.div>
-                
-                <motion.div
-                  animate={{ rotate: [0, -10, 10, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, delay: 2 }}
-                  className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center"
-                >
-                  <span className="text-2xl">👤</span>
-                </motion.div>
-              </div>
-
-              <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                It's Not <span className="text-red-500">All</span> AI
-              </h3>
-              
-              <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-                While AI handles the automation and intelligence, <strong>you maintain complete control</strong> over every HR function. 
-                Beautiful dashboards, comprehensive reporting, and full autonomy over all standard HR operations.
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-8 mb-10">
-                <div className="text-left">
-                  <h4 className="text-lg font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                    <span className="text-2xl">🤖</span>
-                    AI Handles
-                  </h4>
-                  <ul className="space-y-2 text-slate-600">
-                    <li className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                      Workflow automation
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                      Intelligent routing
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                      Predictive insights
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                      Natural language processing
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="text-left">
-                  <h4 className="text-lg font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                    <span className="text-2xl">👤</span>
-                    You Control
-                  </h4>
-                  <ul className="space-y-2 text-slate-600">
-                    <li className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      Policy decisions
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      Approval processes
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      Data access & privacy
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      System configurations
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
-                See How It Works
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   )
