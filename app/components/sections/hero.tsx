@@ -204,7 +204,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isThinking ? 0 : 1, y: isThinking ? 20 : 0 }}
             transition={{ duration: 0.8, delay: isThinking ? 0 : 4.0 }}
-            className="mb-12"
+            className="mb-6"
           >
             <HeroPricing />
           </motion.div>
