@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/app/components/ui/button"
-import { ArrowRight, Smartphone, Check } from "lucide-react"
+import { ArrowRight, Check } from "lucide-react"
 
 // Bar Chart Animation Component
 function BarChartAnimation() {
@@ -28,27 +28,35 @@ function BarChartAnimation() {
           <div key={bar.label} className="flex flex-col items-center gap-2 flex-1">
             <div className="w-full flex items-end justify-center h-24">
               <motion.div
-                initial={{ height: 0 }}
-                animate={{ height: `${bar.height}%` }}
-                transition={{ duration: 1, delay: index * 0.2, ease: "easeOut" }}
+                animate={{ 
+                  height: [`0%`, `${bar.height}%`, `${bar.height}%`, `0%`],
+                }}
+                transition={{ 
+                  duration: 4, 
+                  delay: index * 0.3,
+                  repeat: Infinity,
+                  repeatDelay: 2,
+                  ease: "easeInOut" 
+                }}
                 className={`w-full bg-gradient-to-t ${bar.color} rounded-t-lg`}
               />
             </div>
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: index * 0.2 + 0.5 }}
-              className="text-xs text-slate-600 font-medium"
-            >
+            <span className="text-xs text-slate-600 font-medium">
               {bar.label}
-            </motion.span>
+            </span>
           </div>
         ))}
       </div>
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5 }}
+        animate={{ 
+          opacity: [0, 1, 1, 0]
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          repeatDelay: 2,
+          times: [0, 0.3, 0.7, 1]
+        }}
         className="mt-4 pt-4 border-t border-slate-200 flex items-center gap-2 text-xs text-green-600"
       >
         <Check className="w-3 h-3" />
@@ -68,12 +76,19 @@ function DragDropAnimation() {
       </div>
       
       {/* Canvas area */}
-      <div className="bg-slate-50 rounded-lg p-4 min-h-[180px] border-2 border-dashed border-slate-300">
+      <div className="bg-slate-50 rounded-lg p-4 min-h-[180px] border-2 border-dashed border-slate-300 relative">
         {/* Dropped elements */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          animate={{ 
+            opacity: [0, 1, 1, 1, 0],
+            x: [-50, 0, 0, 0, -50]
+          }}
+          transition={{ 
+            duration: 6,
+            repeat: Infinity,
+            repeatDelay: 1,
+            times: [0, 0.15, 0.7, 0.85, 1]
+          }}
           className="bg-white rounded-lg p-3 mb-3 border border-slate-200 shadow-sm"
         >
           <div className="text-xs font-medium text-slate-700 mb-1">Employee Name</div>
@@ -81,9 +96,16 @@ function DragDropAnimation() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          animate={{ 
+            opacity: [0, 0, 1, 1, 1, 0],
+            x: [-50, -50, 0, 0, 0, -50]
+          }}
+          transition={{ 
+            duration: 6,
+            repeat: Infinity,
+            repeatDelay: 1,
+            times: [0, 0.15, 0.3, 0.7, 0.85, 1]
+          }}
           className="bg-white rounded-lg p-3 mb-3 border border-slate-200 shadow-sm"
         >
           <div className="text-xs font-medium text-slate-700 mb-1">Department</div>
@@ -91,9 +113,17 @@ function DragDropAnimation() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.9 }}
+          animate={{ 
+            opacity: [0, 0, 0, 1, 1, 1, 0],
+            x: [-50, -50, -50, 0, 0, 0, -50],
+            scale: [1, 1, 1, 1, 1.05, 1, 1]
+          }}
+          transition={{ 
+            duration: 6,
+            repeat: Infinity,
+            repeatDelay: 1,
+            times: [0, 0.15, 0.3, 0.45, 0.7, 0.85, 1]
+          }}
           className="bg-white rounded-lg p-3 border border-blue-300 shadow-sm"
         >
           <div className="text-xs font-medium text-blue-700 mb-1">Submit Button</div>
@@ -105,18 +135,33 @@ function DragDropAnimation() {
         {/* Floating drag indicator */}
         <motion.div
           animate={{ 
-            y: [0, -5, 0],
-            scale: [1, 1.05, 1]
+            y: [-20, 100],
+            x: [100, 0],
+            opacity: [0, 1, 1, 0],
+            rotate: [0, 0, 5, 5]
           }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute top-8 right-8 w-8 h-8 bg-blue-500 rounded-lg opacity-30"
-        />
+          transition={{ 
+            duration: 2,
+            repeat: Infinity,
+            repeatDelay: 5,
+            ease: "easeInOut"
+          }}
+          className="absolute top-4 right-4 w-10 h-10 bg-blue-500 rounded-lg shadow-lg flex items-center justify-center"
+        >
+          <span className="text-white text-xs">📝</span>
+        </motion.div>
       </div>
 
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
+        animate={{ 
+          opacity: [0, 0, 0, 1, 1, 0]
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          repeatDelay: 1,
+          times: [0, 0.45, 0.5, 0.7, 0.85, 1]
+        }}
         className="mt-3 text-xs text-slate-500 flex items-center gap-2"
       >
         <span className="text-green-600">✓</span>
@@ -143,21 +188,24 @@ function MobileApprovalAnimation() {
         </div>
 
         {/* App content */}
-        <div className="p-4 bg-gradient-to-b from-blue-50 to-white">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-xs font-semibold text-slate-900 mb-3"
-          >
+        <div className="p-4 bg-gradient-to-b from-blue-50 to-white min-h-[220px]">
+          <div className="text-xs font-semibold text-slate-900 mb-3">
             Leave Request
-          </motion.div>
+          </div>
 
           {/* Request card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            animate={{ 
+              opacity: [0, 1, 1, 1, 0],
+              scale: [0.9, 1, 1, 1, 0.9],
+              y: [20, 0, 0, 0, 20]
+            }}
+            transition={{ 
+              duration: 5,
+              repeat: Infinity,
+              repeatDelay: 2,
+              times: [0, 0.2, 0.5, 0.7, 1]
+            }}
             className="bg-white rounded-lg p-3 shadow-md border border-slate-200 mb-3"
           >
             <div className="flex items-center gap-2 mb-2">
@@ -174,14 +222,18 @@ function MobileApprovalAnimation() {
             </div>
 
             {/* Action buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="flex gap-2"
-            >
+            <div className="flex gap-2 relative">
               <motion.button
-                whileTap={{ scale: 0.95 }}
+                animate={{
+                  scale: [1, 1, 1, 1.1, 1.05, 1],
+                  backgroundColor: ["rgb(34 197 94)", "rgb(34 197 94)", "rgb(34 197 94)", "rgb(16 185 129)", "rgb(34 197 94)", "rgb(34 197 94)"]
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  repeatDelay: 2,
+                  times: [0, 0.3, 0.5, 0.6, 0.65, 1]
+                }}
                 className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-[10px] font-semibold py-2 rounded-lg"
               >
                 Approve
@@ -189,32 +241,57 @@ function MobileApprovalAnimation() {
               <button className="flex-1 bg-slate-200 text-slate-700 text-[10px] font-semibold py-2 rounded-lg">
                 Deny
               </button>
-            </motion.div>
+              
+              {/* Tap indicator */}
+              <motion.div
+                animate={{
+                  opacity: [0, 0, 0, 1, 0],
+                  scale: [0.5, 0.5, 0.5, 1.5, 2]
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  repeatDelay: 2,
+                  times: [0, 0.3, 0.5, 0.6, 0.65]
+                }}
+                className="absolute left-12 top-1/2 -translate-y-1/2 w-8 h-8 bg-blue-500 rounded-full pointer-events-none"
+                style={{ opacity: 0.3 }}
+              />
+            </div>
           </motion.div>
 
           {/* Approval animation */}
           <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.2, duration: 0.5 }}
-            className="flex items-center justify-center"
+            animate={{
+              opacity: [0, 0, 0, 0, 1, 1, 0],
+              scale: [0, 0, 0, 0, 1.2, 1, 0.8],
+              y: [0, 0, 0, 0, -10, 0, 0]
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              repeatDelay: 2,
+              times: [0, 0.5, 0.6, 0.65, 0.7, 0.85, 1]
+            }}
+            className="flex flex-col items-center justify-center"
           >
             <motion.div
-              animate={{ rotate: [0, 10, -10, 0] }}
-              transition={{ duration: 0.5, delay: 1.5, repeat: 2 }}
-              className="text-2xl"
+              animate={{ 
+                rotate: [0, 0, 0, 0, 10, -10, 0]
+              }}
+              transition={{ 
+                duration: 5,
+                repeat: Infinity,
+                repeatDelay: 2,
+                times: [0, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85]
+              }}
+              className="text-3xl"
             >
               ✅
             </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5 }}
-            className="text-center text-[10px] text-green-600 font-medium mt-2"
-          >
-            Approved!
+            <div className="text-center text-[10px] text-green-600 font-medium mt-1">
+              Approved!
+            </div>
           </motion.div>
         </div>
       </div>
