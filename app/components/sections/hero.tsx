@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/app/components/ui/button"
+import { WaitlistModal } from "@/app/components/sections/waitlist-modal"
 import { ArrowRight, Sparkles } from "lucide-react"
 import Link from "next/link"
 // Navigation component
@@ -144,6 +145,7 @@ export function Hero() {
   const [isCapabilitiesOpen, setIsCapabilitiesOpen] = useState(false)
   const [isThinking, setIsThinking] = useState(true)
   const [thinkingText, setThinkingText] = useState("PeopleCore is thinking")
+  const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false)
 
   // Thinking animation effect
   useEffect(() => {
@@ -351,6 +353,7 @@ export function Hero() {
               variant="gradient" 
               size="xl"
               className="group"
+              onClick={() => setIsWaitlistModalOpen(true)}
             >
               Join the Waitlist
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -402,6 +405,12 @@ export function Hero() {
           />
         </div>
       </motion.div>
+
+      {/* Waitlist Modal */}
+      <WaitlistModal 
+        open={isWaitlistModalOpen} 
+        onOpenChange={setIsWaitlistModalOpen} 
+      />
     </section>
   )
 }

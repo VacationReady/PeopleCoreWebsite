@@ -7,18 +7,31 @@ const waitlistSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   company: z.string().optional(),
   role: z.string().optional(),
+  functionalities: z.array(z.string()).optional(),
 })
 
 export type WaitlistFormData = z.infer<typeof waitlistSchema>
 
 export async function joinWaitlist(formData: FormData) {
   try {
+    // Parse functionalities from JSON string
+    let functionalities: string[] = []
+    const functionalitiesStr = formData.get("functionalities")
+    if (functionalitiesStr && typeof functionalitiesStr === 'string') {
+      try {
+        functionalities = JSON.parse(functionalitiesStr)
+      } catch {
+        functionalities = []
+      }
+    }
+
     // Validate form data
     const validatedData = waitlistSchema.parse({
       name: formData.get("name"),
       email: formData.get("email"),
       company: formData.get("company"),
       role: formData.get("role"),
+      functionalities,
     })
 
     // Here you would typically save to database
@@ -80,6 +93,7 @@ export async function joinWaitlist(formData: FormData) {
             <p><strong>Email:</strong> ${validatedData.email}</p>
             <p><strong>Company:</strong> ${validatedData.company || "Not provided"}</p>
             <p><strong>Role:</strong> ${validatedData.role || "Not provided"}</p>
+            <p><strong>Interested in:</strong> ${validatedData.functionalities?.length ? validatedData.functionalities.join(", ") : "Not specified"}</p>
           `,
         })
       } catch (emailError) {
