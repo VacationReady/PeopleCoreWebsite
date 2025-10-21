@@ -13,34 +13,38 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PeopleCore - The GPT of HR | AI-Native HRIS Platform",
-  description: "Transform your HR operations with PeopleCore, the world's most advanced conversational AI for human resources. Automate complex workflows through natural language.",
-  keywords: ["HR software", "AI HRIS", "human resources", "HR automation", "conversational AI", "workforce management"],
-  authors: [{ name: "PeopleCore" }],
-  creator: "PeopleCore",
-  publisher: "PeopleCore",
+  title: "PeopleCore - 100% Holidays Act Compliant HRIS | Built for New Zealand",
+  description: "New Zealand's most advanced HRIS. Master the Holidays Act, automate KiwiSaver, ensure Fair Pay Agreement compliance. AI-native platform with Auckland data residency.",
+  keywords: [
+    "NZ HRIS", "New Zealand HR software", "Holidays Act compliance", "KiwiSaver management", 
+    "Fair Pay Agreements", "NZ payroll", "Auckland data centre", "NZ employment law", 
+    "leave management NZ", "MECA compliance", "te reo Māori HRIS", "Aotearoa HR"
+  ],
+  authors: [{ name: "PeopleCore NZ" }],
+  creator: "PeopleCore NZ",
+  publisher: "PeopleCore NZ Ltd",
   openGraph: {
-    title: "PeopleCore - The GPT of HR",
-    description: "Transform your HR operations with AI-native automation. Talk naturally, AI handles complexity.",
-    url: "https://peoplecore.ai",
-    siteName: "PeopleCore",
+    title: "PeopleCore - 100% Holidays Act Compliant | Built for NZ",
+    description: "AI-native HRIS designed for New Zealand employment law. Holidays Act, KiwiSaver, Fair Pay Agreements. Data hosted in Auckland.",
+    url: "https://peoplecore.co.nz",
+    siteName: "PeopleCore NZ",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "PeopleCore - AI-Native HRIS Platform",
+        alt: "PeopleCore - New Zealand's Most Advanced HRIS",
       },
     ],
-    locale: "en_US",
+    locale: "en_NZ",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PeopleCore - The GPT of HR",
-    description: "Transform your HR operations with AI-native automation. Talk naturally, AI handles complexity.",
+    title: "PeopleCore - 100% Holidays Act Compliant HRIS",
+    description: "Built for New Zealand employment law. Holidays Act, KiwiSaver, Fair Pay Agreements. Auckland data residency.",
     images: ["/og-image.png"],
-    creator: "@peoplecore",
+    creator: "@peoplecore_nz",
   },
   robots: {
     index: true,
@@ -64,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-NZ">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

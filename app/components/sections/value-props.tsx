@@ -5,46 +5,46 @@ import { Zap, Shield, Puzzle, Lightbulb, Clock } from "lucide-react"
 
 const valueProps = [
   {
-    icon: Clock,
-    title: "10x Faster",
-    subtitle: "Complete HR tasks in seconds, not hours",
-    description: "Automate repetitive workflows and eliminate manual data entry. What used to take hours now happens instantly with AI-powered automation.",
+    icon: Shield,
+    title: "100% Holidays Act Compliance",
+    subtitle: "Never worry about leave calculations again",
+    description: "Automatically calculates annual leave, sick leave, bereavement leave, and public holidays in full compliance with NZ employment law. Handles complex scenarios like FBAPS calculations and leave accrual during parental leave.",
     gradient: "from-blue-500 to-cyan-500"
   },
   {
-    icon: Zap,
-    title: "Zero Learning Curve",
-    subtitle: "Natural conversation, no training required",
-    description: "Simply tell PeopleCore what you need in plain English. No complex interfaces, no training manuals—just natural conversation that gets things done.",
-    gradient: "from-purple-500 to-pink-500"
-  },
-  {
-    icon: Shield,
-    title: "100% Customisable Platform", 
-    subtitle: "Unlimited flexibility and complete control",
-    description: "Fully customisable to your needs with unlimited flexibility, complete control over workflows, and the ability to adapt to any business requirement.",
+    icon: Clock,
+    title: "KiwiSaver Auto-Enrolment",
+    subtitle: "Seamless retirement savings management",
+    description: "Automatically enrols eligible employees, manages opt-outs, calculates employer contributions (3-10%), and integrates with all major KiwiSaver providers. Full IRD compliance built-in.",
     gradient: "from-green-500 to-emerald-600"
   },
   {
     icon: Puzzle,
-    title: "Fully Integrated",
-    subtitle: "All HR functions work together seamlessly",
-    description: "One unified platform where payroll, benefits, performance, and compliance work in perfect harmony. No more data silos or integration headaches.",
-    gradient: "from-green-500 to-emerald-500"
-  },
-  {
-    icon: Lightbulb,
-    title: "Revolutionary UX",
-    subtitle: "Most advanced conversational HR AI ever built",
-    description: "Experience the future of HR technology. Our conversational interface feels natural while delivering unprecedented power and flexibility.",
-    gradient: "from-yellow-500 to-orange-500"
+    title: "Fair Pay Agreements Ready", 
+    subtitle: "Stay ahead of employment law changes",
+    description: "Built to support Fair Pay Agreements across industries. Automatically applies sector-specific minimums, manages collective bargaining requirements, and ensures pay equity compliance.",
+    gradient: "from-purple-500 to-pink-500"
   },
   {
     icon: Shield,
-    title: "Complete Autonomy",
-    subtitle: "Unmatched autonomous functionality - do everything yourself",
-    description: "Full control over every aspect of your HR operations. Comprehensive tools, unlimited customisation, and complete data ownership - all included.",
+    title: "Auckland Data Residency",
+    subtitle: "Your data stays in Aotearoa",
+    description: "All employee data hosted in our Auckland data centre with full sovereignty. ISO 27001 certified, SOC 2 compliant, and built with kaitiakitanga—guardianship and protection of your people's information.",
     gradient: "from-indigo-500 to-purple-500"
+  },
+  {
+    icon: Zap,
+    title: "Sector-Specific Solutions",
+    subtitle: "Tailored for NZ industries",
+    description: "Pre-configured for agribusiness, healthcare, public sector, hospitality, and construction. Handles seasonal workers, shift patterns, and industry-specific awards with zero manual configuration.",
+    gradient: "from-yellow-500 to-orange-500"
+  },
+  {
+    icon: Lightbulb,
+    title: "Te Reo Māori Support",
+    subtitle: "Bilingual platform honouring Te Tiriti",
+    description: "Full te reo Māori interface option, culturally appropriate workflows for tangihanga leave, and support for iwi-specific employment practices. Built in partnership with Māori HR practitioners.",
+    gradient: "from-green-500 to-emerald-500"
   }
 ]
 
@@ -61,11 +61,11 @@ export function ValueProps() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-            Why Choose PeopleCore?
+            Built for New Zealand Businesses
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Experience the perfect balance of AI automation and human control. 
-            Revolutionary technology that enhances rather than replaces your HR expertise.
+            The only HRIS designed from the ground up for NZ employment law. 
+            From the Holidays Act to KiwiSaver, from Fair Pay Agreements to te reo Māori—we've got you covered.
           </p>
         </motion.div>
 
@@ -80,7 +80,7 @@ export function ValueProps() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -8, scale: 1.02 }}
+                whileHover={{ y: -4 }}
                 className="group relative bg-white rounded-2xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 overflow-hidden"
               >
                 {/* Gradient background on hover */}

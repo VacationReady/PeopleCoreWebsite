@@ -5,40 +5,38 @@ import { Mail, Twitter, Linkedin, Github } from "lucide-react"
 
 const footerLinks = {
   product: [
-    { name: "Features", href: "#features" },
-    { name: "Pricing", href: "#pricing" },
+    { name: "Features", href: "#product" },
+    { name: "Pricing", href: "/pricing" },
     { name: "Use Cases", href: "#use-cases" },
+    { name: "Demo", href: "#demo" },
     { name: "Integrations", href: "#integrations" },
-    { name: "API", href: "#api" },
   ],
-  company: [
-    { name: "About", href: "#about" },
-    { name: "Blog", href: "#blog" },
-    { name: "Careers", href: "#careers" },
-    { name: "Press", href: "#press" },
-    { name: "Contact", href: "#contact" },
+  compliance: [
+    { name: "Holidays Act Guide", href: "#resources" },
+    { name: "KiwiSaver Compliance", href: "#resources" },
+    { name: "Fair Pay Agreements", href: "#resources" },
+    { name: "Security Whitepaper", href: "#resources" },
+    { name: "Data Residency", href: "#compliance" },
   ],
   legal: [
-    { name: "Privacy Policy", href: "#privacy" },
-    { name: "Terms of Service", href: "#terms" },
-    { name: "Security", href: "#security" },
-    { name: "Compliance", href: "#compliance" },
-    { name: "GDPR", href: "#gdpr" },
+    { name: "Privacy Policy", href: "/privacy" },
+    { name: "Terms of Service", href: "/terms" },
+    { name: "Security", href: "#compliance" },
+    { name: "NZ Privacy Act 2020", href: "#compliance" },
+    { name: "Acceptable Use", href: "/acceptable-use" },
   ],
-  resources: [
-    { name: "Documentation", href: "#docs" },
-    { name: "Help Center", href: "#help" },
-    { name: "Community", href: "#community" },
-    { name: "Webinars", href: "#webinars" },
-    { name: "Status", href: "#status" },
+  support: [
+    { name: "Help Centre", href: "/help" },
+    { name: "Contact NZ Team", href: "mailto:hello@peoplecore.co.nz" },
+    { name: "Book a Demo", href: "https://calendly.com/peoplecore-nz/demo" },
+    { name: "System Status", href: "/status" },
+    { name: "API Documentation", href: "/docs" },
   ]
 }
 
 const socialLinks = [
-  { name: "Twitter", icon: Twitter, href: "https://twitter.com/peoplecore" },
-  { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/company/peoplecore" },
-  { name: "GitHub", icon: Github, href: "https://github.com/peoplecore" },
-  { name: "Email", icon: Mail, href: "mailto:hello@peoplecore.ai" },
+  { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/company/peoplecore-nz" },
+  { name: "Email", icon: Mail, href: "mailto:hello@peoplecore.co.nz" },
 ]
 
 export function Footer() {
@@ -58,8 +56,8 @@ export function Footer() {
                 PeopleCore
               </h3>
               <p className="text-slate-300 mb-6 leading-relaxed">
-                The world's most advanced conversational AI for human resources. 
-                Transform your HR operations with natural language automation.
+                🇳🇿 New Zealand's most advanced HRIS. Built for Holidays Act compliance, 
+                KiwiSaver management, and Fair Pay Agreements. Your data stays in Aotearoa.
               </p>
               
               {/* Social Links */}
@@ -109,7 +107,7 @@ export function Footer() {
             </motion.div>
           </div>
 
-          {/* Company Links */}
+          {/* Compliance Links */}
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -117,13 +115,13 @@ export function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h4 className="font-semibold text-white mb-4">Company</h4>
+              <h4 className="font-semibold text-white mb-4">NZ Compliance</h4>
               <ul className="space-y-3">
-                {footerLinks.company.map((link) => (
+                {footerLinks.compliance.map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
-                      className="text-slate-300 hover:text-white transition-colors"
+                      className="text-slate-300 hover:text-white transition-colors text-sm"
                     >
                       {link.name}
                     </a>
@@ -133,7 +131,7 @@ export function Footer() {
             </motion.div>
           </div>
 
-          {/* Resources Links */}
+          {/* Support Links */}
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -141,13 +139,15 @@ export function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <h4 className="font-semibold text-white mb-4">Resources</h4>
+              <h4 className="font-semibold text-white mb-4">Support</h4>
               <ul className="space-y-3">
-                {footerLinks.resources.map((link) => (
+                {footerLinks.support.map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
-                      className="text-slate-300 hover:text-white transition-colors"
+                      className="text-slate-300 hover:text-white transition-colors text-sm"
+                      target={link.href.startsWith('http') ? '_blank' : undefined}
+                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     >
                       {link.name}
                     </a>
@@ -192,8 +192,8 @@ export function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
-              <h4 className="font-semibold text-white mb-2">Stay Updated</h4>
-              <p className="text-slate-300">Get the latest HR automation insights and product updates.</p>
+              <h4 className="font-semibold text-white mb-2">Stay Updated on NZ Employment Law</h4>
+              <p className="text-slate-300">Get Holidays Act updates, compliance tips, and product news for Kiwi businesses.</p>
             </div>
             
             <div className="flex gap-3 w-full md:w-auto">
@@ -218,11 +218,14 @@ export function Footer() {
           className="border-t border-slate-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
         >
           <p className="text-slate-400 text-sm">
-            © 2024 PeopleCore. All rights reserved.
+            © 2025 PeopleCore NZ Ltd. All rights reserved. 🇳🇿 Built in Aotearoa.
           </p>
           
-          <div className="flex items-center gap-6 text-sm text-slate-400">
-            <span>Made with ❤️ for HR teams worldwide</span>
+          <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
+            <span>Made with ❤️ for Kiwi businesses</span>
+            <span>•</span>
+            <span>Data hosted in Auckland</span>
+            <span>•</span>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
               <span>All systems operational</span>

@@ -5,6 +5,8 @@ import { ValueProps } from "./components/sections/value-props"
 import { Features } from "./components/sections/features"
 import { DashboardShowcase } from "./components/sections/dashboard-showcase"
 import { UseCases } from "./components/sections/use-cases"
+import { Testimonials } from "./components/sections/testimonials"
+import { Compliance } from "./components/sections/compliance"
 import { Waitlist } from "./components/sections/waitlist"
 import { Footer } from "./components/sections/footer"
 
@@ -13,11 +15,11 @@ export default function Home() {
     <main className="min-h-screen">
       <Hero />
       <Demo />
-      <NotAllAI />
       <ValueProps />
-      <Features />
-      <DashboardShowcase />
       <UseCases />
+      <Testimonials />
+      <Compliance />
+      <Features />
       <Waitlist />
       <Footer />
     </main>

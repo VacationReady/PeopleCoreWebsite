@@ -29,58 +29,53 @@ function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: 
 const demoPrompts = [
   {
     id: 1,
-    text: "Create a monthly eNPS survey anonymised by department and send my SLT a report once complete.",
+    text: "Calculate Sarah's annual leave entitlement including her FBAPS and public holiday adjustments for the Holidays Act.",
     icon: BarChart3,
-    workflowType: "enps",
+    workflowType: "holidays-act",
     workflow: [
-      { id: 1, icon: "📊", label: "Survey Created", description: "eNPS survey generated" },
-      { id: 2, icon: "📧", label: "Emails Sent", description: "Distributed to all staff" },
-      { id: 3, icon: "🔒", label: "Responses Collected", description: "Anonymous submissions" },
-      { id: 4, icon: "🤖", label: "AI Analysis", description: "Processing results" },
-      { id: 5, icon: "📈", label: "Report Generated", description: "Sent to leadership" }
+      { id: 1, icon: "📊", label: "Hours Analysed", description: "52-week average calculated" },
+      { id: 2, icon: "💰", label: "FBAPS Determined", description: "Four weeks gross earnings" },
+      { id: 3, icon: "🗓️", label: "Public Holidays", description: "Mondayisation applied" },
+      { id: 4, icon: "✅", label: "Entitlement Ready", description: "100% Holidays Act compliant" }
     ]
   },
   {
     id: 2,
-    text: "Set up new employee onboarding with document uploads and celebration milestones.",
+    text: "Enrol our 15 new seasonal workers in KiwiSaver and set up their employer contributions at 4%.",
     icon: Users,
-    workflowType: "onboarding",
+    workflowType: "kiwisaver",
     workflow: [
-      { id: 1, icon: "👋", label: "Welcome Email", description: "Send personalised welcome" },
-      { id: 2, icon: "📋", label: "Create Checklist", description: "Generate onboarding tasks" },
-      { id: 3, icon: "📄", label: "Document Upload", description: "Collect required documents" },
-      { id: 4, icon: "✅", label: "Verify Documents", description: "Auto-check completeness" },
-      { id: 5, icon: "👥", label: "Assign Buddy", description: "Match with team member" },
-      { id: 6, icon: "📚", label: "Training Schedule", description: "Book required sessions" },
-      { id: 7, icon: "🎉", label: "Completion Celebration", description: "Send congratulations!" }
+      { id: 1, icon: "👥", label: "Eligibility Checked", description: "Auto-enrolment criteria met" },
+      { id: 2, icon: "📋", label: "KS2 Forms Generated", description: "IRD documentation ready" },
+      { id: 3, icon: "💳", label: "Provider Selected", description: "Employee choice recorded" },
+      { id: 4, icon: "💰", label: "Contributions Set", description: "4% employer + 3% employee" },
+      { id: 5, icon: "📧", label: "IRD Notified", description: "Compliance complete" }
     ]
   },
   {
     id: 3,
-    text: "James Smith is leaving on the 10th of this month, can you commence offboarding?",
-    icon: LogOut,
-    workflowType: "offboarding",
+    text: "Process tangihanga leave for Hemi and notify his team with culturally appropriate messaging.",
+    icon: Heart,
+    workflowType: "tangihanga",
     workflow: [
-      { id: 1, icon: "🚀", label: "Offboarding Commenced", description: "Process initiated" },
-      { id: 2, icon: "💻", label: "IT Notified", description: "Equipment return scheduled" },
-      { id: 3, icon: "💰", label: "Payroll System Notified", description: "Final pay calculated" },
-      { id: 4, icon: "📊", label: "Leave Calculations Underway", description: "Accrued leave processed" },
-      { id: 5, icon: "📝", label: "Exit Interview Diarised", description: "Meeting scheduled" },
-      { id: 6, icon: "✅", label: "Offboarding Complete!", description: "All tasks finished" }
+      { id: 1, icon: "🤝", label: "Leave Approved", description: "Bereavement entitlement" },
+      { id: 2, icon: "📧", label: "Team Notified", description: "Culturally sensitive message" },
+      { id: 3, icon: "📅", label: "Coverage Arranged", description: "Workload redistributed" },
+      { id: 4, icon: "💐", label: "Support Offered", description: "EAP resources shared" },
+      { id: 5, icon: "✅", label: "Return Planned", description: "Flexible re-entry scheduled" }
     ]
   },
   {
     id: 4,
-    text: "Jemma Kingley has just got married! Can you change her title and last name to Mrs and Middleton please, and then create a news survey to celebrate the news to the company?",
-    icon: Heart,
-    workflowType: "marriage",
+    text: "Apply the new Fair Pay Agreement minimums to our cleaning staff and update payroll.",
+    icon: CheckCircle,
+    workflowType: "fair-pay",
     workflow: [
-      { id: 1, icon: "💍", label: "Employee Married!", description: "Congratulations!" },
-      { id: 2, icon: "👤", label: "Title Changed", description: "Updated to Mrs" },
-      { id: 3, icon: "📝", label: "Last Name Changed", description: "Updated to Middleton" },
-      { id: 4, icon: "📰", label: "News Article Published", description: "Company announcement" },
-      { id: 5, icon: "📧", label: "Emails Sent to All Staff", description: "Celebrating the news" },
-      { id: 6, icon: "🏖️", label: "Honeymoon Commences!", description: "Enjoy your time off!" }
+      { id: 1, icon: "📋", label: "FPA Identified", description: "Cleaning sector agreement" },
+      { id: 2, icon: "👥", label: "Staff Matched", description: "12 employees affected" },
+      { id: 3, icon: "💰", label: "Rates Updated", description: "Minimums applied" },
+      { id: 4, icon: "📊", label: "Payroll Adjusted", description: "Backdated if required" },
+      { id: 5, icon: "✅", label: "Compliance Verified", description: "Pay equity ensured" }
     ]
   }
 ]
@@ -190,12 +185,12 @@ export function Demo() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-6 leading-tight py-2">
-            Ask PeopleCore Anything
+            NZ Compliance Made Simple
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
-            Watch AI transform your natural language requests into sophisticated HR workflows.
+            Watch PeopleCore handle complex NZ employment law scenarios in plain English.
             <br />
-            <span className="text-slate-500">No coding, no complexity—just conversation.</span>
+            <span className="text-slate-500">From Holidays Act calculations to Fair Pay Agreements—just ask.</span>
           </p>
         </motion.div>
 
@@ -230,7 +225,7 @@ export function Demo() {
                   <div className="flex-1">
                     <p className="text-sm text-slate-600 mb-2">PeopleCore AI</p>
                     <div className="bg-slate-50 rounded-lg p-3">
-                      <p className="text-slate-800">Hi! I'm PeopleCore AI. Describe any HR workflow you need, and I'll build it for you automatically.</p>
+                      <p className="text-slate-800">Kia ora! I'm PeopleCore AI. Ask me anything about NZ employment law, leave calculations, or compliance—I'll handle it automatically.</p>
                     </div>
                   </div>
                 </div>
@@ -281,10 +276,10 @@ export function Demo() {
                       <div className="bg-green-50 border-2 border-green-200 rounded-lg p-3">
                         <p className="text-green-800 font-medium mb-2">🎉 Workflow completed successfully! 🎉</p>
                         <p className="text-slate-700">
-                          {currentPrompt.workflowType === "onboarding" && "Set up new employee onboarding with document uploads and celebration milestones."}
-                          {currentPrompt.workflowType === "enps" && "Created monthly eNPS survey with automated department analysis and leadership reporting."}
-                          {currentPrompt.workflowType === "offboarding" && "James Smith's offboarding process has been completed successfully."}
-                          {currentPrompt.workflowType === "marriage" && "Jemma's details have been updated and the celebration announcement has been sent to all staff!"}
+                          {currentPrompt.workflowType === "holidays-act" && "Sarah's leave entitlement calculated with full Holidays Act compliance. FBAPS and public holiday adjustments applied."}
+                          {currentPrompt.workflowType === "kiwisaver" && "All 15 seasonal workers enrolled in KiwiSaver with 4% employer contributions. IRD notifications sent."}
+                          {currentPrompt.workflowType === "tangihanga" && "Tangihanga leave processed for Hemi with culturally appropriate team notifications and support resources."}
+                          {currentPrompt.workflowType === "fair-pay" && "Fair Pay Agreement minimums applied to 12 cleaning staff. Payroll updated and compliance verified."}
                         </p>
                       </div>
                     </div>

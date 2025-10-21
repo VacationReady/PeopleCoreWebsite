@@ -77,11 +77,11 @@ export function Waitlist() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to Transform Your HR?
+            Join New Zealand's HR Revolution
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Join thousands of HR leaders getting early access to PeopleCore. 
-            Be among the first to experience the future of HR automation.
+            Get early access to the only HRIS built specifically for NZ employment law. 
+            Join Kiwi businesses already transforming their HR operations.
           </p>
         </motion.div>
 
@@ -203,6 +203,66 @@ export function Waitlist() {
                 </div>
               </div>
 
+              {/* Additional Fields Row */}
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Organisation Size */}
+                <div>
+                  <label htmlFor="orgSize" className="block text-sm font-medium text-white/90 mb-2">
+                    Organisation Size
+                  </label>
+                  <select
+                    id="orgSize"
+                    name="orgSize"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm appearance-none"
+                  >
+                    <option value="" className="bg-slate-800">Select size</option>
+                    <option value="1-10" className="bg-slate-800">1-10 employees</option>
+                    <option value="11-50" className="bg-slate-800">11-50 employees</option>
+                    <option value="51-200" className="bg-slate-800">51-200 employees</option>
+                    <option value="201-500" className="bg-slate-800">201-500 employees</option>
+                    <option value="500+" className="bg-slate-800">500+ employees</option>
+                  </select>
+                </div>
+
+                {/* Urgency */}
+                <div>
+                  <label htmlFor="urgency" className="block text-sm font-medium text-white/90 mb-2">
+                    When do you need this?
+                  </label>
+                  <select
+                    id="urgency"
+                    name="urgency"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm appearance-none"
+                  >
+                    <option value="" className="bg-slate-800">Select timeframe</option>
+                    <option value="urgent" className="bg-slate-800">Urgent (within 1 month)</option>
+                    <option value="soon" className="bg-slate-800">Soon (1-3 months)</option>
+                    <option value="planning" className="bg-slate-800">Planning (3-6 months)</option>
+                    <option value="exploring" className="bg-slate-800">Just exploring</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Primary Interest */}
+              <div>
+                <label htmlFor="interest" className="block text-sm font-medium text-white/90 mb-2">
+                  Primary Interest (Optional)
+                </label>
+                <select
+                  id="interest"
+                  name="interest"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm appearance-none"
+                >
+                  <option value="" className="bg-slate-800">What interests you most?</option>
+                  <option value="holidays-act" className="bg-slate-800">Holidays Act Compliance</option>
+                  <option value="kiwisaver" className="bg-slate-800">KiwiSaver Management</option>
+                  <option value="fair-pay" className="bg-slate-800">Fair Pay Agreements</option>
+                  <option value="payroll" className="bg-slate-800">Payroll Accuracy</option>
+                  <option value="leave" className="bg-slate-800">Leave Management</option>
+                  <option value="all" className="bg-slate-800">Complete HRIS Solution</option>
+                </select>
+              </div>
+
               {/* Error Message */}
               {result?.success === false && !result.errors && (
                 <div className="bg-red-500/20 border border-red-500/30 rounded-lg p-4">
@@ -225,9 +285,14 @@ export function Waitlist() {
                   {isPending ? "Joining..." : "Join the Waitlist"}
                 </Button>
                 
-                <p className="text-white/60 text-sm mt-4">
-                  Free during beta • No spam, ever • Unsubscribe anytime
-                </p>
+                <div className="text-center mt-4 space-y-2">
+                  <p className="text-white/60 text-sm">
+                    🇳🇿 Your data is handled in accordance with the Privacy Act 2020 and stored in Auckland
+                  </p>
+                  <p className="text-white/80 text-sm font-medium">
+                    We'll respond within 1 business day • Free during beta • No spam, ever
+                  </p>
+                </div>
               </div>
             </form>
           )}
@@ -243,16 +308,16 @@ export function Waitlist() {
         >
           <div className="grid md:grid-cols-3 gap-8 text-white/80">
             <div>
-              <div className="text-2xl font-bold text-white mb-1">5,000+</div>
-              <div className="text-sm">Beta Signups</div>
+              <div className="text-2xl font-bold text-white mb-1">200+</div>
+              <div className="text-sm">NZ Businesses Waiting</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-white mb-1">500+</div>
-              <div className="text-sm">Companies Waiting</div>
+              <div className="text-2xl font-bold text-white mb-1">15+</div>
+              <div className="text-sm">Industries Represented</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-white mb-1">50+</div>
-              <div className="text-sm">Countries Represented</div>
+              <div className="text-2xl font-bold text-white mb-1">100%</div>
+              <div className="text-sm">Holidays Act Compliant</div>
             </div>
           </div>
         </motion.div>
