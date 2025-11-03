@@ -1,10 +1,52 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { Button } from "@/app/components/ui/button"
-import { ChevronLeft, ChevronRight, Monitor, Smartphone, Tablet, Zap, Users, BarChart3, Settings, Calendar, FileText, Shield, CheckCircle } from "lucide-react"
-import Image from "next/image"
+import {
+  ChevronRight,
+  Monitor,
+  Smartphone,
+  Tablet,
+  Zap,
+  Users,
+  BarChart3,
+  Settings,
+  Calendar,
+  FileText,
+  Shield,
+  CheckCircle,
+  Clock
+} from "lucide-react"
+
+type DeviceView = "desktop" | "tablet" | "mobile"
+
+type TimesheetStatus = "Pending" | "Ready to Approve" | "Approved"
+
+type TimesheetSubmission = {
+  id: string
+  employee: string
+  period: string
+  submittedAt: string
+  status: TimesheetStatus
+  statusColor: "green" | "amber"
+  totalHours: string
+  department: string
+  project: string
+  notes: string
+  submittedBy: string
+}
+
+type ManagerActionItem = {
+  id: string
+  title: string
+  subject: string
+  context: string
+  cta: string
+  color: "green" | "amber" | "blue"
+  type: "timesheet" | "payroll"
+  timesheetId?: string
+}
 
 const dashboardFeatures = [
   {
@@ -47,7 +89,100 @@ const dashboardFeatures = [
 
 export function DashboardShowcase() {
   const [activeTab, setActiveTab] = useState(0)
-  const [deviceView, setDeviceView] = useState<'desktop' | 'tablet' | 'mobile'>('desktop')
+  const [deviceView, setDeviceView] = useState<DeviceView>('desktop')
+
+  const timesheetSubmissions: TimesheetSubmission[] = [
+    {
+      id: "ts-alex",
+      employee: "Alex Johnson",
+      period: "Week ending 24 Nov 2024",
+      submittedAt: "Submitted 12 mins ago",
+      status: "Pending",
+      statusColor: "amber",
+      totalHours: "37.5",
+      department: "Customer Success",
+      project: "Railway Migration",
+      notes: "Flagged 2 hours of overtime on Friday for after-hours client rollout support.",
+      submittedBy: "Alex Johnson"
+    },
+    {
+      id: "ts-danielle",
+      employee: "Danielle King",
+      period: "Week ending 24 Nov 2024",
+      submittedAt: "Submitted 2 hours ago",
+      status: "Pending",
+      statusColor: "amber",
+      totalHours: "40.0",
+      department: "Engineering",
+      project: "Timesheet Automations",
+      notes: "Includes 4 hours of pre-approved overtime for release QA sign-off.",
+      submittedBy: "Danielle King"
+    },
+    {
+      id: "ts-marcus",
+      employee: "Marcus Lee",
+      period: "Week ending 17 Nov 2024",
+      submittedAt: "Submitted yesterday",
+      status: "Ready to Approve",
+      statusColor: "green",
+      totalHours: "38.0",
+      department: "Professional Services",
+      project: "Onsite Implementation",
+      notes: "Travel time automatically matched to client work order.",
+      submittedBy: "Marcus Lee"
+    }
+  ]
+
+  const pendingTimesheets = timesheetSubmissions.filter(
+    (submission) => submission.status !== "Approved"
+  )
+
+  const [selectedTimesheetId, setSelectedTimesheetId] = useState<string | null>(
+    () => pendingTimesheets[0]?.id ?? null
+  )
+
+  const selectedTimesheet =
+    pendingTimesheets.find((submission) => submission.id === selectedTimesheetId) ??
+    pendingTimesheets[0] ??
+    null
+
+  const managerActionItems: ManagerActionItem[] = [
+    {
+      id: "action-ts-alex",
+      title: "Approve Timesheet",
+      subject: "Alex Johnson — Week ending 24 Nov",
+      context: "Submitted 12 mins ago",
+      cta: "Approve",
+      color: "green",
+      type: "timesheet",
+      timesheetId: "ts-alex"
+    },
+    {
+      id: "action-ts-danielle",
+      title: "Review Overtime",
+      subject: "Danielle King — Week ending 24 Nov",
+      context: "Includes 4 overtime hours",
+      cta: "Review",
+      color: "amber",
+      type: "timesheet",
+      timesheetId: "ts-danielle"
+    },
+    {
+      id: "action-payroll",
+      title: "Payroll bank change",
+      subject: "Employee Request",
+      context: "Bank details update awaiting confirmation",
+      cta: "Approve",
+      color: "green",
+      type: "payroll"
+    }
+  ]
+
+  const deviceTabs: { key: DeviceView; icon: typeof Monitor; label: string }[] = [
+    { key: 'desktop', icon: Monitor, label: 'Desktop' },
+    { key: 'tablet', icon: Tablet, label: 'Tablet' },
+    { key: 'mobile', icon: Smartphone, label: 'Mobile' }
+  ]
 
   return (
     <section className="py-24 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
@@ -92,14 +227,10 @@ export function DashboardShowcase() {
           className="flex justify-center mb-8"
         >
           <div className="inline-flex items-center bg-white rounded-xl p-1 shadow-lg border border-slate-200">
-            {[
-              { key: 'desktop', icon: Monitor, label: 'Desktop' },
-              { key: 'tablet', icon: Tablet, label: 'Tablet' },
-              { key: 'mobile', icon: Smartphone, label: 'Mobile' }
-            ].map(({ key, icon: Icon, label }) => (
+            {deviceTabs.map(({ key, icon: Icon, label }) => (
               <button
                 key={key}
-                onClick={() => setDeviceView(key as any)}
+                onClick={() => setDeviceView(key)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
                   deviceView === key
                     ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'
@@ -358,33 +489,216 @@ export function DashboardShowcase() {
                               <span className="text-xs font-semibold text-slate-700">Action Items</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <span className="text-xs text-slate-500">3</span>
+                              <span className="text-xs text-slate-500">{managerActionItems.length}</span>
                               <button className="text-xs text-blue-600 hover:underline">View all</button>
                               <button className="px-2 py-1 bg-blue-500 text-white rounded text-xs">Quick Approve All</button>
                             </div>
                           </div>
                           <div className="space-y-2">
-                            {[
-                              { task: "IT Policy", employee: "Policy Review", status: "Review", color: "blue" },
-                              { task: "bank-payroll change request", employee: "Employee Request", status: "Approve", color: "green" },
-                              { task: "Trudy Jenkins — Annual Leave", employee: "Trudy Jenkins", status: "Approve", color: "green" }
-                            ].map((item, i) => (
-                              <motion.div
-                                key={item.task}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.6 + i * 0.1 }}
-                                className="flex items-center justify-between bg-slate-50 rounded p-2"
-                              >
-                                <div className="flex-1">
-                                  <div className="text-sm font-medium text-slate-900">{item.task}</div>
-                                  <div className="text-xs text-slate-500">{item.employee}</div>
+                            {managerActionItems.map((item, i) => {
+                              const isTimesheetItem = item.type === 'timesheet'
+                              const isSelected =
+                                isTimesheetItem && item.timesheetId === selectedTimesheet?.id
+
+                              return (
+                                <motion.div
+                                  key={item.id}
+                                  initial={{ opacity: 0, x: -20 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: 0.6 + i * 0.1 }}
+                                  className={`flex items-center justify-between rounded border px-3 py-2 transition-all ${
+                                    isSelected
+                                      ? 'cursor-default border-blue-300 bg-blue-50/70 shadow-inner'
+                                      : isTimesheetItem
+                                        ? 'cursor-pointer border-slate-200 bg-slate-50 hover:border-blue-200 hover:bg-blue-50/40'
+                                        : 'border-slate-200 bg-slate-50'
+                                  }`}
+                                  onClick={() => {
+                                    if (isTimesheetItem && item.timesheetId) {
+                                      setSelectedTimesheetId(item.timesheetId)
+                                    }
+                                  }}
+                                >
+                                  <div className="flex-1 pr-4">
+                                    <div className="text-sm font-semibold text-slate-900">
+                                      {item.title}
+                                    </div>
+                                    <div className="text-xs text-slate-500">{item.subject}</div>
+                                    <div className="text-[11px] text-slate-400">{item.context}</div>
+                                    {isTimesheetItem && (
+                                      <div className="mt-1 text-[11px] font-medium text-blue-600">
+                                        Click to open in the Timesheet Hub
+                                      </div>
+                                    )}
+                                  </div>
+                                  <button
+                                    className={`px-3 py-1 rounded text-xs font-medium text-white ${
+                                      item.color === 'green'
+                                        ? 'bg-green-500'
+                                        : item.color === 'amber'
+                                          ? 'bg-amber-500'
+                                          : 'bg-blue-500'
+                                    }`}
+                                    onClick={(event) => {
+                                      event.stopPropagation()
+                                      if (isTimesheetItem && item.timesheetId) {
+                                        setSelectedTimesheetId(item.timesheetId)
+                                      }
+                                    }}
+                                  >
+                                    {item.cta}
+                                  </button>
+                                </motion.div>
+                              )
+                            })}
+                          </div>
+                        </motion.div>
+
+                        {/* Timesheet Hub */}
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.7 }}
+                          className="col-span-6 bg-white rounded-lg p-3 border border-slate-200"
+                        >
+                          <div className="flex items-center justify-between mb-3">
+                            <div className="flex items-center gap-2">
+                              <Clock className="w-4 h-4 text-blue-600" />
+                              <span className="text-xs font-semibold text-slate-700">Timesheet Hub</span>
+                            </div>
+                            <div className="text-xs text-slate-500">{pendingTimesheets.length} pending approvals</div>
+                          </div>
+                          <div className="space-y-2">
+                            {pendingTimesheets.map((item, i) => {
+                              const isSelected = selectedTimesheet?.id === item.id
+
+                              return (
+                                <motion.div
+                                  key={item.id}
+                                  initial={{ opacity: 0, x: -20 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: 0.75 + i * 0.1 }}
+                                  className={`flex items-center justify-between rounded border px-3 py-2 transition-all ${
+                                    isSelected
+                                      ? 'cursor-default border-blue-300 bg-blue-50/70 shadow-inner'
+                                      : 'cursor-pointer border-slate-200 bg-slate-50 hover:border-blue-200 hover:bg-blue-50/40'
+                                  }`}
+                                  onClick={() => setSelectedTimesheetId(item.id)}
+                                >
+                                  <div>
+                                    <div className="text-sm font-semibold text-slate-900">
+                                      {item.employee}
+                                    </div>
+                                    <div className="text-xs text-slate-500">{item.period}</div>
+                                    <div className="text-[11px] text-slate-400">{item.submittedAt}</div>
+                                  </div>
+                                  <span
+                                    className={`px-2 py-1 rounded-full text-[11px] font-medium text-white ${
+                                      item.statusColor === 'green'
+                                        ? 'bg-green-500'
+                                        : item.statusColor === 'amber'
+                                          ? 'bg-amber-500'
+                                          : 'bg-slate-400'
+                                    }`}
+                                  >
+                                    {item.status}
+                                  </span>
+                                </motion.div>
+                              )
+                            })}
+                          </div>
+
+                          {selectedTimesheet ? (
+                            <div className="mt-4 rounded-lg border border-blue-200 bg-blue-50/60 p-4 text-xs text-slate-600">
+                              <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                                <div>
+                                  <div className="text-sm font-semibold text-slate-900">
+                                    {selectedTimesheet.employee}
+                                  </div>
+                                  <div className="text-xs text-slate-500">{selectedTimesheet.period}</div>
+                                  <div className="text-[11px] text-slate-400">
+                                    {selectedTimesheet.submittedAt}
+                                  </div>
                                 </div>
-                                <button className={`px-3 py-1 rounded text-xs font-medium text-white ${item.color === 'blue' ? 'bg-blue-500' : 'bg-green-500'}`}>
-                                  {item.status}
-                                </button>
-                              </motion.div>
-                            ))}
+                                <span
+                                  className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold text-white ${
+                                    selectedTimesheet.statusColor === 'green'
+                                      ? 'bg-green-500'
+                                      : 'bg-amber-500'
+                                  }`}
+                                >
+                                  <Clock className="h-3 w-3" />
+                                  {selectedTimesheet.status}
+                                </span>
+                              </div>
+
+                              <div className="grid gap-3 sm:grid-cols-2">
+                                <div>
+                                  <div className="text-[11px] uppercase tracking-wide text-slate-400">
+                                    Department
+                                  </div>
+                                  <div className="text-sm font-medium text-slate-900">
+                                    {selectedTimesheet.department}
+                                  </div>
+                                </div>
+                                <div>
+                                  <div className="text-[11px] uppercase tracking-wide text-slate-400">
+                                    Project
+                                  </div>
+                                  <div className="text-sm font-medium text-slate-900">
+                                    {selectedTimesheet.project}
+                                  </div>
+                                </div>
+                                <div>
+                                  <div className="text-[11px] uppercase tracking-wide text-slate-400">
+                                    Total Hours
+                                  </div>
+                                  <div className="text-sm font-medium text-slate-900">
+                                    {selectedTimesheet.totalHours}
+                                  </div>
+                                </div>
+                                <div>
+                                  <div className="text-[11px] uppercase tracking-wide text-slate-400">
+                                    Submitted By
+                                  </div>
+                                  <div className="text-sm font-medium text-slate-900">
+                                    {selectedTimesheet.submittedBy}
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="mt-3 rounded-md border border-blue-200 bg-white/70 p-3 text-[11px] text-slate-600">
+                                {selectedTimesheet.notes}
+                              </div>
+
+                              <div className="mt-4 flex flex-wrap gap-2">
+                                <Button size="sm" variant="gradient">
+                                  Approve timesheet
+                                </Button>
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  className="border-blue-200 text-blue-600 hover:bg-blue-100"
+                                >
+                                  Send back for edits
+                                </Button>
+                                <Button
+                                  size="sm"
+                                  variant="ghost"
+                                  className="text-slate-500 hover:text-slate-700"
+                                >
+                                  Open full timesheet
+                                </Button>
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="mt-4 rounded-lg border border-dashed border-slate-200 bg-white px-3 py-4 text-center text-xs text-slate-500">
+                              All caught up — there are no pending submissions.
+                            </div>
+                          )}
+
+                          <div className="mt-3 rounded-lg border border-dashed border-blue-200 bg-blue-50/60 px-3 py-2 text-[11px] text-slate-600">
+                            Pending submissions surface in both Action Items and the Timesheet Hub, so managers can approve them without leaving their workflow.
                           </div>
                         </motion.div>
 
