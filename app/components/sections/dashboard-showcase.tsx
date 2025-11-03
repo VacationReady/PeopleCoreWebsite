@@ -1,10 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { Button } from "@/app/components/ui/button"
 import {
-  ChevronLeft,
   ChevronRight,
   Monitor,
   Smartphone,
@@ -19,7 +18,6 @@ import {
   CheckCircle,
   Clock
 } from "lucide-react"
-import Image from "next/image"
 
 const dashboardFeatures = [
   {
@@ -497,6 +495,9 @@ export function DashboardShowcase() {
                                 </span>
                               </motion.div>
                             ))}
+                          </div>
+                          <div className="mt-3 rounded-lg border border-dashed border-blue-200 bg-blue-50/60 px-3 py-2 text-[11px] text-slate-600">
+                            Timesheet hub data is streamed straight from the approvals API, so any submission that reaches a manager in Railway instantly appears here alongside action items.
                           </div>
                         </motion.div>
 
