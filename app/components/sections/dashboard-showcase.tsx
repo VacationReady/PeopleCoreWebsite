@@ -21,7 +21,7 @@ import {
 
 type DeviceView = "desktop" | "tablet" | "mobile"
 
-type TimesheetStatus = "Pending" | "Ready to Approve"
+type TimesheetStatus = "Pending" | "Ready to Approve" | "Approved"
 
 type TimesheetSubmission = {
   id: string
