@@ -3,7 +3,22 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/app/components/ui/button"
-import { ChevronLeft, ChevronRight, Monitor, Smartphone, Tablet, Zap, Users, BarChart3, Settings, Calendar, FileText, Shield, CheckCircle } from "lucide-react"
+import {
+  ChevronLeft,
+  ChevronRight,
+  Monitor,
+  Smartphone,
+  Tablet,
+  Zap,
+  Users,
+  BarChart3,
+  Settings,
+  Calendar,
+  FileText,
+  Shield,
+  CheckCircle,
+  Clock
+} from "lucide-react"
 import Image from "next/image"
 
 const dashboardFeatures = [
@@ -48,6 +63,54 @@ const dashboardFeatures = [
 export function DashboardShowcase() {
   const [activeTab, setActiveTab] = useState(0)
   const [deviceView, setDeviceView] = useState<'desktop' | 'tablet' | 'mobile'>('desktop')
+
+  const managerActionItems = [
+    {
+      task: "Alex Johnson — Timesheet",
+      employee: "Week ending 24 Nov 2024",
+      context: "Timesheet pending approval",
+      status: "Approve",
+      color: "green"
+    },
+    {
+      task: "Danielle King — Timesheet",
+      employee: "Week ending 24 Nov 2024",
+      context: "Submitted 2 hours ago",
+      status: "Review",
+      color: "amber"
+    },
+    {
+      task: "bank-payroll change request",
+      employee: "Employee Request",
+      context: "Payroll change awaiting approval",
+      status: "Approve",
+      color: "green"
+    }
+  ]
+
+  const pendingTimesheets = [
+    {
+      employee: "Alex Johnson",
+      period: "Week ending 24 Nov 2024",
+      submittedAt: "Submitted 12 mins ago",
+      status: "Pending",
+      statusColor: "amber"
+    },
+    {
+      employee: "Danielle King",
+      period: "Week ending 24 Nov 2024",
+      submittedAt: "Submitted 2 hours ago",
+      status: "Pending",
+      statusColor: "amber"
+    },
+    {
+      employee: "Marcus Lee",
+      period: "Week ending 17 Nov 2024",
+      submittedAt: "Submitted yesterday",
+      status: "Ready to Approve",
+      statusColor: "green"
+    }
+  ]
 
   return (
     <section className="py-24 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
@@ -358,17 +421,13 @@ export function DashboardShowcase() {
                               <span className="text-xs font-semibold text-slate-700">Action Items</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <span className="text-xs text-slate-500">3</span>
+                              <span className="text-xs text-slate-500">{managerActionItems.length}</span>
                               <button className="text-xs text-blue-600 hover:underline">View all</button>
                               <button className="px-2 py-1 bg-blue-500 text-white rounded text-xs">Quick Approve All</button>
                             </div>
                           </div>
                           <div className="space-y-2">
-                            {[
-                              { task: "IT Policy", employee: "Policy Review", status: "Review", color: "blue" },
-                              { task: "bank-payroll change request", employee: "Employee Request", status: "Approve", color: "green" },
-                              { task: "Trudy Jenkins — Annual Leave", employee: "Trudy Jenkins", status: "Approve", color: "green" }
-                            ].map((item, i) => (
+                            {managerActionItems.map((item, i) => (
                               <motion.div
                                 key={item.task}
                                 initial={{ opacity: 0, x: -20 }}
@@ -379,10 +438,63 @@ export function DashboardShowcase() {
                                 <div className="flex-1">
                                   <div className="text-sm font-medium text-slate-900">{item.task}</div>
                                   <div className="text-xs text-slate-500">{item.employee}</div>
+                                  <div className="text-[11px] text-slate-400">{item.context}</div>
                                 </div>
-                                <button className={`px-3 py-1 rounded text-xs font-medium text-white ${item.color === 'blue' ? 'bg-blue-500' : 'bg-green-500'}`}>
+                                <button
+                                  className={`px-3 py-1 rounded text-xs font-medium text-white ${
+                                    item.color === 'green'
+                                      ? 'bg-green-500'
+                                      : item.color === 'amber'
+                                        ? 'bg-amber-500'
+                                        : 'bg-blue-500'
+                                  }`}
+                                >
                                   {item.status}
                                 </button>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </motion.div>
+
+                        {/* Timesheet Hub */}
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.7 }}
+                          className="col-span-6 bg-white rounded-lg p-3 border border-slate-200"
+                        >
+                          <div className="flex items-center justify-between mb-3">
+                            <div className="flex items-center gap-2">
+                              <Clock className="w-4 h-4 text-blue-600" />
+                              <span className="text-xs font-semibold text-slate-700">Timesheet Hub</span>
+                            </div>
+                            <div className="text-xs text-slate-500">{pendingTimesheets.length} pending approvals</div>
+                          </div>
+                          <div className="space-y-2">
+                            {pendingTimesheets.map((item, i) => (
+                              <motion.div
+                                key={`${item.employee}-${item.period}`}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.75 + i * 0.1 }}
+                                className="flex items-center justify-between bg-slate-50 rounded p-2"
+                              >
+                                <div>
+                                  <div className="text-sm font-medium text-slate-900">{item.employee}</div>
+                                  <div className="text-xs text-slate-500">{item.period}</div>
+                                  <div className="text-[11px] text-slate-400">{item.submittedAt}</div>
+                                </div>
+                                <span
+                                  className={`px-2 py-1 rounded-full text-[11px] font-medium text-white ${
+                                    item.statusColor === 'green'
+                                      ? 'bg-green-500'
+                                      : item.statusColor === 'amber'
+                                        ? 'bg-amber-500'
+                                        : 'bg-slate-400'
+                                  }`}
+                                >
+                                  {item.status}
+                                </span>
                               </motion.div>
                             ))}
                           </div>
