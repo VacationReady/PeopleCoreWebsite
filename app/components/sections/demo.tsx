@@ -31,6 +31,48 @@ function WorkspaceGrid() {
   )
 }
 
+type WorkflowStep = {
+  id: number
+  icon: string
+  label: string
+  description: string
+}
+
+function StepAnimation({
+  step,
+  isActive,
+  workflowType,
+}: {
+  step: WorkflowStep
+  isActive: boolean
+  workflowType: string
+}) {
+  if (!isActive) return null
+
+  return (
+    <motion.div
+      key={step.id}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.3 }}
+      className="w-full h-full flex items-center justify-center"
+    >
+      <div className="w-full h-full rounded-2xl bg-white/80 backdrop-blur-md border border-slate-200 p-4 text-center shadow-lg">
+        <div className="text-4xl mb-2" aria-hidden="true">
+          {step.icon}
+        </div>
+        <p className="text-sm font-semibold text-slate-900">{step.label}</p>
+        <p className="text-xs text-slate-500">{step.description}</p>
+        <div className="mt-3 inline-flex items-center gap-2 text-[10px] uppercase tracking-wide text-slate-500">
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-500" aria-hidden="true" />
+          {workflowType.replace(/-/g, " ")}
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
 const demoPrompts = [
   {
     id: 1,
