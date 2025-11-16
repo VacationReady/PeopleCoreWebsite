@@ -50,15 +50,8 @@ function StepAnimation({
   if (!isActive) return null
 
   return (
-    <motion.div
-      key={step.id}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.3 }}
-      className="w-full h-full flex items-center justify-center"
-    >
-      <div className="w-full h-full rounded-2xl bg-white/80 backdrop-blur-md border border-slate-200 p-4 text-center shadow-lg">
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="w-full h-full rounded-xl bg-white/90 backdrop-blur text-center shadow-sm border border-slate-100 p-4">
         <div className="text-4xl mb-2" aria-hidden="true">
           {step.icon}
         </div>
@@ -69,7 +62,7 @@ function StepAnimation({
           {workflowType.replace(/-/g, " ")}
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
 
@@ -467,26 +460,24 @@ export function Demo() {
                   </div>
                   
                   {/* Right side - Animation area */}
-                  <div className="w-72 h-36 relative flex items-center justify-center border-2 border-dashed border-slate-300 rounded-lg bg-slate-50 mt-16 overflow-hidden">
-                    <AnimatePresence mode="wait">
-                      {hasStarted ? (
-                        currentPrompt.workflow.map((step, index) => (
-                          index === activeStep && (
-                            <StepAnimation 
-                              key={`${step.id}-${index}`}
-                              step={step} 
-                              isActive={true} 
-                              workflowType={currentPrompt.workflowType || "onboarding"} 
-                            />
-                          )
-                        ))
-                      ) : (
-                        <div className="text-center text-slate-400">
-                          <div className="text-4xl mb-2">🤖</div>
-                          <div className="text-sm">Workflow Preview</div>
-                        </div>
-                      )}
-                    </AnimatePresence>
+                  <div className="w-72 h-36 relative flex items-center justify-center rounded-xl bg-white/80 mt-16 overflow-hidden shadow-sm">
+                    {hasStarted ? (
+                      currentPrompt.workflow.map((step, index) => (
+                        index === activeStep && (
+                          <StepAnimation
+                            key={`${step.id}-${index}`}
+                            step={step}
+                            isActive={true}
+                            workflowType={currentPrompt.workflowType || "onboarding"}
+                          />
+                        )
+                      ))
+                    ) : (
+                      <div className="text-center text-slate-400">
+                        <div className="text-4xl mb-2">🤖</div>
+                        <div className="text-sm">Workflow Preview</div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

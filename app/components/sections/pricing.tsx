@@ -102,14 +102,14 @@ export function Pricing() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className={`group relative rounded-2xl p-6 sm:p-8 overflow-hidden ${
                   plan.popular 
-                    ? 'bg-gradient-to-br from-blue-50 to-purple-50 border-2 border-blue-200 shadow-xl' 
+                    ? 'bg-gradient-to-br from-blue-50 to-purple-50 border-2 border-blue-200 shadow-xl pt-8 sm:pt-10' 
                     : 'bg-white border border-slate-200 shadow-lg'
                 } hover:shadow-xl transition-all duration-300`}
               >
                 {/* Popular badge */}
                 {plan.popular && (
-                  <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
-                    <div className={`bg-gradient-to-r ${plan.badge.color} text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2`}>
+                  <div className="flex justify-center mb-5 sm:mb-6">
+                    <div className={`bg-gradient-to-r ${plan.badge.color} text-white px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-md border border-white/50`}>
                       {plan.badge.text}
                     </div>
                   </div>
