@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion, useReducedMotion } from "framer-motion"
 import { Button } from "@/app/components/ui/button"
 import { WaitlistModal } from "@/app/components/sections/waitlist-modal"
@@ -10,100 +10,6 @@ const springPreset = {
   type: "spring" as const,
   duration: 0.5,
   damping: 20,
-}
-
-function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const prefersReducedMotion = useReducedMotion()
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  return (
-    <motion.nav 
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-      initial={{ backgroundColor: "rgba(255, 255, 255, 0)" }}
-      animate={{ 
-        backgroundColor: isScrolled ? "rgba(255, 255, 255, 0.15)" : "rgba(255, 255, 255, 0)",
-        backdropFilter: isScrolled ? "blur(16px)" : "blur(0px)",
-        boxShadow: isScrolled ? "0 4px 16px rgba(0, 0, 0, 0.1)" : "0 0 0 rgba(0, 0, 0, 0)",
-      }}
-      transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.3 }}
-      role="navigation"
-      aria-label="Main navigation"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center" aria-hidden="true" />
-            <span className="text-white font-semibold text-lg">PeopleCore</span>
-            <span className="ml-2 text-xs text-white/60 hidden sm:inline" aria-label="Built for Aotearoa New Zealand">🇳🇿 Built for Aotearoa</span>
-          </div>
-
-          <div className="flex items-center gap-6">
-            <div className="hidden md:flex items-center gap-6">
-              <a 
-                href="#product" 
-                className="text-white/90 hover:text-white transition-colors duration-200 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50 rounded px-2 py-1"
-                aria-label="View product information"
-              >
-                Product
-              </a>
-              <a 
-                href="#use-cases" 
-                className="text-white/90 hover:text-white transition-colors duration-200 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50 rounded px-2 py-1"
-                aria-label="View use cases"
-              >
-                Use Cases
-              </a>
-              <a 
-                href="#compliance" 
-                className="text-white/90 hover:text-white transition-colors duration-200 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50 rounded px-2 py-1"
-                aria-label="View compliance information"
-              >
-                Compliance
-              </a>
-              <a 
-                href="#resources" 
-                className="text-white/90 hover:text-white transition-colors duration-200 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50 rounded px-2 py-1"
-                aria-label="View resources"
-              >
-                Resources
-              </a>
-              <a 
-                href="/pricing" 
-                className="text-white/90 hover:text-white transition-colors duration-200 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50 rounded px-2 py-1"
-                aria-label="View pricing"
-              >
-                Pricing
-              </a>
-            </div>
-            <Button 
-              variant="gradient" 
-              size="default"
-              className="group"
-              asChild
-            >
-              <a 
-                href="https://calendly.com/peoplecore-nz/demo" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                aria-label="Book a demo with PeopleCore"
-              >
-                Book Demo
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-              </a>
-            </Button>
-          </div>
-        </div>
-      </div>
-    </motion.nav>
-  )
 }
 
 function CapabilityTicker() {
@@ -149,8 +55,6 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      <Navigation />
-      
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -inset-10 opacity-50">

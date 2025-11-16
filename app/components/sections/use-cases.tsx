@@ -85,7 +85,7 @@ export function UseCases() {
   const prefersReducedMotion = useReducedMotion()
 
   return (
-    <section className="bg-white" style={{ paddingTop: 'var(--spacing-xl)', paddingBottom: 'var(--spacing-xl)' }}>
+    <section id="use-cases" className="bg-white" style={{ paddingTop: 'var(--spacing-xl)', paddingBottom: 'var(--spacing-xl)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
