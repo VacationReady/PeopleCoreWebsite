@@ -41,6 +41,23 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Typography scale */
+  --font-size-h1-desktop: 4rem;
+  --font-size-h1-tablet: 3rem;
+  --font-size-h1-mobile: 2rem;
+  --font-size-body-large: 1.125rem;
+  --font-size-body: 1rem;
+  
+  /* Spacing scale */
+  --spacing-xl: 5rem;
+  --spacing-lg: 3rem;
+  --spacing-md: 2rem;
+  
+  /* Radius tokens */
+  --radius-xs: 0.5rem;
+  --radius-base: 1rem;
+  --radius-2xl: 1.5rem;
 }
 
 :root {
@@ -122,6 +139,25 @@
 }
 
 @layer utilities {
+  /* Glassmorphism utilities */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+  
+  .glass-subtle {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
   /* Custom animations */
   @keyframes blob {
     0% {
