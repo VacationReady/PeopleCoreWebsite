@@ -50,7 +50,14 @@ function StepAnimation({
   if (!isActive) return null
 
   return (
-    <div className="w-full h-full flex items-center justify-center">
+    <motion.div
+      key={step.id}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.25 }}
+      className="w-full h-full flex items-center justify-center"
+    >
       <div className="w-full h-full rounded-xl bg-white/90 backdrop-blur text-center shadow-sm border border-slate-100 p-4">
         <div className="text-4xl mb-2" aria-hidden="true">
           {step.icon}
@@ -62,7 +69,7 @@ function StepAnimation({
           {workflowType.replace(/-/g, " ")}
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
@@ -461,23 +468,25 @@ export function Demo() {
                   
                   {/* Right side - Animation area */}
                   <div className="w-72 h-36 relative flex items-center justify-center rounded-xl bg-white/80 mt-16 overflow-hidden shadow-sm">
-                    {hasStarted ? (
-                      currentPrompt.workflow.map((step, index) => (
-                        index === activeStep && (
-                          <StepAnimation
-                            key={`${step.id}-${index}`}
-                            step={step}
-                            isActive={true}
-                            workflowType={currentPrompt.workflowType || "onboarding"}
-                          />
-                        )
-                      ))
-                    ) : (
-                      <div className="text-center text-slate-400">
-                        <div className="text-4xl mb-2">🤖</div>
-                        <div className="text-sm">Workflow Preview</div>
-                      </div>
-                    )}
+                    <AnimatePresence mode="wait">
+                      {hasStarted ? (
+                        currentPrompt.workflow.map((step, index) => (
+                          index === activeStep && (
+                            <StepAnimation
+                              key={`${step.id}-${index}`}
+                              step={step}
+                              isActive={true}
+                              workflowType={currentPrompt.workflowType || "onboarding"}
+                            />
+                          )
+                        ))
+                      ) : (
+                        <div className="text-center text-slate-400">
+                          <div className="text-4xl mb-2">🤖</div>
+                          <div className="text-sm">Workflow Preview</div>
+                        </div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </div>
               </div>
