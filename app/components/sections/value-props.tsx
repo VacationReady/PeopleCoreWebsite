@@ -1,7 +1,7 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Zap, Shield, Puzzle, Lightbulb, Clock } from "lucide-react"
+import { motion, useReducedMotion } from "framer-motion"
+import { Zap, Shield, Puzzle, Lightbulb, Clock, ArrowRight } from "lucide-react"
 
 const valueProps = [
   {
@@ -79,10 +79,14 @@ export function ValueProps() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -4 }}
-                className="group relative bg-white rounded-2xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 overflow-hidden"
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                whileHover={{ scale: 1.01, y: -4 }}
+                className="group relative bg-white rounded-2xl p-8 shadow-md border-2 border-slate-200 hover:shadow-lg hover:border-transparent transition-all duration-300 overflow-hidden"
               >
+                {/* Gradient border on hover */}
+                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${prop.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10`} style={{ padding: '2px' }}>
+                  <div className="absolute inset-[2px] bg-white rounded-2xl" />
+                </div>
                 {/* Gradient background on hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${prop.gradient} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`} />
                 
@@ -99,10 +103,17 @@ export function ValueProps() {
                   <p className="text-lg font-medium text-slate-700 mb-4">
                     {prop.subtitle}
                   </p>
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-slate-600 leading-relaxed mb-4">
                     {prop.description}
                   </p>
+                  <button className="inline-flex items-center gap-2 text-sm font-medium text-slate-700 group-hover:text-blue-600 transition-colors duration-300">
+                    Learn more
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  </button>
                 </div>
+                
+                {/* Placeholder illustration */}
+                <div className="absolute bottom-4 right-4 w-16 h-16 rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300" style={{ background: `linear-gradient(135deg, ${prop.gradient.replace('from-', '').replace('to-', ',')})` }} />
 
                 {/* Floating particles on hover */}
                 <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">

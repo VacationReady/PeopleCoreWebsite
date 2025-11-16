@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import { Calendar, FileText, CheckCircle, BarChart3, Workflow, Bot, Upload, Check } from "lucide-react"
 
 // Animated feature card component
@@ -82,21 +82,26 @@ function FeatureCard({ feature, index }: { feature: any, index: number }) {
     }
   }
 
+  const prefersReducedMotion = useReducedMotion()
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.4, delay: index * 0.1 }}
+      whileHover={{ scale: 1.01, y: -4 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       className="group relative"
     >
-      <div className="relative bg-white rounded-2xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 h-full overflow-hidden">
+      <div className="relative bg-white rounded-2xl p-8 shadow-md border-2 border-slate-200 hover:shadow-lg hover:border-transparent transition-all duration-300 h-full overflow-hidden">
         {/* Gradient border on hover */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-100 rounded-2xl p-0.5 transition-opacity duration-300`}>
-          <div className="bg-white rounded-2xl w-full h-full" />
+        <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10`} style={{ padding: '2px' }}>
+          <div className="absolute inset-[2px] bg-white rounded-2xl" />
         </div>
+        {/* Gradient background subtle */}
+        <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`} />
 
         <div className="relative z-10">
           {/* Icon */}
@@ -113,10 +118,13 @@ function FeatureCard({ feature, index }: { feature: any, index: number }) {
           </p>
 
           {/* Stats badge */}
-          <div className={`inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r ${feature.color} text-white text-sm font-medium`}>
+          <div className={`inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r ${feature.color} text-white text-sm font-medium mb-4`}>
             {feature.stats}
           </div>
         </div>
+        
+        {/* Placeholder illustration */}
+        <div className="absolute bottom-4 right-4 w-20 h-20 rounded-full opacity-5 group-hover:opacity-10 transition-opacity duration-300" style={{ background: `linear-gradient(135deg, ${feature.color.split(' ')[0].replace('from-', '')}, ${feature.color.split(' ')[1].replace('to-', '')})` }} />
 
         {/* Feature-specific animations */}
         <AnimatePresence>

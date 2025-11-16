@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import { Users, TrendingUp, DollarSign, ChevronRight } from "lucide-react"
 import { Button } from "@/app/components/ui/button"
 
@@ -82,9 +82,10 @@ const useCases = [
 
 export function UseCases() {
   const [activeCase, setActiveCase] = useState(useCases[0])
+  const prefersReducedMotion = useReducedMotion()
 
   return (
-    <section className="py-24 bg-white">
+    <section className="bg-white" style={{ paddingTop: 'var(--spacing-xl)', paddingBottom: 'var(--spacing-xl)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -101,54 +102,50 @@ export function UseCases() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Use Case Selector */}
-          <div className="space-y-4">
-            {useCases.map((useCase) => {
-              const Icon = useCase.icon
-              const isActive = activeCase.id === useCase.id
-              
-              return (
-                <motion.button
-                  key={useCase.id}
-                  onClick={() => setActiveCase(useCase)}
-                  className={`w-full text-left p-6 rounded-2xl border-2 transition-all duration-300 ${
-                    isActive
-                      ? 'border-blue-200 bg-blue-50 shadow-lg'
-                      : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-md'
-                  }`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${useCase.color} p-3 ${
-                      isActive ? 'scale-110' : ''
-                    } transition-transform duration-300`}>
-                      <Icon className="w-full h-full text-white" />
+        {/* Horizontal Navigation Pills */}
+        <div className="mb-12">
+          <div className="overflow-x-auto scrollbar-hide snap-x snap-mandatory">
+            <div className="flex gap-3 pb-4 min-w-max lg:justify-center px-4 sm:px-6 lg:px-8">
+              {useCases.map((useCase) => {
+                const Icon = useCase.icon
+                const isActive = activeCase.id === useCase.id
+                
+                return (
+                  <motion.button
+                    key={useCase.id}
+                    onClick={() => setActiveCase(useCase)}
+                    className={`snap-center flex items-center gap-3 px-6 py-4 rounded-full border-2 transition-all duration-300 whitespace-nowrap ${
+                      isActive
+                        ? 'border-transparent bg-gradient-to-r shadow-lg scale-105'
+                        : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-md active:scale-95'
+                    }`}
+                    style={isActive ? { backgroundImage: `linear-gradient(to right, ${useCase.color.split(' ')[0].replace('from-', '')}, ${useCase.color.split(' ')[1].replace('to-', '')})` } : {}}
+                    whileHover={!isActive ? { scale: 1.02 } : {}}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${isActive ? 'bg-white/20' : useCase.color} p-2 transition-all duration-300`}>
+                      <Icon className={`w-full h-full ${isActive ? 'text-white' : 'text-white'}`} />
                     </div>
-                    <div className="flex-1">
-                      <h3 className={`text-xl font-bold mb-1 ${
-                        isActive ? 'text-blue-900' : 'text-slate-900'
-                      }`}>
-                        {useCase.title}
-                      </h3>
-                      <p className={`text-sm ${
-                        isActive ? 'text-blue-700' : 'text-slate-600'
-                      }`}>
-                        {useCase.subtitle}
-                      </p>
-                    </div>
-                    <ChevronRight className={`w-5 h-5 transition-all duration-300 ${
-                      isActive ? 'text-blue-600 rotate-90' : 'text-slate-400'
-                    }`} />
-                  </div>
-                </motion.button>
-              )
-            })}
+                    <span className={`font-semibold ${
+                      isActive ? 'text-white' : 'text-slate-900'
+                    }`}>
+                      {useCase.title}
+                    </span>
+                  </motion.button>
+                )
+              })}
+            </div>
           </div>
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Scenarios Display */}
-          <div className="bg-slate-50 rounded-2xl p-8">
+          <div className="relative bg-gradient-to-br from-slate-50 to-white rounded-3xl p-6 md:p-8 border-2 border-slate-100 shadow-lg">
+            {/* Subtle background illustration */}
+            <div className="absolute top-0 right-0 w-48 h-48 opacity-5 pointer-events-none">
+              <div className={`w-full h-full rounded-full bg-gradient-to-br ${activeCase.color} blur-3xl`} />
+            </div>
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeCase.id}
@@ -173,9 +170,11 @@ export function UseCases() {
                       key={scenario.title}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="bg-white rounded-xl p-6 shadow-sm border border-slate-200"
+                      transition={prefersReducedMotion ? { duration: 0 } : { delay: index * 0.1, duration: 0.3 }}
+                      className="relative bg-white rounded-xl p-5 md:p-6 shadow-sm border-2 border-slate-200 hover:border-slate-300 hover:shadow-md transition-all duration-300 cursor-pointer group overflow-hidden"
                     >
+                      {/* Hover background */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${activeCase.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
                       <h4 className="font-semibold text-slate-900 mb-3">{scenario.title}</h4>
                       
                       <div className="space-y-4">

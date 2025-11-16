@@ -1,28 +1,33 @@
 "use client"
 
 import { useState, useCallback, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import { Button } from "@/app/components/ui/button"
 import { Send, Zap, BarChart3, Users, CheckCircle, Sparkles, LogOut, Heart } from "lucide-react"
 
-// Simple step indicator - no complex animations
-function StepAnimation({ step, isActive, workflowType }: { step: any, isActive: boolean, workflowType: string }) {
-  if (!isActive) return null
-
+function Shimmer() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="bg-blue-50 border-2 border-blue-200 rounded-lg p-3 shadow-lg w-full h-full flex items-center justify-center"
-    >
-      <div className="text-center">
-        <div className="text-3xl mb-2">{step.icon}</div>
-        <div className="text-sm font-bold text-blue-700">{step.label}</div>
-        <div className="text-xs text-blue-600">{step.description}</div>
-      </div>
-    </motion.div>
+    <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+  )
+}
+
+function SkeletonLine({ width = "100%" }: { width?: string }) {
+  return (
+    <div className="relative overflow-hidden rounded bg-slate-200 h-4" style={{ width }}>
+      <Shimmer />
+    </div>
+  )
+}
+
+function WorkspaceGrid() {
+  return (
+    <div className="absolute inset-0 opacity-[0.03]" style={{
+      backgroundImage: `
+        linear-gradient(to right, rgb(148, 163, 184) 1px, transparent 1px),
+        linear-gradient(to bottom, rgb(148, 163, 184) 1px, transparent 1px)
+      `,
+      backgroundSize: '24px 24px'
+    }} />
   )
 }
 
@@ -141,8 +146,12 @@ export function Demo() {
 
   // Remove auto-start - only start when user clicks
 
+  const prefersReducedMotion = useReducedMotion()
+
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
+    <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white" style={{ paddingTop: 'var(--spacing-xl)', paddingBottom: 'var(--spacing-xl)' }}>
+      <WorkspaceGrid />
+      
       {/* Celebration Animation */}
       <AnimatePresence>
         {showCelebration && (
@@ -224,7 +233,7 @@ export function Demo() {
                   </div>
                   <div className="flex-1">
                     <p className="text-sm text-slate-600 mb-2">PeopleCore AI</p>
-                    <div className="bg-slate-50 rounded-lg p-3">
+                    <div className="relative overflow-hidden bg-slate-50 rounded-lg p-3 border border-slate-100">
                       <p className="text-slate-800">Kia ora! I'm PeopleCore AI. Ask me anything about NZ employment law, leave calculations, or compliance—I'll handle it automatically.</p>
                     </div>
                   </div>
@@ -300,7 +309,7 @@ export function Demo() {
                   />
                   <Button 
                     onClick={handleCustomInput}
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-6"
+                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 active:scale-95 transition-transform px-6"
                   >
                     <Send className="w-4 h-4" />
                   </Button>
@@ -315,7 +324,7 @@ export function Demo() {
                     <button
                       key={prompt.id}
                       onClick={() => handlePromptSelect(prompt)}
-                      className="flex items-center gap-3 p-3 text-left bg-white border border-slate-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-all duration-200 group"
+                      className="flex items-center gap-3 p-3 text-left bg-white border border-slate-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 active:scale-[0.98] transition-all duration-200 group"
                     >
                       <prompt.icon className="w-5 h-5 text-slate-400 group-hover:text-blue-500 flex-shrink-0" />
                       <span className="text-sm text-slate-600 group-hover:text-slate-800 line-clamp-2">
