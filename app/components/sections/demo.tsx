@@ -190,6 +190,16 @@ export function Demo() {
 
   const prefersReducedMotion = useReducedMotion()
 
+  useEffect(() => {
+    if (showCelebration && !prefersReducedMotion) {
+      const timeout = setTimeout(() => setShowCelebration(false), 1800)
+      return () => clearTimeout(timeout)
+    }
+    if (showCelebration && prefersReducedMotion) {
+      setShowCelebration(false)
+    }
+  }, [showCelebration, prefersReducedMotion])
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white" style={{ paddingTop: 'var(--spacing-xl)', paddingBottom: 'var(--spacing-xl)' }}>
       <WorkspaceGrid />
@@ -198,31 +208,40 @@ export function Demo() {
       <AnimatePresence>
         {showCelebration && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="pointer-events-none fixed inset-0 z-40"
           >
+            <div className="absolute inset-0 overflow-hidden">
+              {[...Array(28)].map((_, index) => {
+                const delay = index * 0.03
+                const left = Math.random() * 100
+                const size = 6 + Math.random() * 10
+                const colors = ["#f97316", "#3b82f6", "#a855f7", "#10b981", "#facc15"]
+                const color = colors[index % colors.length]
+                return (
+                  <motion.span
+                    key={index}
+                    className="absolute block rounded-full"
+                    style={{ width: size, height: size, left: `${left}%`, top: "50%", backgroundColor: color }}
+                    initial={{ y: 0, opacity: 1, scale: 0.8 }}
+                    animate={{ y: prefersReducedMotion ? 0 : -200 - Math.random() * 120, opacity: 0, rotate: 180 }}
+                    transition={{ duration: 1 + Math.random() * 0.4, delay }}
+                  />
+                )
+              })}
+            </div>
             <motion.div
-              initial={{ y: 50 }}
-              animate={{ y: 0 }}
-              className="bg-white rounded-2xl p-8 shadow-2xl text-center max-w-md mx-4"
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+              className="absolute inset-0 flex items-center justify-center"
             >
-              <motion.div
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 0.5, repeat: 3 }}
-                className="text-6xl mb-4"
-              >
-                🎉
-              </motion.div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">Workflow Complete!</h3>
-              <p className="text-slate-600 mb-4">PeopleCore has successfully automated your HR process.</p>
-              <Button 
-                onClick={() => setShowCelebration(false)}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-              >
-                Amazing! ✨
-              </Button>
+              <span className="text-white text-xl md:text-2xl font-semibold bg-slate-900/70 px-6 py-3 rounded-full shadow-lg">
+                Workflow complete — PeopleCore handled it.
+              </span>
             </motion.div>
           </motion.div>
         )}

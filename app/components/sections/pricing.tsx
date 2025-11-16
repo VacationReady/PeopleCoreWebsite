@@ -108,7 +108,7 @@ export function Pricing() {
               >
                 {/* Popular badge */}
                 {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
                     <div className={`bg-gradient-to-r ${plan.badge.color} text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2`}>
                       {plan.badge.text}
                     </div>
