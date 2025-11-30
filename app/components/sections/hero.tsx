@@ -6,34 +6,11 @@ import { motion } from "framer-motion"
 import { ArrowUpRight, Mail, Play, ChevronDown } from "lucide-react"
 import { WaitlistModal } from "./waitlist-modal"
 
-// Company logos for trust bar
-const trustedLogos = [
-  { name: "WHITEBRIDGE", style: "font-bold tracking-wider" },
-  { name: "ABSOLUTEWORKS", style: "font-medium tracking-wide" },
-  { name: "SureHR", style: "font-serif italic" },
-  { name: "HR@force", style: "font-medium" },
-]
-
 // Navigation items
 const navItems = [
   { 
-    label: "Presence", 
-    href: "#presence",
-    hasDropdown: true 
-  },
-  { 
-    label: "Automate", 
-    href: "#automate",
-    hasDropdown: true 
-  },
-  { 
-    label: "HR", 
-    href: "#hr",
-    hasDropdown: true 
-  },
-  { 
-    label: "How we do it", 
-    href: "#how",
+    label: "Product", 
+    href: "#product",
     hasDropdown: true 
   },
   { 
@@ -86,20 +63,6 @@ function Navigation() {
   )
 }
 
-function TrustBar() {
-  return (
-    <div className="flex items-center gap-8 mt-10">
-      {trustedLogos.map((logo, i) => (
-        <span 
-          key={i} 
-          className={`text-gray-300 text-sm ${logo.style}`}
-        >
-          {logo.name}
-        </span>
-      ))}
-    </div>
-  )
-}
 
 function DemoEmailSection() {
   const [email, setEmail] = useState("")
@@ -241,9 +204,6 @@ export function Hero() {
                 Book a demo
                 <ArrowUpRight className="w-5 h-5" />
               </a>
-              
-              {/* Trust logos */}
-              <TrustBar />
               
               {/* Demo email section */}
               <DemoEmailSection />

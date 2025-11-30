@@ -21,9 +21,6 @@ const navLinks = [
       { label: "AI Copilot", href: "/ai-copilot", description: "Your HR assistant" },
     ]
   },
-  { label: "Use Cases", href: "#use-cases" },
-  { label: "Compliance", href: "#compliance" },
-  { label: "Resources", href: "#resources" },
   { label: "Pricing", href: "/pricing" },
 ]
 
