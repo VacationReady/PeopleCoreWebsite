@@ -1,17 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { motion, useReducedMotion } from "framer-motion"
-import { LucideIcon, ArrowRight, CheckCircle, Sparkles, Play } from "lucide-react"
-import { Button } from "@/app/components/ui/button"
-import { Card, CardContent } from "@/app/components/ui/card"
-import { Badge } from "@/app/components/ui/badge"
-import { ImagePlaceholder } from "@/app/components/ui/image-placeholder"
-import { SectionContainer } from "@/app/components/layout/section-container"
-import { PageHeader } from "@/app/components/layout/page-header"
-import { Footer } from "@/app/components/sections/footer"
+import { motion } from "framer-motion"
+import { LucideIcon, ArrowUpRight, Check } from "lucide-react"
+import Link from "next/link"
+import { Footer } from "./footer"
 
-// Types
 interface FeatureHighlight {
   icon: LucideIcon
   title: string
@@ -22,8 +16,7 @@ interface FeatureDetail {
   title: string
   description: string
   benefits: string[]
-  placeholderId: string
-  imagePosition?: "left" | "right"
+  color: string
 }
 
 interface HowItWorksStep {
@@ -33,280 +26,42 @@ interface HowItWorksStep {
 }
 
 interface FeaturePageProps {
-  // Header
   icon: LucideIcon
-  iconGradient?: string
-  headerGradient?: string
-  badge?: string
+  accentColor: string
+  badge: string
   title: string
   description: string
-  
-  // Main content
   highlights: FeatureHighlight[]
   featureDetails: FeatureDetail[]
   howItWorks: HowItWorksStep[]
-  
-  // CTA
   ctaTitle: string
   ctaDescription: string
-  
-  // Customization
-  accentColor?: string
 }
 
-function FeatureHighlights({ 
-  highlights, 
-  accentColor = "from-blue-500 to-purple-600" 
-}: { 
-  highlights: FeatureHighlight[]
-  accentColor?: string 
-}) {
-  const prefersReducedMotion = useReducedMotion()
-  
+function FeatureNav() {
   return (
-    <SectionContainer background="default" padding="default">
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {highlights.map((highlight, index) => {
-          const Icon = highlight.icon
-          return (
-            <motion.div
-              key={highlight.title}
-              initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-            >
-              <Card variant="feature" padding="lg" className="h-full">
-                {/* Gradient border effect on hover */}
-                <div className={`absolute inset-0 rounded-xl bg-gradient-to-br ${accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10`} style={{ padding: '2px' }}>
-                  <div className="absolute inset-[2px] bg-white rounded-xl" />
-                </div>
-                
-                <CardContent className="space-y-4">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${accentColor} p-2.5 group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon className="w-full h-full text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-slate-900">
-                    {highlight.title}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed">
-                    {highlight.description}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          )
-        })}
-      </div>
-    </SectionContainer>
-  )
-}
-
-function FeatureDetailSection({
-  detail,
-  index,
-  accentColor = "from-blue-500 to-purple-600"
-}: {
-  detail: FeatureDetail
-  index: number
-  accentColor?: string
-}) {
-  const prefersReducedMotion = useReducedMotion()
-  const isReversed = detail.imagePosition === "left" || (index % 2 === 1 && !detail.imagePosition)
-  
-  return (
-    <SectionContainer 
-      background={index % 2 === 0 ? "default" : "subtle"} 
-      padding="default"
-    >
-      <div className={`grid lg:grid-cols-2 gap-12 items-center ${isReversed ? "lg:flex-row-reverse" : ""}`}>
-        {/* Content */}
-        <motion.div
-          initial={prefersReducedMotion ? {} : { opacity: 0, x: isReversed ? 20 : -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className={`space-y-6 ${isReversed ? "lg:order-2" : ""}`}
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
+      <div className="container-tight flex items-center justify-between h-16">
+        <Link href="/" className="text-2xl font-bold tracking-tight text-foreground">
+          peoplecore
+        </Link>
+        <a
+          href="https://calendly.com/peoplecore-nz/demo"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-colors"
         >
-          <Badge variant="secondary" className="mb-2">
-            Feature {index + 1}
-          </Badge>
-          <h3 className="text-3xl font-bold text-slate-900">
-            {detail.title}
-          </h3>
-          <p className="text-lg text-slate-600 leading-relaxed">
-            {detail.description}
-          </p>
-          
-          <ul className="space-y-3">
-            {detail.benefits.map((benefit, i) => (
-              <motion.li
-                key={benefit}
-                initial={prefersReducedMotion ? {} : { opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-3"
-              >
-                <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${accentColor} flex items-center justify-center flex-shrink-0 mt-0.5`}>
-                  <CheckCircle className="w-3 h-3 text-white" />
-                </div>
-                <span className="text-slate-700">{benefit}</span>
-              </motion.li>
-            ))}
-          </ul>
-        </motion.div>
-        
-        {/* Image Placeholder */}
-        <motion.div
-          initial={prefersReducedMotion ? {} : { opacity: 0, x: isReversed ? -20 : 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className={isReversed ? "lg:order-1" : ""}
-        >
-          <ImagePlaceholder
-            placeholderId={detail.placeholderId}
-            label={detail.title}
-            description="Upload feature screenshot"
-            aspectRatio="4/3"
-            deviceFrame="browser"
-            variant="gradient"
-          />
-        </motion.div>
+          Book a demo
+          <ArrowUpRight className="w-4 h-4" />
+        </a>
       </div>
-    </SectionContainer>
-  )
-}
-
-function HowItWorksSection({
-  steps,
-  accentColor = "from-blue-500 to-purple-600"
-}: {
-  steps: HowItWorksStep[]
-  accentColor?: string
-}) {
-  const prefersReducedMotion = useReducedMotion()
-  
-  return (
-    <SectionContainer background="subtle" padding="lg">
-      <div className="text-center mb-12">
-        <Badge variant="secondary" className="mb-4">
-          How It Works
-        </Badge>
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-          Simple, Powerful, Automated
-        </h2>
-        <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-          Get started in minutes with our intuitive workflow
-        </p>
-      </div>
-      
-      <div className="relative">
-        {/* Connection Line */}
-        <div className="hidden md:block absolute top-16 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
-        
-        <div className="grid md:grid-cols-4 gap-8">
-          {steps.map((step, index) => (
-            <motion.div
-              key={step.step}
-              initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.15 }}
-              className="text-center relative"
-            >
-              <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${accentColor} flex items-center justify-center shadow-lg relative z-10`}>
-                <span className="text-2xl font-bold text-white">{step.step}</span>
-              </div>
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">
-                {step.title}
-              </h3>
-              <p className="text-sm text-slate-600">
-                {step.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </SectionContainer>
-  )
-}
-
-function FeatureCTA({
-  title,
-  description,
-  accentColor = "from-blue-600 to-purple-600"
-}: {
-  title: string
-  description: string
-  accentColor?: string
-}) {
-  return (
-    <SectionContainer padding="lg">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className={`relative overflow-hidden rounded-3xl bg-gradient-to-r ${accentColor} p-8 md:p-12 lg:p-16`}
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:40px_40px]" />
-        </div>
-        
-        {/* Decorative Elements */}
-        <div className="absolute -top-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-        
-        <div className="relative z-10 text-center max-w-3xl mx-auto">
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <Sparkles className="w-6 h-6 text-white/80" />
-            <span className="text-white/80 font-medium">Ready to Transform?</span>
-          </div>
-          
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-            {title}
-          </h2>
-          <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
-            {description}
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="xl" 
-              className="bg-white text-slate-900 hover:bg-white/90 shadow-xl"
-              asChild
-            >
-              <a
-                href="https://calendly.com/peoplecore-nz/demo"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Book a Demo
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </a>
-            </Button>
-            <Button 
-              variant="outline" 
-              size="xl"
-              className="border-white/30 text-white hover:bg-white/10"
-            >
-              <Play className="w-4 h-4 mr-2" />
-              Watch Video
-            </Button>
-          </div>
-        </div>
-      </motion.div>
-    </SectionContainer>
+    </nav>
   )
 }
 
 export function FeaturePageTemplate({
-  icon,
-  iconGradient = "from-white/20 to-white/10",
-  headerGradient = "from-blue-600 to-purple-600",
+  icon: Icon,
+  accentColor,
   badge,
   title,
   description,
@@ -315,54 +70,196 @@ export function FeaturePageTemplate({
   howItWorks,
   ctaTitle,
   ctaDescription,
-  accentColor = "from-blue-500 to-purple-600"
 }: FeaturePageProps) {
   return (
-    <main className="min-h-screen">
-      {/* Hero Header */}
-      <PageHeader
-        icon={icon}
-        iconGradient={iconGradient}
-        title={title}
-        description={description}
-        badge={badge}
-        background="custom"
-        customBackground={`bg-gradient-to-r ${headerGradient}`}
-        ctaLabel="Get Started"
-        ctaHref="https://calendly.com/peoplecore-nz/demo"
-        secondaryCtaLabel="Learn More"
-        size="lg"
-      />
-      
-      {/* Feature Highlights */}
-      <FeatureHighlights highlights={highlights} accentColor={accentColor} />
-      
+    <main className="min-h-screen bg-white">
+      <FeatureNav />
+
+      {/* Hero */}
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24">
+        <div className="container-tight text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-sm font-medium text-gray-600 mb-8"
+          >
+            <Icon className="w-4 h-4" />
+            {badge}
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6"
+          >
+            <span style={{ color: accentColor }}>{title}</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mb-10"
+          >
+            {description}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <a
+              href="https://calendly.com/peoplecore-nz/demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-foreground text-white rounded-full font-medium text-lg hover:bg-gray-800 transition-colors"
+            >
+              See it in action
+              <ArrowUpRight className="w-5 h-5" />
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Highlights */}
+      <section className="section-padding bg-gray-50">
+        <div className="container-tight">
+          <div className="grid md:grid-cols-3 gap-6">
+            {highlights.map((highlight, index) => {
+              const HighlightIcon = highlight.icon
+              return (
+                <motion.div
+                  key={highlight.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-white rounded-3xl p-8"
+                >
+                  <div
+                    className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6"
+                    style={{ backgroundColor: `${accentColor}15` }}
+                  >
+                    <HighlightIcon className="w-6 h-6" style={{ color: accentColor }} />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-3">{highlight.title}</h3>
+                  <p className="text-gray-500 leading-relaxed">{highlight.description}</p>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Feature Details */}
       {featureDetails.map((detail, index) => (
-        <FeatureDetailSection
+        <section
           key={detail.title}
-          detail={detail}
-          index={index}
-          accentColor={accentColor}
-        />
+          className="section-padding"
+          style={{ backgroundColor: index % 2 === 0 ? '#ffffff' : detail.color }}
+        >
+          <div className="container-tight">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl mx-auto"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">
+                {detail.title}
+              </h2>
+              <p className="text-lg text-gray-500 mb-8">{detail.description}</p>
+
+              <div className="space-y-4">
+                {detail.benefits.map((benefit) => (
+                  <div key={benefit} className="flex items-start gap-3">
+                    <div
+                      className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                      style={{ backgroundColor: accentColor }}
+                    >
+                      <Check className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-foreground">{benefit}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
       ))}
-      
+
       {/* How It Works */}
-      <HowItWorksSection steps={howItWorks} accentColor={accentColor} />
-      
-      {/* CTA Section */}
-      <FeatureCTA
-        title={ctaTitle}
-        description={ctaDescription}
-        accentColor={accentColor}
-      />
-      
-      {/* Footer */}
+      <section className="section-padding bg-gray-50">
+        <div className="container-tight">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              How it works
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            {howItWorks.map((step, index) => (
+              <motion.div
+                key={step.step}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4"
+                  style={{ backgroundColor: accentColor }}
+                >
+                  {step.step}
+                </div>
+                <h3 className="font-bold text-foreground mb-2">{step.title}</h3>
+                <p className="text-gray-500 text-sm">{step.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section-padding bg-foreground">
+        <div className="container-tight text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6">
+              {ctaTitle}
+            </h2>
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-10">
+              {ctaDescription}
+            </p>
+            <a
+              href="https://calendly.com/peoplecore-nz/demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-foreground rounded-full font-medium text-lg hover:bg-gray-100 transition-colors"
+            >
+              Book a demo
+              <ArrowUpRight className="w-5 h-5" />
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   )
 }
-
-// Re-export individual components for custom compositions
-export { FeatureHighlights, FeatureDetailSection, HowItWorksSection, FeatureCTA }
-
