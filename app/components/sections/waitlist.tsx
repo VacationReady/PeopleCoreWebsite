@@ -44,14 +44,19 @@ export function Waitlist() {
           className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
         />
         
-        {/* Floating particles */}
-        {[...Array(12)].map((_, i) => (
+        {/* Floating particles - fixed positions to avoid hydration mismatch */}
+        {[
+          { left: 10, top: 20 }, { left: 25, top: 60 }, { left: 40, top: 15 },
+          { left: 55, top: 75 }, { left: 70, top: 30 }, { left: 85, top: 50 },
+          { left: 15, top: 80 }, { left: 35, top: 45 }, { left: 60, top: 85 },
+          { left: 75, top: 10 }, { left: 90, top: 65 }, { left: 5, top: 40 }
+        ].map((pos, i) => (
           <motion.div
             key={i}
             className="absolute w-2 h-2 bg-white/20 rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${pos.left}%`,
+              top: `${pos.top}%`,
             }}
             animate={{
               y: [-20, -40, -20],
@@ -59,7 +64,7 @@ export function Waitlist() {
               scale: [0.5, 1, 0.5],
             }}
             transition={{
-              duration: 4 + Math.random() * 2,
+              duration: 4 + (i % 3),
               delay: i * 0.5,
               repeat: Infinity,
               ease: "easeInOut"

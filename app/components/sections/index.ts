@@ -1,10 +1,17 @@
-export { Hero } from './hero'
-export { Demo } from './demo'
-export { NotAllAI } from './not-all-ai'
-export { ValueProps } from './value-props'
-export { Features } from './features'
-export { UseCases } from './use-cases'
-export { Pricing } from './pricing'
-export { Waitlist } from './waitlist'
-export { WaitlistModal } from './waitlist-modal'
-export { Footer } from './footer'
+// Main Landing Page Sections
+export * from "./hero"
+export * from "./demo"
+export * from "./value-props"
+export * from "./features"
+export * from "./dashboard-showcase"
+export * from "./use-cases"
+export * from "./testimonials"
+export * from "./compliance"
+export * from "./pricing"
+export * from "./waitlist"
+export * from "./waitlist-modal"
+export * from "./footer"
+export * from "./not-all-ai"
+
+// Feature Page Components
+export * from "./feature-page-template"
