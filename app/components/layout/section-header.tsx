@@ -6,7 +6,7 @@ import { motion, useReducedMotion } from "framer-motion"
 import { Badge } from "@/app/components/ui/badge"
 import { LucideIcon } from "lucide-react"
 
-interface SectionHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SectionHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   /** Badge text shown above the title */
   badge?: string
   /** Badge icon */

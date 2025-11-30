@@ -44,7 +44,7 @@ const sectionContainerVariants = cva(
 )
 
 interface SectionContainerProps
-  extends React.HTMLAttributes<HTMLElement>,
+  extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof sectionContainerVariants> {
   as?: "section" | "div" | "article" | "aside"
   /** Show a decorative background pattern */
@@ -53,52 +53,47 @@ interface SectionContainerProps
   blobs?: boolean
 }
 
-const SectionContainer = React.forwardRef<HTMLElement, SectionContainerProps>(
-  ({ 
-    className, 
-    background, 
-    padding, 
-    container,
-    as: Component = "section",
-    pattern = "none",
-    blobs = false,
-    children,
-    ...props 
-  }, ref) => {
-    return (
-      <Component
-        ref={ref as React.Ref<HTMLElement>}
-        className={cn(sectionContainerVariants({ background, padding, container }), className)}
-        {...props}
-      >
-        {/* Background Pattern */}
-        {pattern !== "none" && (
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div className={cn(
-              "absolute inset-0",
-              pattern === "dots" && "bg-dots",
-              pattern === "grid" && "bg-grid"
-            )} />
-          </div>
-        )}
-        
-        {/* Decorative Blobs */}
-        {blobs && (
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-primary/10 rounded-full blur-3xl animate-blob" />
-            <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-accent/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
-          </div>
-        )}
-        
-        {/* Content */}
-        <div className="section-content relative z-10">
-          {children}
+function SectionContainer({ 
+  className, 
+  background, 
+  padding, 
+  container,
+  as: Component = "section",
+  pattern = "none",
+  blobs = false,
+  children,
+  ...props 
+}: SectionContainerProps) {
+  return (
+    <Component
+      className={cn(sectionContainerVariants({ background, padding, container }), className)}
+      {...props}
+    >
+      {/* Background Pattern */}
+      {pattern !== "none" && (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className={cn(
+            "absolute inset-0",
+            pattern === "dots" && "bg-dots",
+            pattern === "grid" && "bg-grid"
+          )} />
         </div>
-      </Component>
-    )
-  }
-)
-SectionContainer.displayName = "SectionContainer"
+      )}
+      
+      {/* Decorative Blobs */}
+      {blobs && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-primary/10 rounded-full blur-3xl animate-blob" />
+          <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-accent/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
+        </div>
+      )}
+      
+      {/* Content */}
+      <div className="section-content relative z-10">
+        {children}
+      </div>
+    </Component>
+  )
+}
 
 export { SectionContainer, sectionContainerVariants }
-
