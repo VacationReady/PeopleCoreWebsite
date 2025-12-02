@@ -4,66 +4,10 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowUpRight, Mail, Play, ChevronDown } from "lucide-react"
+import { ArrowUpRight, Mail, Play } from "lucide-react"
 import { WaitlistModal } from "./waitlist-modal"
 import { useCalendly } from "./calendly-modal"
-
-// Navigation items
-const navItems = [
-  { 
-    label: "Product", 
-    href: "#product",
-    hasDropdown: true 
-  },
-  { 
-    label: "Pricing", 
-    href: "/pricing",
-    hasDropdown: false 
-  },
-]
-
-function Navigation() {
-  const { openCalendly } = useCalendly()
-  
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
-        {/* Logo */}
-        <Link href="/" className="text-2xl font-bold tracking-tight text-gray-900" style={{ fontFamily: 'system-ui' }}>
-          peoplecore
-        </Link>
-        
-        {/* Nav Links */}
-        <div className="hidden md:flex items-center gap-1">
-          {navItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors rounded-lg hover:bg-gray-50"
-            >
-              {item.label}
-              {item.hasDropdown && <ChevronDown className="w-4 h-4 opacity-50" />}
-            </Link>
-          ))}
-        </div>
-        
-        {/* Right Actions */}
-        <div className="flex items-center gap-3">
-          <button className="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-full hover:bg-gray-800 transition-colors">
-            <Play className="w-4 h-4" />
-            Watch video
-          </button>
-          <button
-            onClick={openCalendly}
-            className="px-4 py-2 text-sm font-medium text-white bg-primary rounded-full hover:bg-primary/90 transition-colors"
-          >
-            Book Demo
-          </button>
-        </div>
-      </div>
-    </nav>
-  )
-}
+import { SiteNav } from "@/app/components/navigation/site-nav"
 
 
 function DemoEmailSection() {
@@ -366,7 +310,7 @@ export function Hero() {
 
   return (
     <section className="relative bg-white min-h-screen">
-      <Navigation />
+      <SiteNav />
       
       {/* Hero Content */}
       <div className="pt-28 pb-16 md:pt-32">
