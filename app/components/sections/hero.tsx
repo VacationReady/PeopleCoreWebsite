@@ -1,8 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import Image from "next/image"
+import { motion, AnimatePresence } from "framer-motion"
 import { ArrowUpRight, Mail, Play, ChevronDown } from "lucide-react"
 import { WaitlistModal } from "./waitlist-modal"
 import { useCalendly } from "./calendly-modal"
@@ -110,56 +111,139 @@ function DemoEmailSection() {
   )
 }
 
-function DashboardCard() {
+// Screenshot showcase configuration
+// Add your screenshots to /public/screenshots/ and list them here
+const screenshots = [
+  { src: "/screenshots/dashboard.png", alt: "PeopleCore Dashboard" },
+  { src: "/screenshots/document-signing.png", alt: "Document Signing Process" },
+  { src: "/screenshots/leave-approval.png", alt: "Leave Approval Workflow" },
+  { src: "/screenshots/reporting.png", alt: "HR Reporting & Analytics" },
+]
+
+// Ken Burns animation variants - subtle zoom with slight pan
+const kenBurnsVariants = {
+  enter: {
+    opacity: 0,
+    scale: 1.0,
+    x: 0,
+    y: 0,
+  },
+  center: {
+    opacity: 1,
+    scale: 1.08,
+    x: 10,
+    y: -5,
+    transition: {
+      opacity: { duration: 0.8, ease: "easeOut" },
+      scale: { duration: 5, ease: "linear" },
+      x: { duration: 5, ease: "linear" },
+      y: { duration: 5, ease: "linear" },
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 1.08,
+    transition: {
+      opacity: { duration: 0.8, ease: "easeIn" },
+    },
+  },
+}
+
+function ScreenshotShowcase() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const [imageErrors, setImageErrors] = useState<Set<number>>(new Set())
+
+  // Auto-advance slides every 5 seconds
+  useEffect(() => {
+    if (isPaused) return
+    
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % screenshots.length)
+    }, 5000)
+
+    return () => clearInterval(timer)
+  }, [isPaused])
+
+  const handleImageError = (index: number) => {
+    setImageErrors((prev) => new Set(prev).add(index))
+  }
+
+  const hasError = imageErrors.has(currentIndex)
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 40 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 0.3 }}
       className="relative"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Main yellow card */}
-      <div className="bg-[#f5d08a] rounded-[2.5rem] p-8 min-h-[520px] relative overflow-hidden">
-        {/* Header label */}
-        <div className="mb-8">
-          <span className="text-[#c4a056] text-xl font-medium">Next Work</span>
-          <span className="text-[#d4b36a] text-xl font-light ml-2">Shift</span>
-        </div>
+      {/* Screenshot container with rounded corners and shadow */}
+      <div className="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-gray-900/10 bg-gradient-to-br from-gray-100 to-gray-200 min-h-[520px]">
+        {/* Subtle gradient overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-white/10 z-10 pointer-events-none" />
         
-        {/* Dashboard preview content */}
-        <div className="space-y-4">
-          {/* Stats cards */}
-          <div className="grid grid-cols-2 gap-3">
-            <div className="bg-white/40 backdrop-blur rounded-xl p-4">
-              <div className="text-xs text-[#a08040] mb-1">Active Team</div>
-              <div className="text-2xl font-bold text-[#6b5020]">24</div>
-            </div>
-            <div className="bg-white/40 backdrop-blur rounded-xl p-4">
-              <div className="text-xs text-[#a08040] mb-1">On Leave</div>
-              <div className="text-2xl font-bold text-[#6b5020]">3</div>
-            </div>
-          </div>
-          
-          {/* Schedule preview */}
-          <div className="bg-white/30 backdrop-blur rounded-xl p-4">
-            <div className="text-xs text-[#a08040] mb-3">Today's Schedule</div>
-            <div className="space-y-2">
-              {["Sarah M. — 9:00 AM", "James K. — 10:30 AM", "Lisa T. — 2:00 PM"].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 text-sm text-[#6b5020]">
-                  <div className="w-2 h-2 rounded-full bg-[#a08040]" />
-                  {item}
+        {/* Animated screenshots with Ken Burns effect */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            variants={kenBurnsVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            className="absolute inset-0"
+          >
+            {hasError ? (
+              /* Placeholder when image is not found */
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-primary/10 via-primary/5 to-gray-100 p-8">
+                <div className="w-20 h-20 rounded-2xl bg-primary/20 flex items-center justify-center mb-4">
+                  <svg className="w-10 h-10 text-primary/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
                 </div>
-              ))}
-            </div>
-          </div>
-          
-          {/* Quick action */}
-          <div className="bg-white/50 backdrop-blur rounded-xl p-4 flex items-center justify-between">
-            <span className="text-sm font-medium text-[#6b5020]">View full roster</span>
-            <ArrowUpRight className="w-4 h-4 text-[#a08040]" />
-          </div>
+                <p className="text-gray-600 font-medium text-center">{screenshots[currentIndex].alt}</p>
+                <p className="text-gray-400 text-sm mt-2 text-center max-w-xs">
+                  Add your screenshot to<br />
+                  <code className="text-xs bg-gray-200 px-2 py-1 rounded mt-1 inline-block">
+                    public{screenshots[currentIndex].src}
+                  </code>
+                </p>
+              </div>
+            ) : (
+              <Image
+                src={screenshots[currentIndex].src}
+                alt={screenshots[currentIndex].alt}
+                fill
+                className="object-cover object-center"
+                priority={currentIndex === 0}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                onError={() => handleImageError(currentIndex)}
+              />
+            )}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Navigation dots */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+          {screenshots.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                index === currentIndex
+                  ? "bg-white w-6 shadow-lg"
+                  : "bg-white/50 hover:bg-white/75"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
+
+      {/* Decorative blur element behind */}
+      <div className="absolute -z-10 top-8 left-8 right-8 bottom-8 bg-primary/20 rounded-[2rem] blur-2xl" />
     </motion.div>
   )
 }
@@ -209,9 +293,9 @@ export function Hero() {
               <DemoEmailSection />
             </motion.div>
             
-            {/* Right Column - Dashboard Card */}
+            {/* Right Column - Screenshot Showcase */}
             <div className="hidden lg:block">
-              <DashboardCard />
+              <ScreenshotShowcase />
             </div>
           </div>
         </div>
