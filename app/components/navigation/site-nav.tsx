@@ -8,6 +8,7 @@ import { ArrowRight, Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/app/components/ui/button"
 import { cn } from "@/lib/utils"
 import { useCalendly } from "@/app/components/sections/calendly-modal"
+import { useFreeTrial } from "@/app/components/sections/free-trial-modal"
 
 const navLinks = [
   { 
@@ -100,6 +101,7 @@ function MobileMenu({
 }) {
   const pathname = usePathname()
   const { openCalendly } = useCalendly()
+  const { openFreeTrial } = useFreeTrial()
   
   // Close menu when route changes
   useEffect(() => {
@@ -121,6 +123,11 @@ function MobileMenu({
   const handleBookDemo = () => {
     onClose()
     openCalendly()
+  }
+  
+  const handleFreeTrial = () => {
+    onClose()
+    openFreeTrial()
   }
   
   return (
@@ -187,7 +194,16 @@ function MobileMenu({
             </nav>
             
             {/* CTA Section */}
-            <div className="p-4 mt-auto border-t border-slate-200">
+            <div className="p-4 mt-auto border-t border-slate-200 space-y-3">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="w-full border-emerald-500 text-emerald-600 hover:bg-emerald-50"
+                onClick={handleFreeTrial}
+              >
+                Try Free
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
               <Button 
                 variant="gradient" 
                 size="lg" 
@@ -270,6 +286,7 @@ export function SiteNav() {
   const prefersReducedMotion = useReducedMotion()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { openCalendly } = useCalendly()
+  const { openFreeTrial } = useFreeTrial()
 
   const linkClass = "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
 
@@ -319,7 +336,16 @@ export function SiteNav() {
 
             {/* Right Side Actions */}
             <div className="flex items-center gap-3">
-              {/* Desktop CTA */}
+              {/* Desktop CTAs */}
+              <Button 
+                variant="outline" 
+                size="default" 
+                className="hidden sm:inline-flex group border-emerald-500 text-emerald-600 hover:bg-emerald-50 hover:border-emerald-600"
+                onClick={openFreeTrial}
+              >
+                Try Free
+                <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
+              </Button>
               <Button 
                 variant="gradient" 
                 size="default" 
