@@ -27,16 +27,11 @@ const navLinks = [
 ]
 
 function NavDropdown({ 
-  item, 
-  isScrolled,
-  isHome 
+  item
 }: { 
   item: typeof navLinks[0]
-  isScrolled: boolean
-  isHome: boolean
 }) {
   const [isOpen, setIsOpen] = useState(false)
-  const showSolidBackground = !isHome || isScrolled
   
   if (!item.children) return null
   
@@ -48,13 +43,7 @@ function NavDropdown({
     >
       <button
         type="button"
-        className={cn(
-          "flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200",
-          "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary",
-          showSolidBackground
-            ? "text-slate-700 hover:text-slate-900 hover:bg-slate-100"
-            : "text-white/90 hover:text-white hover:bg-white/10"
-        )}
+        className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         onClick={(e) => {
           e.preventDefault()
           e.stopPropagation()
@@ -278,54 +267,27 @@ function MobileNavAccordion({ item }: { item: typeof navLinks[0] }) {
 }
 
 export function SiteNav() {
-  const pathname = usePathname()
-  const isHome = pathname === "/"
   const prefersReducedMotion = useReducedMotion()
-  const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { openCalendly } = useCalendly()
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const showSolidBackground = !isHome || isScrolled
-  const linkClass = showSolidBackground
-    ? "text-slate-700 hover:text-slate-900 hover:bg-slate-100"
-    : "text-white/90 hover:text-white hover:bg-white/10"
-  const brandText = showSolidBackground ? "text-slate-900" : "text-white"
-  const secondaryText = showSolidBackground ? "text-slate-500" : "text-white/60"
+  const linkClass = "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
 
   return (
     <>
       <motion.nav
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          showSolidBackground && "bg-white/95 backdrop-blur-xl shadow-sm border-b border-slate-200/50"
-        )}
+        className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.3 }}
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/25 group-hover:shadow-blue-500/40 transition-shadow" aria-hidden="true">
-                <span className="text-white font-bold text-sm">PC</span>
-              </div>
-              <div className="flex flex-col">
-                <span className={cn("font-semibold text-lg leading-tight", brandText)}>
-                  PeopleCore
-                </span>
-                <span className={cn("text-[10px] leading-tight hidden sm:block", secondaryText)}>
-                  🇳🇿 Built for Aotearoa
-                </span>
-              </div>
+            <Link href="/" className="text-2xl font-bold tracking-tight text-gray-900" style={{ fontFamily: 'system-ui' }}>
+              peoplecore
             </Link>
 
             {/* Desktop Navigation */}
@@ -336,20 +298,16 @@ export function SiteNav() {
                     <NavDropdown 
                       key={link.label} 
                       item={link}
-                      isScrolled={isScrolled}
-                      isHome={isHome}
                     />
                   )
                 }
                 
-                const resolvedHref = link.href.startsWith("#") && !isHome ? `/${link.href}` : link.href
                 return (
                   <Link
                     key={link.label}
-                    href={resolvedHref}
+                    href={link.href}
                     className={cn(
-                      "px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200",
-                      "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+                      "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
                       linkClass
                     )}
                   >
@@ -375,12 +333,7 @@ export function SiteNav() {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
-                className={cn(
-                  "lg:hidden p-2 rounded-lg transition-colors",
-                  showSolidBackground 
-                    ? "hover:bg-slate-100 text-slate-700" 
-                    : "hover:bg-white/10 text-white"
-                )}
+                className="lg:hidden p-2 rounded-lg transition-colors hover:bg-gray-100 text-gray-700"
                 aria-label="Open menu"
                 aria-expanded={isMobileMenuOpen}
               >
