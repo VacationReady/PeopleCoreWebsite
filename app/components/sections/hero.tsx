@@ -188,7 +188,7 @@ function DemoEmailSection() {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your email to unlock"
+                      placeholder="Enter your email to watch"
                       required
                       className="w-full pl-10 pr-4 py-2.5 bg-transparent text-white placeholder:text-white/50 text-sm focus:outline-none"
                     />

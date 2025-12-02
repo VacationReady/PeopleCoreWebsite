@@ -47,6 +47,7 @@ function NavDropdown({
       onMouseLeave={() => setIsOpen(false)}
     >
       <button
+        type="button"
         className={cn(
           "flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200",
           "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary",
@@ -54,7 +55,11 @@ function NavDropdown({
             ? "text-slate-700 hover:text-slate-900 hover:bg-slate-100"
             : "text-white/90 hover:text-white hover:bg-white/10"
         )}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          setIsOpen(!isOpen)
+        }}
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
@@ -222,7 +227,12 @@ function MobileNavAccordion({ item }: { item: typeof navLinks[0] }) {
   return (
     <div>
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        type="button"
+        onClick={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          setIsOpen(!isOpen)
+        }}
         className="flex items-center justify-between w-full px-4 py-3 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-medium transition-colors"
         aria-expanded={isOpen}
       >
