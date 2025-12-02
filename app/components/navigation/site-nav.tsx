@@ -16,10 +16,11 @@ const navLinks = [
     children: [
       { label: "Leave Management", href: "/leave", description: "Automated leave tracking" },
       { label: "Documents", href: "/documents", description: "Smart document management" },
-      { label: "Approvals", href: "/approvals", description: "Streamlined workflows" },
+      { label: "Action Items", href: "/action-items", description: "Your unified command centre" },
       { label: "Reporting", href: "/reporting", description: "Analytics & insights" },
       { label: "Workflows", href: "/workflows", description: "Custom automations" },
       { label: "AI Copilot", href: "/ai-copilot", description: "Your HR assistant" },
+      { label: "Customisation", href: "/customisation", description: "Screen designer & rules engine" },
     ]
   },
   { label: "Pricing", href: "/pricing" },

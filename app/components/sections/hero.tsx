@@ -68,46 +68,158 @@ function Navigation() {
 
 function DemoEmailSection() {
   const [email, setEmail] = useState("")
+  const [isHovered, setIsHovered] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email || isSubmitting) return
+    
+    setIsSubmitting(true)
+    // Simulate submission - replace with actual API call
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    setIsSubmitted(true)
+    setIsSubmitting(false)
+  }
   
   return (
-    <div className="mt-12 bg-gray-50 rounded-2xl p-6 max-w-2xl">
-      <div className="flex flex-col md:flex-row gap-6">
-        <div className="flex-1">
-          <h3 className="text-lg font-semibold text-gray-900 mb-1">
-            Watch the demo (5 min)
-          </h3>
-          <div className="flex items-center gap-2 mt-3">
-            {/* Avatar stack */}
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4].map((i) => (
-                <div 
-                  key={i}
-                  className="w-8 h-8 rounded-full border-2 border-white bg-gradient-to-br from-amber-300 to-orange-400"
-                />
-              ))}
-            </div>
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.4 }}
+      className="mt-12 max-w-xl"
+    >
+      {/* Video Preview Card */}
+      <div 
+        className="relative rounded-2xl overflow-hidden shadow-xl shadow-gray-900/10 group cursor-pointer"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {/* Dashboard Screenshot Background */}
+        <div className="relative aspect-[16/9]">
+          <Image
+            src="/screenshots/dashboard.png"
+            alt="PeopleCore Dashboard Preview"
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 100vw, 540px"
+          />
+          
+          {/* Dark Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/95 via-gray-900/60 to-gray-900/30" />
+          
+          {/* Play Button */}
+          <motion.div 
+            className="absolute inset-0 flex items-center justify-center"
+            animate={{ scale: isHovered ? 1.05 : 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div
+              className="relative"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {/* Pulsing ring effect */}
+              <motion.div
+                className="absolute inset-0 rounded-full bg-white/20"
+                animate={{ 
+                  scale: [1, 1.4, 1.4],
+                  opacity: [0.5, 0, 0]
+                }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeOut"
+                }}
+              />
+              
+              {/* Play button */}
+              <div className="relative w-16 h-16 rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center shadow-lg">
+                <Play className="w-6 h-6 text-primary ml-1 fill-primary" />
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Duration Badge */}
+          <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-sm text-white text-xs font-medium flex items-center gap-1.5">
+            <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+            5:00
           </div>
-        </div>
-        <div className="flex-1">
-          <p className="text-sm text-gray-500 mb-4">
-            Take the video tour of our system. Just enter your email, and we'll send you a link to our video overview, plus some other helpful links.
-          </p>
-          <div className="relative">
-            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email address"
-              className="w-full pl-12 pr-12 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
-            />
-            <button className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-gray-400 hover:text-gray-600 transition-colors">
-              <ArrowUpRight className="w-5 h-5" />
-            </button>
+
+          {/* Content Overlay */}
+          <div className="absolute bottom-0 left-0 right-0 p-5">
+            {/* Title */}
+            <h3 className="text-white font-semibold text-lg mb-1">
+              Watch the Product Demo
+            </h3>
+            <p className="text-white/70 text-sm mb-4">
+              See how PeopleCore transforms HR in just 5 minutes
+            </p>
+
+            {/* Email Capture Form - Frosted Glass */}
+            <AnimatePresence mode="wait">
+              {isSubmitted ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20"
+                >
+                  <div className="flex items-center gap-3 text-white">
+                    <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-medium text-sm">Check your inbox!</p>
+                      <p className="text-white/60 text-xs">Demo link sent to {email}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ) : (
+                <motion.form 
+                  onSubmit={handleSubmit}
+                  className="bg-white/10 backdrop-blur-md rounded-xl p-2 border border-white/20 flex gap-2"
+                >
+                  <div className="relative flex-1">
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/50" />
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your email to unlock"
+                      required
+                      className="w-full pl-10 pr-4 py-2.5 bg-transparent text-white placeholder:text-white/50 text-sm focus:outline-none"
+                    />
+                  </div>
+                  <motion.button
+                    type="submit"
+                    disabled={isSubmitting}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="px-5 py-2.5 bg-white text-gray-900 rounded-lg text-sm font-semibold hover:bg-white/90 transition-colors disabled:opacity-70 flex items-center gap-2"
+                  >
+                    {isSubmitting ? (
+                      <motion.div
+                        className="w-4 h-4 border-2 border-gray-900/20 border-t-gray-900 rounded-full"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                      />
+                    ) : (
+                      <>
+                        Get Access
+                        <ArrowUpRight className="w-4 h-4" />
+                      </>
+                    )}
+                  </motion.button>
+                </motion.form>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
