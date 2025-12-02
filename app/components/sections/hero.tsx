@@ -134,17 +134,17 @@ const kenBurnsVariants = {
     x: 10,
     y: -5,
     transition: {
-      opacity: { duration: 0.8, ease: "easeOut" },
-      scale: { duration: 5, ease: "linear" },
-      x: { duration: 5, ease: "linear" },
-      y: { duration: 5, ease: "linear" },
+      opacity: { duration: 0.8, ease: "easeOut" as const },
+      scale: { duration: 5, ease: "linear" as const },
+      x: { duration: 5, ease: "linear" as const },
+      y: { duration: 5, ease: "linear" as const },
     },
   },
   exit: {
     opacity: 0,
     scale: 1.08,
     transition: {
-      opacity: { duration: 0.8, ease: "easeIn" },
+      opacity: { duration: 0.8, ease: "easeIn" as const },
     },
   },
 }
