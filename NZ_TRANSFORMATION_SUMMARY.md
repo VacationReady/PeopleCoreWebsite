@@ -27,7 +27,7 @@ Successfully transformed the PeopleCore HRIS marketing website into a world-clas
 - **Removed Artificial Delays**: Eliminated 4-second "PeopleCore is thinking" animation
 - **Instant Content Rendering**: Page loads immediately with optimized animation timings (0.6s transitions)
 - **Standardized CTAs**:
-  - Primary: "Book a Local Demo" → Calendly link (https://calendly.com/peoplecore-nz/demo)
+  - Primary: "Book a Local Demo" → Embedded Calendly modal (https://calendly.com/mike-peoplecore)
   - Secondary: "Join the Waitlist" → Enhanced waitlist form
   - Tertiary: "View Pricing" → /pricing page
 - **Optimized Performance**: Reduced animation delays from 4+ seconds to <1 second
@@ -238,7 +238,7 @@ url: "https://peoplecore.co.nz"
 ## 🚀 Deployment Notes
 
 ### Pre-Deployment
-1. Update Calendly link if different: `https://calendly.com/peoplecore-nz/demo`
+1. Calendly embedded modal configured: `https://calendly.com/mike-peoplecore`
 2. Update email addresses if different: `hello@peoplecore.co.nz`
 3. Add Google verification code in `layout.tsx`
 4. Create actual downloadable PDFs for resources section
@@ -295,7 +295,7 @@ url: "https://peoplecore.co.nz"
 
 ### Contact Points
 - **Email**: hello@peoplecore.co.nz
-- **Demo Booking**: https://calendly.com/peoplecore-nz/demo
+- **Demo Booking**: Embedded Calendly modal (https://calendly.com/mike-peoplecore)
 - **LinkedIn**: https://linkedin.com/company/peoplecore-nz
 
 ### Ongoing Updates

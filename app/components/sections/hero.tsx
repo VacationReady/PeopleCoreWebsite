@@ -5,6 +5,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowUpRight, Mail, Play, ChevronDown } from "lucide-react"
 import { WaitlistModal } from "./waitlist-modal"
+import { useCalendly } from "./calendly-modal"
 
 // Navigation items
 const navItems = [
@@ -21,6 +22,8 @@ const navItems = [
 ]
 
 function Navigation() {
+  const { openCalendly } = useCalendly()
+  
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
@@ -49,14 +52,12 @@ function Navigation() {
             <Play className="w-4 h-4" />
             Watch video
           </button>
-          <a
-            href="https://calendly.com/peoplecore-nz/demo"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={openCalendly}
             className="px-4 py-2 text-sm font-medium text-white bg-primary rounded-full hover:bg-primary/90 transition-colors"
           >
             Book Demo
-          </a>
+          </button>
         </div>
       </div>
     </nav>
@@ -165,6 +166,7 @@ function DashboardCard() {
 
 export function Hero() {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false)
+  const { openCalendly } = useCalendly()
 
   return (
     <section className="relative bg-white min-h-screen">
@@ -195,15 +197,13 @@ export function Hero() {
                 together — so you always know who's working, where, and what needs attention.
               </p>
               
-              <a
-                href="https://calendly.com/peoplecore-nz/demo"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={openCalendly}
                 className="inline-flex items-center gap-2 px-7 py-4 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 transition-colors"
               >
                 Book a demo
                 <ArrowUpRight className="w-5 h-5" />
-              </a>
+              </button>
               
               {/* Demo email section */}
               <DemoEmailSection />

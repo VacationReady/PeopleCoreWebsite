@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { useCalendly } from "./calendly-modal"
 
 const footerLinks = {
   product: [
@@ -15,7 +16,6 @@ const footerLinks = {
     { name: "About", href: "#" },
     { name: "Pricing", href: "/pricing" },
     { name: "Contact", href: "mailto:hello@peoplecore.co.nz" },
-    { name: "Book Demo", href: "https://calendly.com/peoplecore-nz/demo" },
   ],
   legal: [
     { name: "Privacy", href: "#" },
@@ -25,6 +25,8 @@ const footerLinks = {
 }
 
 export function Footer() {
+  const { openCalendly } = useCalendly()
+  
   return (
     <footer className="bg-white border-t border-gray-100">
       <div className="container-tight section-padding">
@@ -70,6 +72,14 @@ export function Footer() {
                   </a>
                 </li>
               ))}
+              <li>
+                <button 
+                  onClick={openCalendly}
+                  className="text-gray-500 hover:text-foreground transition-colors text-sm"
+                >
+                  Book Demo
+                </button>
+              </li>
             </ul>
           </div>
 

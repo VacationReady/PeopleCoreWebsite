@@ -7,6 +7,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import { ArrowRight, Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/app/components/ui/button"
 import { cn } from "@/lib/utils"
+import { useCalendly } from "@/app/components/sections/calendly-modal"
 
 const navLinks = [
   { 
@@ -103,6 +104,7 @@ function MobileMenu({
   onClose: () => void 
 }) {
   const pathname = usePathname()
+  const { openCalendly } = useCalendly()
   
   // Close menu when route changes
   useEffect(() => {
@@ -120,6 +122,11 @@ function MobileMenu({
       document.body.style.overflow = ''
     }
   }, [isOpen])
+  
+  const handleBookDemo = () => {
+    onClose()
+    openCalendly()
+  }
   
   return (
     <AnimatePresence>
@@ -189,17 +196,11 @@ function MobileMenu({
               <Button 
                 variant="gradient" 
                 size="lg" 
-                className="w-full" 
-                asChild
+                className="w-full"
+                onClick={handleBookDemo}
               >
-                <a
-                  href="https://calendly.com/peoplecore-nz/demo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Book Demo
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </a>
+                Book Demo
+                <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
               <p className="text-center text-xs text-slate-500 mt-3">
                 🇳🇿 Built for Aotearoa
@@ -271,6 +272,7 @@ export function SiteNav() {
   const prefersReducedMotion = useReducedMotion()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { openCalendly } = useCalendly()
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20)
@@ -352,17 +354,11 @@ export function SiteNav() {
               <Button 
                 variant="gradient" 
                 size="default" 
-                className="hidden sm:inline-flex group shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40" 
-                asChild
+                className="hidden sm:inline-flex group shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
+                onClick={openCalendly}
               >
-                <a
-                  href="https://calendly.com/peoplecore-nz/demo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Book Demo
-                  <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
-                </a>
+                Book Demo
+                <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
               </Button>
               
               {/* Mobile Menu Button */}

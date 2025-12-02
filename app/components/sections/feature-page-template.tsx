@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { LucideIcon, ArrowUpRight, Check } from "lucide-react"
 import Link from "next/link"
 import { Footer } from "./footer"
+import { useCalendly } from "./calendly-modal"
 
 interface FeatureHighlight {
   icon: LucideIcon
@@ -39,21 +40,21 @@ interface FeaturePageProps {
 }
 
 function FeatureNav() {
+  const { openCalendly } = useCalendly()
+  
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
       <div className="container-tight flex items-center justify-between h-16">
         <Link href="/" className="text-2xl font-bold tracking-tight text-foreground">
           peoplecore
         </Link>
-        <a
-          href="https://calendly.com/peoplecore-nz/demo"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={openCalendly}
           className="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-colors"
         >
           Book a demo
           <ArrowUpRight className="w-4 h-4" />
-        </a>
+        </button>
       </div>
     </nav>
   )
@@ -71,6 +72,8 @@ export function FeaturePageTemplate({
   ctaTitle,
   ctaDescription,
 }: FeaturePageProps) {
+  const { openCalendly } = useCalendly()
+  
   return (
     <main className="min-h-screen bg-white">
       <FeatureNav />
@@ -111,15 +114,13 @@ export function FeaturePageTemplate({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <a
-              href="https://calendly.com/peoplecore-nz/demo"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={openCalendly}
               className="inline-flex items-center gap-2 px-8 py-4 bg-foreground text-white rounded-full font-medium text-lg hover:bg-gray-800 transition-colors"
             >
               See it in action
               <ArrowUpRight className="w-5 h-5" />
-            </a>
+            </button>
           </motion.div>
         </div>
       </section>
@@ -246,15 +247,13 @@ export function FeaturePageTemplate({
             <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-10">
               {ctaDescription}
             </p>
-            <a
-              href="https://calendly.com/peoplecore-nz/demo"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={openCalendly}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-foreground rounded-full font-medium text-lg hover:bg-gray-100 transition-colors"
             >
               Book a demo
               <ArrowUpRight className="w-5 h-5" />
-            </a>
+            </button>
           </motion.div>
         </div>
       </section>

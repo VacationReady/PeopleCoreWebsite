@@ -4,21 +4,21 @@ import { motion } from "framer-motion"
 
 const features = [
   {
-    title: "Holidays Act",
-    subtitle: "100% Compliant",
-    description: "Automatic leave calculations, FBAPS, and public holiday handling. Never worry about compliance again.",
+    title: "Onboarding",
+    subtitle: "Seamless & Automated",
+    description: "Get new hires up to speed in no time. Automated workflows, digital forms, and personalised welcome experiences that make day one memorable.",
     color: "bg-pastel-mint",
   },
   {
-    title: "KiwiSaver",
-    subtitle: "Auto-Enrolment",
-    description: "Seamless employee enrolment, contribution tracking, and IRD integration. All automated.",
+    title: "Leave Management",
+    subtitle: "Effortless Booking",
+    description: "Intuitive holiday booking with real-time availability, manager approvals, and automatic balance tracking. No more spreadsheet chaos.",
     color: "bg-pastel-cyan",
   },
   {
-    title: "Fair Pay",
-    subtitle: "Agreements Ready",
-    description: "Stay ahead of sector-specific minimums with automatic rate updates and compliance tracking.",
+    title: "Documents",
+    subtitle: "Centralised & Secure",
+    description: "Store, organise, and access all your people documents in one place. Contracts, policies, and certifications—always at your fingertips.",
     color: "bg-pastel-lavender",
   },
 ]
@@ -36,13 +36,14 @@ export function ValueProps() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
-            <span className="text-primary">Built for</span>
+            <span className="text-primary">Your people,</span>
             <br />
-            New Zealand businesses
+            one platform
           </h2>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-            The only HRIS designed from the ground up for NZ employment law. 
-            From the Holidays Act to KiwiSaver — we've got you covered.
+            PeopleCore provides kiwi businesses with a one stop shop solution for all things people. 
+            With a beautiful and intuitive design coupled with robust functionality that scales, 
+            PeopleCore is adopted seamlessly from the top down.
           </p>
         </motion.div>
 
