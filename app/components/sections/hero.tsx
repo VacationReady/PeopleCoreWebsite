@@ -181,7 +181,7 @@ function ScreenshotShowcase() {
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Screenshot container with rounded corners and shadow */}
-      <div className="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-gray-900/10 bg-gradient-to-br from-slate-50 to-slate-100 min-h-[520px]">
+      <div className="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-gray-900/10 bg-gradient-to-br from-slate-50 to-slate-100 aspect-[4/5]">
         {/* Subtle gradient overlay for depth */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-white/10 z-10 pointer-events-none" />
         
@@ -216,7 +216,7 @@ function ScreenshotShowcase() {
                 src={screenshots[currentIndex].src}
                 alt={screenshots[currentIndex].alt}
                 fill
-                className="object-contain object-top"
+                className="object-cover object-top"
                 priority={currentIndex === 0}
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 onError={() => handleImageError(currentIndex)}
