@@ -276,13 +276,10 @@ export function Hero() {
               </h1>
               
               <p className="text-lg text-gray-500 max-w-xl mb-8 leading-relaxed">
-                Welcome to PeopleCore - the only HR software that brings{" "}
-                <span className="font-semibold text-gray-700">Presence, Automation, AI and HR excellence</span>{" "}
-                together — so you always know who's working, where, and what needs attention.
-              </p>
-              
-              <button
-                onClick={openCalendly}
+                Welcome to PeopleCore - The only HR software that brings Automation, Customisation, and HR excellence together.
+
+
+
                 className="inline-flex items-center gap-2 px-7 py-4 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 transition-colors"
               >
                 Book a demo
