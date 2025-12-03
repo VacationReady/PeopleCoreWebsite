@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, CalendarDays, FileText, CheckCircle2, BarChart3, Workflow, Sparkles } from "lucide-react"
 import Link from "next/link"
 
 const features = [
@@ -9,37 +9,37 @@ const features = [
     title: "Leave Management",
     description: "Smart leave tracking with AI-powered approvals and team coverage insights.",
     href: "/leave",
-    color: "bg-pastel-mint",
+    icon: CalendarDays,
   },
   {
     title: "Documents",
     description: "Generate contracts, policies, and letters with AI. E-signatures included.",
     href: "/documents",
-    color: "bg-pastel-cyan",
+    icon: FileText,
   },
   {
     title: "Approvals",
     description: "One-click approvals from anywhere. Smart routing and delegation built-in.",
     href: "/approvals",
-    color: "bg-pastel-lavender",
+    icon: CheckCircle2,
   },
   {
     title: "Reporting",
     description: "Real-time dashboards and custom reports. Export to Excel, PDF, or share online.",
     href: "/reporting",
-    color: "bg-pastel-peach",
+    icon: BarChart3,
   },
   {
     title: "Workflows",
     description: "Build any HR automation without code. 78+ templates ready to use.",
     href: "/workflows",
-    color: "bg-pastel-pink",
+    icon: Workflow,
   },
   {
     title: "AI Copilot",
     description: "Your personal HR assistant. Trained on NZ employment law. Available 24/7.",
     href: "/ai-copilot",
-    color: "bg-pastel-blue",
+    icon: Sparkles,
   },
 ]
 
@@ -67,28 +67,50 @@ export function Features() {
 
         {/* Feature Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-            >
-              <Link 
-                href={feature.href}
-                className={`block ${feature.color} rounded-3xl p-8 h-full hover:shadow-lg transition-shadow group`}
+          {features.map((feature, index) => {
+            const Icon = feature.icon
+            return (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
               >
-                <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-xl font-bold text-foreground">{feature.title}</h3>
-                  <ArrowUpRight className="w-5 h-5 text-gray-400 group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                </div>
-                <p className="text-gray-600 leading-relaxed">
-                  {feature.description}
-                </p>
-              </Link>
-            </motion.div>
-          ))}
+                <Link 
+                  href={feature.href}
+                  className="group relative block overflow-hidden bg-white/70 backdrop-blur-sm border border-primary/10 rounded-3xl p-8 h-full shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300"
+                >
+                  {/* Top gradient accent bar */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/80 to-primary opacity-80 group-hover:opacity-100 transition-opacity" />
+                  
+                  {/* Gradient orb decoration */}
+                  <div className="absolute -top-16 -right-16 w-32 h-32 bg-gradient-to-br from-primary/15 to-primary/5 rounded-full blur-2xl transition-all duration-500 group-hover:scale-150 group-hover:from-primary/25" />
+                  
+                  {/* Content */}
+                  <div className="relative z-10">
+                    {/* Header row with icon, title, and arrow */}
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-center gap-3">
+                        {/* Icon */}
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-md shadow-primary/20 group-hover:shadow-lg group-hover:shadow-primary/30 transition-shadow duration-300">
+                          <Icon className="w-5 h-5 text-white" />
+                        </div>
+                        <h3 className="text-xl font-bold text-foreground">{feature.title}</h3>
+                      </div>
+                      <ArrowUpRight className="w-5 h-5 text-primary/40 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+                    </div>
+                    <p className="text-gray-600 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                  
+                  {/* Subtle border glow on hover */}
+                  <div className="absolute inset-0 rounded-3xl border border-primary/0 group-hover:border-primary/20 transition-colors duration-300 pointer-events-none" />
+                </Link>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>
