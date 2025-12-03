@@ -79,7 +79,7 @@ export function Features() {
               >
                 <Link 
                   href={feature.href}
-                  className="group relative block overflow-hidden bg-white/70 backdrop-blur-sm border border-primary/10 rounded-3xl p-8 h-full shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300"
+                  className="group relative block overflow-hidden bg-white/70 backdrop-blur-sm border border-primary/10 rounded-3xl p-8 h-full shadow-lg shadow-primary/5 transition-all duration-300"
                 >
                   {/* Top gradient accent bar */}
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/80 to-primary opacity-80 group-hover:opacity-100 transition-opacity" />
@@ -105,8 +105,6 @@ export function Features() {
                     </p>
                   </div>
                   
-                  {/* Subtle border glow on hover */}
-                  <div className="absolute inset-0 rounded-3xl border border-primary/0 group-hover:border-primary/20 transition-colors duration-300 pointer-events-none" />
                 </Link>
               </motion.div>
             )

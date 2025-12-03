@@ -19,7 +19,7 @@ const features = [
   {
     title: "Documents",
     subtitle: "Centralised & Secure",
-    description: "Store, organise, and access all your people documents in one place. Contracts, policies, and certifications—always at your fingertips.",
+    description: "Store, organise, and access all your people documents in one place. Have staff sign or acknowledge important policies and take back control of record keeping.",
     icon: FolderOpen,
   },
 ]
@@ -59,7 +59,7 @@ export function ValueProps() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative overflow-hidden bg-white/60 backdrop-blur-sm border border-primary/10 rounded-3xl p-8 md:p-10 shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300"
+                className="group relative overflow-hidden bg-white/60 backdrop-blur-sm border border-primary/10 rounded-3xl p-8 md:p-10 shadow-lg shadow-primary/5 transition-all duration-300"
               >
                 {/* Gradient orb decoration */}
                 <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full blur-3xl transition-all duration-500 group-hover:scale-125 group-hover:from-primary/30" />
@@ -86,8 +86,6 @@ export function ValueProps() {
                   </p>
                 </div>
                 
-                {/* Subtle gradient border effect on hover */}
-                <div className="absolute inset-0 rounded-3xl border border-primary/0 group-hover:border-primary/20 transition-colors duration-300 pointer-events-none" />
               </motion.div>
             )
           })}
