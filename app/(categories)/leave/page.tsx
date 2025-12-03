@@ -123,7 +123,7 @@ export default function LeavePage() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mb-10"
           >
-            Smart leave tracking with Holidays Act compliance built-in. AI-powered approvals and team coverage insights — all automatic.
+            Smart leave tracking allows for employers to configure highly customised leave processes, while allowing employees full autonomy over their leave
           </motion.p>
 
           <motion.div
