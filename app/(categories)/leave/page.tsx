@@ -3,10 +3,10 @@
 import * as React from "react"
 import { motion } from "framer-motion"
 import { Calendar, Clock, Users, Shield, ArrowUpRight, Check } from "lucide-react"
-import Link from "next/link"
 import Image from "next/image"
 import { Footer } from "@/app/components/sections/footer"
 import { useCalendly } from "@/app/components/sections/calendly-modal"
+import { SiteNav } from "@/app/components/navigation/site-nav"
 
 const accentColor = "#6366F1"
 
@@ -17,28 +17,6 @@ const accentColor = "#6366F1"
 const SMART_WORKFLOWS_IMAGE = "/leave-workflows.png"      // e.g., public/leave-workflows.png
 const SELF_SERVICE_IMAGE = "/leave-self-service.png"      // e.g., public/leave-self-service.png
 // ==============================================
-
-function FeatureNav() {
-  const { openCalendly } = useCalendly()
-  
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
-      <div className="container-tight flex items-center justify-between h-16">
-        <Link href="/" className="text-2xl font-bold tracking-tight text-foreground">
-          peoplecore
-        </Link>
-        <button
-          onClick={openCalendly}
-          className="inline-flex items-center gap-2 px-5 py-2.5 text-white rounded-full text-sm font-medium hover:opacity-90 transition-opacity"
-          style={{ backgroundColor: accentColor }}
-        >
-          Book a demo
-          <ArrowUpRight className="w-4 h-4" />
-        </button>
-      </div>
-    </nav>
-  )
-}
 
 function ScreenshotImage({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
   const [hasError, setHasError] = React.useState(false)
@@ -115,7 +93,7 @@ export default function LeavePage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <FeatureNav />
+      <SiteNav />
 
       {/* Hero */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-24">

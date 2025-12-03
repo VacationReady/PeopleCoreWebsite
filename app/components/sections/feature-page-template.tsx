@@ -3,10 +3,10 @@
 import * as React from "react"
 import { motion } from "framer-motion"
 import { LucideIcon, ArrowUpRight, Check } from "lucide-react"
-import Link from "next/link"
 import Image from "next/image"
 import { Footer } from "./footer"
 import { useCalendly } from "./calendly-modal"
+import { SiteNav } from "@/app/components/navigation/site-nav"
 
 interface FeatureHighlight {
   icon: LucideIcon
@@ -39,28 +39,6 @@ interface FeaturePageProps {
   howItWorks: HowItWorksStep[]
   ctaTitle: string
   ctaDescription: string
-}
-
-function FeatureNav({ accentColor }: { accentColor: string }) {
-  const { openCalendly } = useCalendly()
-  
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
-      <div className="container-tight flex items-center justify-between h-16">
-        <Link href="/" className="text-2xl font-bold tracking-tight text-foreground">
-          peoplecore
-        </Link>
-        <button
-          onClick={openCalendly}
-          className="inline-flex items-center gap-2 px-5 py-2.5 text-white rounded-full text-sm font-medium hover:opacity-90 transition-opacity"
-          style={{ backgroundColor: accentColor }}
-        >
-          Book a demo
-          <ArrowUpRight className="w-4 h-4" />
-        </button>
-      </div>
-    </nav>
-  )
 }
 
 function ScreenshotImage({ 
@@ -136,7 +114,7 @@ export function FeaturePageTemplate({
   
   return (
     <main className="min-h-screen bg-white">
-      <FeatureNav accentColor={accentColor} />
+      <SiteNav />
 
       {/* Hero */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-24">
