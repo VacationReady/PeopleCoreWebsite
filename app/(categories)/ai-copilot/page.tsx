@@ -7,7 +7,7 @@ export default function AICopilotPage() {
   return (
     <FeaturePageTemplate
       icon={Bot}
-      accentColor="#7c5cff"
+      accentColor="#6366F1"
       badge="AI Copilot"
       title="Your AI HR assistant"
       description="Trained on NZ employment law. Available 24/7. Ask anything, get instant answers."
@@ -38,7 +38,8 @@ export default function AICopilotPage() {
             "Disciplinary process guidance",
             "Employment law references"
           ],
-          color: "#ede9fe"
+          color: "#eef2ff",
+          image: "/screenshots/ai-copilot-chat.png"
         },
         {
           title: "Action, not just answers",
@@ -49,7 +50,8 @@ export default function AICopilotPage() {
             "Create and assign tasks",
             "Send notifications"
           ],
-          color: "#dbeafe"
+          color: "#eef2ff",
+          image: "/screenshots/ai-copilot-actions.png"
         }
       ]}
       howItWorks={[

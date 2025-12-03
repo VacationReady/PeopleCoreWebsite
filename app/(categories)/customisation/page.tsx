@@ -7,7 +7,7 @@ export default function CustomisationPage() {
   return (
     <FeaturePageTemplate
       icon={Settings}
-      accentColor="#f59e0b"
+      accentColor="#6366F1"
       badge="Customisation"
       title="Make it truly yours"
       description="Powerful configuration tools that let you tailor PeopleCore to your exact needs. No developers required."
@@ -39,7 +39,8 @@ export default function CustomisationPage() {
             "Role-based screen variants",
             "Preview before publishing"
           ],
-          color: "#fef3c7"
+          color: "#eef2ff",
+          image: "/screenshots/customisation-screen-designer.png"
         },
         {
           title: "Event Manager",
@@ -51,7 +52,8 @@ export default function CustomisationPage() {
             "Conditional logic",
             "Webhook integrations"
           ],
-          color: "#fee2e2"
+          color: "#eef2ff",
+          image: "/screenshots/customisation-event-manager.png"
         },
         {
           title: "Holiday Rules Engine",
@@ -64,7 +66,8 @@ export default function CustomisationPage() {
             "Entitlement calculations",
             "Parental leave support"
           ],
-          color: "#dcfce7"
+          color: "#eef2ff",
+          image: "/screenshots/customisation-holiday-rules.png"
         },
         {
           title: "Branding & Theming",
@@ -75,7 +78,8 @@ export default function CustomisationPage() {
             "Custom email templates",
             "White-label options"
           ],
-          color: "#f3e8ff"
+          color: "#eef2ff",
+          image: "/screenshots/customisation-branding.png"
         }
       ]}
       howItWorks={[

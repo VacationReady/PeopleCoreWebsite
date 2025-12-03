@@ -7,7 +7,7 @@ export default function ReportingPage() {
   return (
     <FeaturePageTemplate
       icon={BarChart3}
-      accentColor="#f59e0b"
+      accentColor="#6366F1"
       badge="Reporting & Analytics"
       title="Insights, instantly"
       description="Beautiful dashboards, custom reports, and predictive analytics. Turn HR data into strategic advantage."
@@ -38,7 +38,8 @@ export default function ReportingPage() {
             "Scheduled report delivery",
             "Shareable with permissions"
           ],
-          color: "#fef3c7"
+          color: "#eef2ff",
+          image: "/screenshots/reporting-builder.png"
         },
         {
           title: "Compliance reporting",
@@ -49,7 +50,8 @@ export default function ReportingPage() {
             "Leave liability reports",
             "Audit-ready documentation"
           ],
-          color: "#fce7f3"
+          color: "#eef2ff",
+          image: "/screenshots/reporting-compliance.png"
         }
       ]}
       howItWorks={[

@@ -7,7 +7,7 @@ export default function WorkflowsPage() {
   return (
     <FeaturePageTemplate
       icon={Workflow}
-      accentColor="#ec4899"
+      accentColor="#6366F1"
       badge="Workflow Automation"
       title="Automate everything"
       description="Build any HR workflow without code. 78+ templates ready to go. From onboarding to offboarding."
@@ -38,7 +38,8 @@ export default function WorkflowsPage() {
             "Test before deploying",
             "Version control included"
           ],
-          color: "#fce7f3"
+          color: "#eef2ff",
+          image: "/screenshots/workflows-builder.png"
         },
         {
           title: "Trigger on anything",
@@ -49,7 +50,8 @@ export default function WorkflowsPage() {
             "Webhook integrations",
             "Manual start option"
           ],
-          color: "#ede9fe"
+          color: "#eef2ff",
+          image: "/screenshots/workflows-triggers.png"
         }
       ]}
       howItWorks={[

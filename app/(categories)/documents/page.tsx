@@ -7,7 +7,7 @@ export default function DocumentsPage() {
   return (
     <FeaturePageTemplate
       icon={FileText}
-      accentColor="#0ea5e9"
+      accentColor="#6366F1"
       badge="Document Management"
       title="Documents, handled"
       description="AI-powered document generation, e-signatures, and smart filing. Generate contracts in seconds, not hours."
@@ -38,7 +38,8 @@ export default function DocumentsPage() {
             "Personalised letters and notices",
             "Branded templates"
           ],
-          color: "#cffafe"
+          color: "#eef2ff",
+          image: "/screenshots/documents-generation.png"
         },
         {
           title: "Secure, compliant storage",
@@ -49,7 +50,8 @@ export default function DocumentsPage() {
             "Access controls and permissions",
             "Expiry tracking and alerts"
           ],
-          color: "#dbeafe"
+          color: "#eef2ff",
+          image: "/screenshots/documents-storage.png"
         }
       ]}
       howItWorks={[

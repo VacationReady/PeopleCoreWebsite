@@ -7,7 +7,7 @@ export default function ApprovalsPage() {
   return (
     <FeaturePageTemplate
       icon={CheckCircle}
-      accentColor="#8b5cf6"
+      accentColor="#6366F1"
       badge="Approval Workflows"
       title="Approvals, simplified"
       description="One-click approvals from anywhere. Smart routing, delegation support, and zero bottlenecks."
@@ -38,7 +38,8 @@ export default function ApprovalsPage() {
             "Batch approval support",
             "Complete history and analytics"
           ],
-          color: "#ede9fe"
+          color: "#eef2ff",
+          image: "/screenshots/approvals-dashboard.png"
         },
         {
           title: "No-code workflow builder",
@@ -49,7 +50,8 @@ export default function ApprovalsPage() {
             "SLA monitoring",
             "Auto-escalation when overdue"
           ],
-          color: "#fce7f3"
+          color: "#eef2ff",
+          image: "/screenshots/approvals-workflow-builder.png"
         }
       ]}
       howItWorks={[

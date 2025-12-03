@@ -7,7 +7,7 @@ export default function ActionItemsPage() {
   return (
     <FeaturePageTemplate
       icon={Inbox}
-      accentColor="#6366f1"
+      accentColor="#6366F1"
       badge="Action Items"
       title="Your unified command centre"
       description="One dashboard for everything that needs your attention. Holiday approvals, employee updates, performance reviews, surveys — all in one intuitive hub."
@@ -40,7 +40,8 @@ export default function ActionItemsPage() {
             "Document acknowledgements",
             "Training completions"
           ],
-          color: "#eef2ff"
+          color: "#eef2ff",
+          image: "/screenshots/action-items-dashboard.png"
         },
         {
           title: "Work the way you want",
@@ -52,7 +53,8 @@ export default function ActionItemsPage() {
             "Escalation policies",
             "Full audit trail"
           ],
-          color: "#fdf4ff"
+          color: "#eef2ff",
+          image: "/screenshots/action-items-bulk.png"
         }
       ]}
       howItWorks={[
