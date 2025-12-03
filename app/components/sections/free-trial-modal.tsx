@@ -5,7 +5,7 @@ import { createContext, useContext, useState, useCallback, useEffect } from "rea
 import { Dialog, DialogContent } from "@/app/components/ui/dialog"
 import { Sparkles, Loader2 } from "lucide-react"
 
-const SIGNUP_URL = "https://pcprod.vercel.app/setup-admin"
+const SIGNUP_URL = "https://corenz-frontend.vercel.app/setup-admin"
 
 interface FreeTrialContextType {
   openFreeTrial: () => void
