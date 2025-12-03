@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowUpRight, CalendarDays, FileText, CheckCircle2, BarChart3, Workflow, Sparkles } from "lucide-react"
+import { ArrowUpRight, CalendarDays, FileText, CheckCircle2, BarChart3, Workflow, SlidersHorizontal } from "lucide-react"
 import Link from "next/link"
 
 const features = [
@@ -36,10 +36,10 @@ const features = [
     icon: Workflow,
   },
   {
-    title: "AI Copilot",
-    description: "Your personal HR assistant. Trained on NZ employment law. Available 24/7.",
-    href: "/ai-copilot",
-    icon: Sparkles,
+    title: "Customisation",
+    description: "Custom screens, performance review and limitless rules, make PeopleCore truly yours.",
+    href: "/customisation",
+    icon: SlidersHorizontal,
   },
 ]
 
