@@ -4,6 +4,7 @@ import * as React from "react"
 import { motion } from "framer-motion"
 import { LucideIcon, ArrowUpRight, Check } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { Footer } from "./footer"
 import { useCalendly } from "./calendly-modal"
 
@@ -18,6 +19,7 @@ interface FeatureDetail {
   description: string
   benefits: string[]
   color: string
+  image?: string
 }
 
 interface HowItWorksStep {
@@ -39,7 +41,7 @@ interface FeaturePageProps {
   ctaDescription: string
 }
 
-function FeatureNav() {
+function FeatureNav({ accentColor }: { accentColor: string }) {
   const { openCalendly } = useCalendly()
   
   return (
@@ -50,13 +52,71 @@ function FeatureNav() {
         </Link>
         <button
           onClick={openCalendly}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-2.5 text-white rounded-full text-sm font-medium hover:opacity-90 transition-opacity"
+          style={{ backgroundColor: accentColor }}
         >
           Book a demo
           <ArrowUpRight className="w-4 h-4" />
         </button>
       </div>
     </nav>
+  )
+}
+
+function ScreenshotImage({ 
+  src, 
+  alt, 
+  className = "", 
+  accentColor,
+  fallbackIcon: FallbackIcon
+}: { 
+  src?: string
+  alt: string
+  className?: string
+  accentColor: string
+  fallbackIcon: LucideIcon
+}) {
+  const [hasError, setHasError] = React.useState(false)
+  
+  // Show placeholder if image doesn't exist yet or there's an error
+  if (!src || hasError) {
+    return (
+      <div className={`relative rounded-2xl overflow-hidden border border-gray-200/50 ${className}`} style={{ backgroundColor: `${accentColor}10` }}>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center">
+            <div 
+              className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4"
+              style={{ backgroundColor: `${accentColor}20` }}
+            >
+              <FallbackIcon className="w-8 h-8" style={{ color: accentColor }} />
+            </div>
+            {src && <p className="text-sm font-medium" style={{ color: accentColor }}>Add image: {src}</p>}
+          </div>
+        </div>
+        <div className="absolute inset-0 opacity-30">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" strokeWidth="0.5" style={{ color: `${accentColor}50` }}/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className={`relative rounded-2xl overflow-hidden shadow-xl border border-gray-200/50 ${className}`}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className="object-cover"
+        onError={() => setHasError(true)}
+      />
+    </div>
   )
 }
 
@@ -76,7 +136,7 @@ export function FeaturePageTemplate({
   
   return (
     <main className="min-h-screen bg-white">
-      <FeatureNav />
+      <FeatureNav accentColor={accentColor} />
 
       {/* Hero */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-24">
@@ -116,7 +176,8 @@ export function FeaturePageTemplate({
           >
             <button
               onClick={openCalendly}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-foreground text-white rounded-full font-medium text-lg hover:bg-gray-800 transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 text-white rounded-full font-medium text-lg hover:opacity-90 transition-opacity"
+              style={{ backgroundColor: accentColor }}
             >
               See it in action
               <ArrowUpRight className="w-5 h-5" />
@@ -155,43 +216,68 @@ export function FeaturePageTemplate({
         </div>
       </section>
 
-      {/* Feature Details */}
-      {featureDetails.map((detail, index) => (
-        <section
-          key={detail.title}
-          className="section-padding"
-          style={{ backgroundColor: index % 2 === 0 ? '#ffffff' : detail.color }}
-        >
-          <div className="container-tight">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="max-w-3xl mx-auto"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">
-                {detail.title}
-              </h2>
-              <p className="text-lg text-gray-500 mb-8">{detail.description}</p>
+      {/* Feature Details - Alternating 2-column layout */}
+      {featureDetails.map((detail, index) => {
+        const isEven = index % 2 === 0
+        const bgColor = isEven ? '#ffffff' : detail.color
+        
+        return (
+          <section
+            key={detail.title}
+            className="section-padding"
+            style={{ backgroundColor: bgColor }}
+          >
+            <div className="container-tight">
+              <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                {/* Content */}
+                <motion.div
+                  initial={{ opacity: 0, x: isEven ? -30 : 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className={isEven ? "" : "order-1 lg:order-2"}
+                >
+                  <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">
+                    {detail.title}
+                  </h2>
+                  <p className="text-lg text-gray-500 mb-8">{detail.description}</p>
 
-              <div className="space-y-4">
-                {detail.benefits.map((benefit) => (
-                  <div key={benefit} className="flex items-start gap-3">
-                    <div
-                      className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                      style={{ backgroundColor: accentColor }}
-                    >
-                      <Check className="w-4 h-4 text-white" />
-                    </div>
-                    <span className="text-foreground">{benefit}</span>
+                  <div className="space-y-4">
+                    {detail.benefits.map((benefit) => (
+                      <div key={benefit} className="flex items-start gap-3">
+                        <div
+                          className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                          style={{ backgroundColor: accentColor }}
+                        >
+                          <Check className="w-4 h-4 text-white" />
+                        </div>
+                        <span className="text-foreground">{benefit}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </motion.div>
+
+                {/* Image */}
+                <motion.div
+                  initial={{ opacity: 0, x: isEven ? 30 : -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className={isEven ? "" : "order-2 lg:order-1"}
+                >
+                  <ScreenshotImage 
+                    src={detail.image} 
+                    alt={detail.title} 
+                    className="aspect-[4/3] w-full"
+                    accentColor={accentColor}
+                    fallbackIcon={Icon}
+                  />
+                </motion.div>
               </div>
-            </motion.div>
-          </div>
-        </section>
-      ))}
+            </div>
+          </section>
+        )
+      })}
 
       {/* How It Works */}
       <section className="section-padding bg-gray-50">

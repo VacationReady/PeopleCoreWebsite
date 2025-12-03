@@ -324,9 +324,9 @@ export function Hero() {
               className="pt-8"
             >
               <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-tight leading-[1.1] mb-8">
-                <span className="text-primary">HR Software</span>
+                <span className="text-primary">Modern HR</span>
                 <br />
-                <span className="text-gray-900">for the modern, Kiwi workforce</span>
+                <span className="text-gray-900">built for New Zealand employers</span>
               </h1>
               
               <p className="text-lg text-gray-500 max-w-xl mb-8 leading-relaxed">

@@ -4,10 +4,19 @@ import * as React from "react"
 import { motion } from "framer-motion"
 import { Calendar, Clock, Users, Shield, ArrowUpRight, Check } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { Footer } from "@/app/components/sections/footer"
 import { useCalendly } from "@/app/components/sections/calendly-modal"
 
 const accentColor = "#6366F1"
+
+// ==============================================
+// 📸 UPDATE THESE PATHS TO YOUR SCREENSHOT FILES
+// ==============================================
+// Place your images in the "public" folder, then update these paths:
+const SMART_WORKFLOWS_IMAGE = "/leave-workflows.png"      // e.g., public/leave-workflows.png
+const SELF_SERVICE_IMAGE = "/leave-self-service.png"      // e.g., public/leave-self-service.png
+// ==============================================
 
 function FeatureNav() {
   const { openCalendly } = useCalendly()
@@ -31,31 +40,47 @@ function FeatureNav() {
   )
 }
 
-function ImagePlaceholder({ className = "" }: { className?: string }) {
-  return (
-    <div className={`relative rounded-2xl overflow-hidden bg-gradient-to-br from-indigo-100 to-indigo-50 border border-indigo-200/50 ${className}`}>
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="text-center">
-          <div 
-            className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4"
-            style={{ backgroundColor: `${accentColor}20` }}
-          >
-            <Calendar className="w-8 h-8" style={{ color: accentColor }} />
+function ScreenshotImage({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
+  const [hasError, setHasError] = React.useState(false)
+  
+  // Show placeholder if image doesn't exist yet
+  if (hasError) {
+    return (
+      <div className={`relative rounded-2xl overflow-hidden bg-gradient-to-br from-indigo-100 to-indigo-50 border border-indigo-200/50 ${className}`}>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center">
+            <div 
+              className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4"
+              style={{ backgroundColor: `${accentColor}20` }}
+            >
+              <Calendar className="w-8 h-8" style={{ color: accentColor }} />
+            </div>
+            <p className="text-sm font-medium text-indigo-400">Add image: {src}</p>
           </div>
-          <p className="text-sm font-medium text-indigo-400">Screenshot Placeholder</p>
+        </div>
+        <div className="absolute inset-0 opacity-30">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-indigo-300"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
         </div>
       </div>
-      {/* Decorative grid pattern */}
-      <div className="absolute inset-0 opacity-30">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-indigo-300"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-      </div>
+    )
+  }
+
+  return (
+    <div className={`relative rounded-2xl overflow-hidden shadow-xl border border-gray-200/50 ${className}`}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className="object-cover"
+        onError={() => setHasError(true)}
+      />
     </div>
   )
 }
@@ -213,7 +238,11 @@ export default function LeavePage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <ImagePlaceholder className="aspect-[4/3] w-full" />
+              <ScreenshotImage 
+                src={SMART_WORKFLOWS_IMAGE} 
+                alt="Smart leave workflows dashboard" 
+                className="aspect-[4/3] w-full" 
+              />
             </motion.div>
           </div>
         </div>
@@ -230,7 +259,11 @@ export default function LeavePage() {
               transition={{ duration: 0.6 }}
               className="order-2 lg:order-1"
             >
-              <ImagePlaceholder className="aspect-[4/3] w-full" />
+              <ScreenshotImage 
+                src={SELF_SERVICE_IMAGE} 
+                alt="Employee self-service leave portal" 
+                className="aspect-[4/3] w-full" 
+              />
             </motion.div>
 
             <motion.div
