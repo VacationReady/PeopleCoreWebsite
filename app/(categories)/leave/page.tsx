@@ -14,29 +14,29 @@ export default function LeavePage() {
       highlights={[
         {
           icon: Shield,
-          title: "100% Holidays Act Compliant",
-          description: "FBAPS calculations, AWEP, and public holiday handling done right. Audited and certified."
+          title: "Simple, modern leave tracking",
+          description: "Leave tracking made simple. Manage and monitor all types of leave paid or unpaid leave. Review leave requests from any device and report across any timeframes."
         },
         {
           icon: Clock,
-          title: "Instant Approvals",
-          description: "Smart routing based on team coverage and policies. One-click approve from anywhere."
+          title: "Intelligent Approvals",
+          description: "Smart and intuitive dashboard-display leave approvals. See who's off, current balances and much more within one window, ensuring requests have had all the necessary due diligence before being approved"
         },
         {
           icon: Users,
-          title: "Team Coverage View",
-          description: "See who's away and when. AI flags potential conflicts before they happen."
+          title: "Powerful Calendars",
+          description: "Highly configurable, beautiful calendars views for all employees. Blackout days, amend bookings and AI powered insights"
         }
       ]}
       featureDetails={[
         {
-          title: "Smart leave calculations",
-          description: "Our engine handles every edge case in the Holidays Act — including FBAPS, AWEP, and those tricky 'otherwise working day' scenarios.",
+          title: "Smart leave workflows",
+          description: "Our system handles every edge case in the way your staff book leave, ensuring full configuration to the way your business operates",
           benefits: [
-            "Automatic OWD calculations for shift workers",
-            "Pro-rata calculations for part-timers",
-            "Accrual tracking with anniversary dates",
-            "Alternative holidays handled correctly"
+            "Multi stage and custom approvals for complex teams",
+            "Event rules to configure non negotiable policies",
+            "Custom events to manage company specific days off",
+            "Full reporting across all paid and unpaid leave"
           ],
           color: "#d1fae5"
         },
