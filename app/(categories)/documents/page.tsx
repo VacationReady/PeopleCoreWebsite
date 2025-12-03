@@ -30,13 +30,13 @@ export default function DocumentsPage() {
       ]}
       featureDetails={[
         {
-          title: "AI document generation",
+          title: "Robust e-signature and acknowledgement functionality",
           description: "Generate employment contracts, policy documents, and letters using AI. Your templates, your brand, zero manual work.",
           benefits: [
-            "Employment contracts in 30 seconds",
-            "Policy documents with NZ law updates",
-            "Personalised letters and notices",
-            "Branded templates"
+            "On document e-signature and for any documents such as employment contracts.",
+            "Require acknowledgement of documents like policies from any employees.",
+            "Bulk action functionality allows for the acknowledgement of ad hoc documents en masse.",
+            "Highly configurable security controls on EVERY document."
           ],
           color: "#eef2ff",
           image: "/screenshots/documents-generation.png"

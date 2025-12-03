@@ -91,7 +91,7 @@ function ScreenshotImage({
         src={src}
         alt={alt}
         fill
-        className="object-cover"
+        className="object-contain"
         onError={() => setHasError(true)}
       />
     </div>
