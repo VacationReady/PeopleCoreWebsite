@@ -10,22 +10,22 @@ export default function DocumentsPage() {
       accentColor="#6366F1"
       badge="Document Management"
       title="Documents, handled"
-      description="AI-powered document generation, e-signatures, and smart filing. Generate contracts in seconds, not hours."
+      description="Intuitive document generation, e-signatures and smart filing. Manage document acknowledgment, onboarding and ad hoc documentation at scale"
       highlights={[
         {
           icon: Upload,
           title: "Smart Upload",
-          description: "Drag and drop. AI categorizes and files automatically."
+          description: "Modern drag and drop, robust permission setting and multiple file formats allow for bespoke configuration cross all documents"
         },
         {
           icon: FileCheck,
-          title: "E-Signatures Built-in",
-          description: "Legally binding e-signatures. NZ law compliant."
+          title: "Native E-signature and Document Acknowledgement",
+          description: "Direct on-document e-signatures and document acknowledgements for compliance across the entire employee lifecycle"
         },
         {
           icon: Search,
-          title: "Find Anything",
-          description: "AI-powered search across all your documents."
+          title: "One Stop Shop",
+          description: "Personal and Company libraries provide employees the ability to autonomously locate and refer to any document relevant to them across both mobile and desktop devices."
         }
       ]}
       featureDetails={[
