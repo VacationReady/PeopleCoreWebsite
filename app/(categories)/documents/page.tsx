@@ -42,13 +42,14 @@ export default function DocumentsPage() {
           image: "/screenshots/documents-generation.png"
         },
         {
-          title: "Secure, compliant storage",
-          description: "All documents stored securely in Auckland. Privacy Act 2020 compliant with full audit trails.",
+          title: "Enterprise-Grade Document Security",
+          description: "Your sensitive employee documents deserve bank-level protection. Here's how we keep them safe:",
           benefits: [
-            "256-bit encryption at rest",
-            "Version history for every file",
-            "Access controls and permissions",
-            "Expiry tracking and alerts"
+            "Your documents are stored in secure, private cloud storage with zero public exposure. Every file requires authenticated access - no exceptions, no shortcuts.",
+            "Your documents exist in their own secure silo - completely invisible and inaccessible to other organisations on the platform.",
+            "Documents are protected by layered permissions based on role, department, and position - ensuring employees only access what's relevant to them.",
+            "When someone downloads a document, they get a secure link that expires in minutes—not days, not forever. No more worrying about old links floating around in emails or chat histories.",
+            "Track exactly who has viewed, acknowledged, and signed every document with tamper-proof timestamps. Perfect for compliance, onboarding verification, and policy rollouts."
           ],
           color: "#eef2ff",
           image: "/screenshots/documents-storage.png"
