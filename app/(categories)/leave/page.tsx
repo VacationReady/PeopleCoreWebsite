@@ -86,7 +86,7 @@ export default function LeavePage() {
 
   const howItWorks = [
     { step: 1, title: "Request", description: "Employee submits leave from mobile or desktop" },
-    { step: 2, title: "Check", description: "AI validates policy compliance and team coverage" },
+    { step: 2, title: "Check", description: "PeopleCore checks rules, sends breakdown to the approver" },
     { step: 3, title: "Approve", description: "Manager approves with one click" },
     { step: 4, title: "Track", description: "Payroll syncs automatically" }
   ]

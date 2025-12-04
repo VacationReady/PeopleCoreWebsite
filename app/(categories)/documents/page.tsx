@@ -56,13 +56,13 @@ export default function DocumentsPage() {
         }
       ]}
       howItWorks={[
-        { step: 1, title: "Upload", description: "Drag and drop or generate with AI" },
-        { step: 2, title: "Organize", description: "AI categorizes and links to employees" },
-        { step: 3, title: "Sign", description: "Send for e-signature with tracking" },
+        { step: 1, title: "Upload", description: "Drag and drop or upload any file" },
+        { step: 2, title: "Organise", description: "Categorise and filter who the documents are available to" },
+        { step: 3, title: "Sign", description: "Send for e-signature or acknowledgement (or neither) with tracking and email workflow" },
         { step: 4, title: "Store", description: "Secure storage with compliance monitoring" }
       ]}
       ctaTitle="Go paperless today"
-      ctaDescription="Transform your document management with AI. Secure, compliant, incredibly fast."
+      ctaDescription="Transform your document management with PeopleCore. Secure, compliant, incredibly fast."
     />
   )
 }
