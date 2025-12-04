@@ -10,7 +10,7 @@ const plans = [
     price: "Free",
     period: "During Beta",
     description: "Perfect for exploring PeopleCore's capabilities",
-    badge: { text: "Limited Time", icon: Sparkles, color: "from-green-500 to-emerald-500" },
+    badge: null,
     features: [
       "Up to 50 employees",
       "Core AI workflows",
@@ -28,7 +28,7 @@ const plans = [
     price: "$12",
     period: "per employee/month",
     description: "Advanced AI automation for growing teams",
-    badge: { text: "Most Popular", icon: Crown, color: "from-blue-500 to-purple-500" },
+    badge: null,
     features: [
       "Unlimited employees",
       "Advanced AI workflows", 
@@ -40,7 +40,7 @@ const plans = [
       "API access"
     ],
     cta: "Join Waitlist",
-    popular: true,
+    popular: false,
     color: "border-blue-200 bg-blue-50"
   },
   {
@@ -127,7 +127,7 @@ export function Pricing() {
                     )}
                   </div>
 
-                  {!plan.popular && (
+                  {!plan.popular && plan.badge && (
                     <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r ${plan.badge.color} text-white text-sm font-medium`}>
                       <plan.badge.icon className="w-3 h-3" />
                       {plan.badge.text}
