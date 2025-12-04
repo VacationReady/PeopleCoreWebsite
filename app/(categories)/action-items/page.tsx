@@ -10,7 +10,7 @@ export default function ActionItemsPage() {
       accentColor="#6366F1"
       badge="Action Items"
       title="Your unified command centre"
-      description="One dashboard for everything that needs your attention. Holiday approvals, employee updates, performance reviews, surveys — all in one intuitive hub."
+      description="One global dashboard for HR, one dashboard for every employee. Approvals, reviews, document actions, surveys... And many more, in one, intuitive widget."
       highlights={[
         {
           icon: CheckSquare,
@@ -19,19 +19,19 @@ export default function ActionItemsPage() {
         },
         {
           icon: Bell,
-          title: "Smart Notifications",
-          description: "Get notified your way — push, email, Slack, or Teams. Never miss an important action."
+          title: "Smart Completion",
+          description: "Employees can complete anything required from them directly on their dashboard, boosting the adoption of PeopleCore."
         },
         {
           icon: TrendingUp,
-          title: "Priority Insights",
-          description: "AI-powered prioritisation ensures the most urgent items surface first."
+          title: "Global Dashboard",
+          description: "Review all pending action items in one unified dashboard. Get control back on what is outstanding across your workforce."
         }
       ]}
       featureDetails={[
         {
           title: "One place for all actions",
-          description: "From leave approvals to employee detail changes, performance management tasks to survey completions — everything you need to action lives in one beautiful, intuitive dashboard.",
+          description: "From leave approvals to employee detail changes, performance management tasks to survey completions - everything you need to action lives in one beautiful, intuitive dashboard... For all employees.",
           benefits: [
             "Holiday and leave approvals",
             "Employee information updates",
