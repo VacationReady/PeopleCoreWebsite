@@ -15,12 +15,12 @@ export default function ReportingPage() {
         {
           icon: PieChart,
           title: "Executive Dashboards",
-          description: "Real-time KPIs at a glance. Headcount, retention, diversity."
+          description: "Real-time KPIs at a glance. Headcount, retention, diversity. Make important people presentations effortless."
         },
         {
           icon: TrendingUp,
-          title: "Predictive Analytics",
-          description: "AI-powered turnover risk and trend predictions."
+          title: "Fully Custom Reporting",
+          description: "Report on anything, from any time. Real time or historic reports from any area of your system, in any order you like."
         },
         {
           icon: Download,
@@ -31,34 +31,34 @@ export default function ReportingPage() {
       featureDetails={[
         {
           title: "Custom report builder",
-          description: "Build any report you need with drag-and-drop. No SQL, no technical skills required.",
+          description: "Build any report you need, no technical skills required.",
           benefits: [
-            "100+ pre-built templates",
-            "Drag-and-drop fields",
-            "Scheduled report delivery",
-            "Shareable with permissions"
+            "Choose from a wide selection pre-built templates our customers love.",
+            "Sophisticated filtering across all fields to pinpoint the data you need",
+            "Send Reports to colleagues who need it.",
+            "Shareable with permissions."
           ],
           color: "#eef2ff",
           image: "/screenshots/reporting-builder.png"
         },
         {
           title: "Compliance reporting",
-          description: "Generate IRD, WorkSafe, and audit reports instantly. All data formatted correctly.",
+          description: "Generate IRD, diversity, and audit reports instantly. All data formatted correctly.",
           benefits: [
             "IRD-compliant exports",
             "Pay equity analysis",
-            "Leave liability reports",
-            "Audit-ready documentation"
+            "Leave breakdown reports",
+            "Audit-ready PDFs"
           ],
           color: "#eef2ff",
           image: "/screenshots/reporting-compliance.png"
         }
       ]}
       howItWorks={[
-        { step: 1, title: "Select", description: "Choose from 100+ templates" },
-        { step: 2, title: "Customize", description: "Add fields and filters" },
-        { step: 3, title: "Generate", description: "Real-time data, instant results" },
-        { step: 4, title: "Share", description: "Export or schedule delivery" }
+        { step: 1, title: "Select", description: "Choose from our pre-built templates, or build your own" },
+        { step: 2, title: "Customise", description: "Add fields and filters relevant to what you are trying to capture" },
+        { step: 3, title: "Generate", description: "Real-time data, instant results with 100% accuracy" },
+        { step: 4, title: "Share", description: "Export to multiple files types, and share with or present to relevant people" }
       ]}
       ctaTitle="Data-driven HR"
       ctaDescription="Get the insights you need to make better workforce decisions. Real-time analytics at your fingertips."
