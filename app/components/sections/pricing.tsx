@@ -107,7 +107,7 @@ export function Pricing() {
                 } hover:shadow-xl transition-all duration-300`}
               >
                 {/* Popular badge */}
-                {plan.popular && (
+                {plan.popular && plan.badge && (
                   <div className="flex justify-center mb-5 sm:mb-6">
                     <div className={`bg-gradient-to-r ${plan.badge.color} text-white px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-md border border-white/50`}>
                       {plan.badge.text}
