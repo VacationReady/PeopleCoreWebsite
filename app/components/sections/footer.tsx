@@ -15,7 +15,7 @@ const footerLinks = {
   company: [
     { name: "About", href: "#" },
     { name: "Pricing", href: "/pricing" },
-    { name: "Contact", href: "mailto:hello@peoplecore.co.nz" },
+    { name: "Contact", href: "/contact" },
   ],
   legal: [
     { name: "Privacy", href: "#" },
