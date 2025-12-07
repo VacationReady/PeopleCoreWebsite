@@ -16,6 +16,7 @@ const navLinks = [
     href: "#product",
     children: [
       { label: "Leave Management", href: "/leave", description: "Automated leave tracking" },
+      { label: "Rotas/Timesheets", href: "/rotas-timesheets", description: "Smart rotas & timesheets" },
       { label: "Documents", href: "/documents", description: "Smart document management" },
       { label: "Action Items", href: "/action-items", description: "Your unified command centre" },
       { label: "Reporting", href: "/reporting", description: "Analytics & insights" },

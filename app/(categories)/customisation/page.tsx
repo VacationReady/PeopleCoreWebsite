@@ -15,17 +15,17 @@ export default function CustomisationPage() {
         {
           icon: Layout,
           title: "Screen Designer",
-          description: "Drag-and-drop interface builder. Add, remove, or rearrange fields to match your processes."
-        },
-        {
-          icon: Zap,
-          title: "Event Manager",
-          description: "Trigger automated actions when events occur. Send emails, update records, or kick off workflows."
+          description: "Drag-and-drop screen and survey builder. Add, remove, or rearrange fields to match your processes and capture the information you need to capture."
         },
         {
           icon: Calendar,
-          title: "Holiday Rules Engine",
-          description: "Define complex leave policies, entitlements, and accrual rules specific to New Zealand."
+          title: "Event Manager",
+          description: "Create custom events to match your companies time off processes. Create specific rules for each leave type you have."
+        },
+        {
+          icon: Zap,
+          title: "Onboarding Template Builder",
+          description: "Create multiple, custom built onboarding processes to ensure the capture of relevant documents and information, before day one."
         }
       ]}
       featureDetails={[

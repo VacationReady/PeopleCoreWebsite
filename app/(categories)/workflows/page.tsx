@@ -10,22 +10,22 @@ export default function WorkflowsPage() {
       accentColor="#6366F1"
       badge="Workflow Automation"
       title="Automate everything"
-      description="Build any HR workflow without code. 78+ templates ready to go. From onboarding to offboarding."
+      description="Build any HR workflow without code. Lots of user provided templates ready to go. From onboarding to offboarding and everything in between, start atuomating every process within your business."
       highlights={[
         {
           icon: Zap,
           title: "No-Code Builder",
-          description: "Drag, drop, done. Build workflows in minutes."
+          description: "Drag, drop, done. Build workflows in minutes, or ask one of our support team to build it for you!"
         },
         {
           icon: GitBranch,
           title: "Smart Logic",
-          description: "Conditions, branches, loops. Handle any scenario."
+          description: "Conditions, branches, loops. Handle any scenario with ultimate configurablity to ensure your processes are mirrored flawlessly."
         },
         {
           icon: Play,
-          title: "78+ Templates",
-          description: "Pre-built workflows for common HR processes."
+          title: "Existing Templates",
+          description: "Pre-built workflows for common HR processes can be applied to your system in one click."
         }
       ]}
       featureDetails={[
@@ -43,12 +43,12 @@ export default function WorkflowsPage() {
         },
         {
           title: "Trigger on anything",
-          description: "Start workflows from any event — new hire, leave request, document upload, date-based, or manual.",
+          description: "Start workflows from any event - new hire, leave request, document upload, date-based, or manual.",
           benefits: [
             "Event-based triggers",
             "Scheduled automation",
-            "Webhook integrations",
-            "Manual start option"
+            "10 workflows scoped at implementation",
+            "Ultimate flexibility"
           ],
           color: "#eef2ff",
           image: "/screenshots/workflows-triggers.png"
