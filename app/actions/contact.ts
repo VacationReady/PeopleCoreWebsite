@@ -39,7 +39,7 @@ export async function submitContactForm(formData: FormData): Promise<ContactForm
         const resend = new Resend(process.env.RESEND_API_KEY)
 
         await resend.emails.send({
-          from: "PeopleCore <noreply@peoplecore.ai>",
+          from: "PeopleCore <hi@peoplecore.co.nz>",
           to: ["hi@peoplecore.co.nz"],
           subject: "New Website Contact Enquiry",
           html: `

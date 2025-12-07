@@ -21,7 +21,7 @@ export async function requestDemoAccess(email: string) {
 
         // Send notification to Mike
         await resend.emails.send({
-          from: "PeopleCore <noreply@peoplecore.ai>",
+          from: "PeopleCore <hi@peoplecore.co.nz>",
           to: ["hi@peoplecore.co.nz"],
           subject: "🎬 New Demo Request",
           html: `
@@ -46,7 +46,7 @@ export async function requestDemoAccess(email: string) {
 
         // Send demo link to the user
         await resend.emails.send({
-          from: "PeopleCore <noreply@peoplecore.ai>",
+          from: "PeopleCore <hi@peoplecore.co.nz>",
           to: [validatedData.email],
           subject: "Your PeopleCore Demo Access",
           html: `

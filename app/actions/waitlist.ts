@@ -45,7 +45,7 @@ export async function joinWaitlist(formData: FormData) {
         const resend = new Resend(process.env.RESEND_API_KEY)
 
         await resend.emails.send({
-          from: "PeopleCore <noreply@peoplecore.ai>",
+          from: "PeopleCore <hi@peoplecore.co.nz>",
           to: [validatedData.email],
           subject: "Welcome to PeopleCore Beta!",
           html: `
@@ -84,7 +84,7 @@ export async function joinWaitlist(formData: FormData) {
 
         // Send notification to Mike
         await resend.emails.send({
-          from: "PeopleCore <noreply@peoplecore.ai>",
+          from: "PeopleCore <hi@peoplecore.co.nz>",
           to: ["hi@peoplecore.co.nz"],
           subject: "New Beta Waitlist Signup",
           html: `
