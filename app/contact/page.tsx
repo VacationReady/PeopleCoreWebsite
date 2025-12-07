@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react"
 import { motion } from "framer-motion"
-import { Mail, User, Building2, Users } from "lucide-react"
+import { Mail, User, Building2, Phone } from "lucide-react"
 import { SiteNav } from "@/app/components/navigation/site-nav"
 import { Footer } from "@/app/components/sections/footer"
 import { Input } from "@/app/components/ui/input"
@@ -58,9 +58,9 @@ export default function ContactPage() {
             </h1>
 
             <p className="max-w-xl text-lg text-gray-500">
-              Share a few details and we&apos;ll follow up with the right next step 
-              whether that&apos;s a quick question, a product demo, or a deeper
-              conversation about your HR setup.
+              Share a few details and we&apos;ll follow up with the right next step - whether
+              that&apos;s a quick question, a product demo, or a deeper conversation about
+              your HR setup.
             </p>
 
             <div className="grid gap-4 text-sm text-gray-600 sm:grid-cols-2">
@@ -81,13 +81,11 @@ export default function ContactPage() {
 
               <div className="flex items-start gap-3">
                 <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <Users className="h-4 w-4" />
+                  <Phone className="h-4 w-4" />
                 </div>
                 <div>
-                  <div className="font-medium text-foreground">Built for NZ employers</div>
-                  <p className="text-gray-500">
-                    Holidays Act, tangihanga leave, and local compliance baked in.
-                  </p>
+                  <div className="font-medium text-foreground">Or give us a call</div>
+                  <p className="text-gray-500">0800 PEOPLECORE (Lines open 9am - 5pm)</p>
                 </div>
               </div>
             </div>
@@ -254,8 +252,7 @@ export default function ContactPage() {
                       </Button>
 
                       <p className="text-center text-xs text-gray-400">
-                        By submitting this form, you agree to be contacted about
-                        PeopleCore. Your data is stored securely in Aotearoa.
+                        By submitting this form, you agree to be contacted about PeopleCore.
                       </p>
                     </div>
                   </form>
