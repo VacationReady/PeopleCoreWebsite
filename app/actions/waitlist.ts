@@ -85,7 +85,7 @@ export async function joinWaitlist(formData: FormData) {
         // Send notification to Mike
         await resend.emails.send({
           from: "PeopleCore <noreply@peoplecore.ai>",
-          to: ["mike@peoplecore.co.nz"],
+          to: ["hi@peoplecore.co.nz"],
           subject: "New Beta Waitlist Signup",
           html: `
             <h2>New Beta Waitlist Signup</h2>

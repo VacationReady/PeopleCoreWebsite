@@ -8,6 +8,7 @@ import { Footer } from "@/app/components/sections/footer"
 import { Input } from "@/app/components/ui/input"
 import { Button } from "@/app/components/ui/button"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/app/components/ui/card"
+import { submitContactForm } from "@/app/actions/contact"
 
 const companySizeOptions = [
   { value: "1-5", label: "1-5 people" },
@@ -22,16 +23,29 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (isSubmitting) return
 
     setIsSubmitting(true)
 
-    setTimeout(() => {
+    const formElement = event.currentTarget
+    const formData = new FormData(formElement)
+
+    try {
+      const result = await submitContactForm(formData)
+
+      if (result.success) {
+        setIsSubmitted(true)
+        formElement.reset()
+      } else {
+        console.error(result.message)
+      }
+    } catch (error) {
+      console.error("Contact form submission failed:", error)
+    } finally {
       setIsSubmitting(false)
-      setIsSubmitted(true)
-    }, 800)
+    }
   }
 
   return (
@@ -71,10 +85,10 @@ export default function ContactPage() {
                 <div>
                   <div className="font-medium text-foreground">Email us directly</div>
                   <a
-                    href="mailto:hello@peoplecore.co.nz"
+                    href="mailto:hi@peoplecore.co.nz"
                     className="font-medium text-primary hover:underline"
                   >
-                    hello@peoplecore.co.nz
+                    hi@peoplecore.co.nz
                   </a>
                 </div>
               </div>
@@ -122,10 +136,10 @@ export default function ContactPage() {
                       If it&apos;s urgent, email us at
                       {" "}
                       <a
-                        href="mailto:hello@peoplecore.co.nz"
+                        href="mailto:hi@peoplecore.co.nz"
                         className="font-medium text-primary hover:underline"
                       >
-                        hello@peoplecore.co.nz
+                        hi@peoplecore.co.nz
                       </a>
                       .
                     </p>

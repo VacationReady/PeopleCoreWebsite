@@ -22,7 +22,7 @@ export async function requestDemoAccess(email: string) {
         // Send notification to Mike
         await resend.emails.send({
           from: "PeopleCore <noreply@peoplecore.ai>",
-          to: ["mike@peoplecore.co.nz"],
+          to: ["hi@peoplecore.co.nz"],
           subject: "🎬 New Demo Request",
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
