@@ -56,7 +56,7 @@ export default function CustomisationPage() {
           image: "/screenshots/customisation-event-manager.png"
         },
         {
-          title: "Holiday Rules Engine",
+          title: "And Much, Much More",
           description: "Configure complex leave policies that match New Zealand employment law and your company's unique needs. Handle pro-rata calculations, anniversary dates, and multiple leave types with ease.",
           benefits: [
             "NZ public holiday calendars",
@@ -68,18 +68,6 @@ export default function CustomisationPage() {
           ],
           color: "#eef2ff",
           image: "/screenshots/customisation-holiday-rules.png"
-        },
-        {
-          title: "Branding & Theming",
-          description: "Make PeopleCore feel like your own. Upload your logo, set your brand colours, and create a seamless experience for your employees.",
-          benefits: [
-            "Custom logo and favicon",
-            "Brand colour palette",
-            "Custom email templates",
-            "White-label options"
-          ],
-          color: "#eef2ff",
-          image: "/screenshots/customisation-branding.png"
         }
       ]}
       howItWorks={[

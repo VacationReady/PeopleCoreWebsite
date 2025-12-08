@@ -21,7 +21,6 @@ const navLinks = [
       { label: "Action Items", href: "/action-items", description: "Your unified command centre" },
       { label: "Reporting", href: "/reporting", description: "Analytics & insights" },
       { label: "Workflows", href: "/workflows", description: "Custom automations" },
-      { label: "AI Copilot", href: "/ai-copilot", description: "Your HR assistant" },
       { label: "Customisation", href: "/customisation", description: "Screen designer & rules engine" },
     ]
   },
