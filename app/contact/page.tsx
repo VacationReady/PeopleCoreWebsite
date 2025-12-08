@@ -111,12 +111,14 @@ export default function ContactPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <Card variant="elevated" padding="lg" className="shadow-lg shadow-primary/10">
-              <CardHeader className="space-y-1">
-                <CardTitle>Contact us</CardTitle>
-                <CardDescription>
-                  Tell us a bit about you and we&apos;ll be in touch shortly.
-                </CardDescription>
-              </CardHeader>
+              {!isSubmitted && (
+                <CardHeader className="space-y-1">
+                  <CardTitle>Contact us</CardTitle>
+                  <CardDescription>
+                    Tell us a bit about you and we&apos;ll be in touch shortly.
+                  </CardDescription>
+                </CardHeader>
+              )}
 
               <CardContent className="mt-4">
                 {isSubmitted ? (

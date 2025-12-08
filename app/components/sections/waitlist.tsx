@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useTransition } from "react"
+import { useState, useTransition, type FormEvent } from "react"
 import { motion } from "framer-motion"
 import { ArrowUpRight, Check } from "lucide-react"
 import { joinWaitlist } from "@/app/actions/waitlist"
@@ -9,13 +9,18 @@ export function Waitlist() {
   const [isPending, startTransition] = useTransition()
   const [result, setResult] = useState<{ success: boolean; message: string } | null>(null)
 
-  const handleSubmit = async (formData: FormData) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (isPending) return
+
+    const form = event.currentTarget
+    const formData = new FormData(form)
+
     startTransition(async () => {
       const result = await joinWaitlist(formData)
       setResult(result)
       if (result.success) {
-        const form = document.getElementById('waitlist-form') as HTMLFormElement
-        form?.reset()
+        form.reset()
       }
     })
   }
@@ -56,7 +61,7 @@ export function Waitlist() {
           ) : (
             <motion.form
               id="waitlist-form"
-              action={handleSubmit}
+              onSubmit={handleSubmit}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
