@@ -116,25 +116,6 @@ export function Pricing() {
                 )}
 
                 {/* Plan header */}
-                <div className="text-center mb-6 sm:mb-8">
-                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">{plan.name}</h3>
-                  <p className="text-slate-600 mb-4 text-sm sm:text-base">{plan.description}</p>
-                  
-                  <div className="mb-4">
-                    <span className="text-3xl sm:text-4xl font-bold text-slate-900">{plan.price}</span>
-                    {plan.period && (
-                      <span className="text-slate-600 ml-2 text-sm sm:text-base">/{plan.period}</span>
-                    )}
-                  </div>
-
-                  {!plan.popular && plan.badge && (
-                    <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r ${plan.badge.color} text-white text-sm font-medium`}>
-                      <plan.badge.icon className="w-3 h-3" />
-                      {plan.badge.text}
-                    </div>
-                  )}
-                </div>
-
                 {/* Floating particles on hover */}
                 <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   {[...Array(8)].map((_, i) => (
