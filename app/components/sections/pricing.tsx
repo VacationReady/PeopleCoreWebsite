@@ -200,28 +200,28 @@ export function Pricing() {
           <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto text-left">
             <div className="bg-slate-50 rounded-xl p-4 sm:p-6">
               <h4 className="font-semibold text-slate-900 mb-3 text-sm sm:text-base">
-                How long is the beta period?
+                Can I upgrade to plus when I'm ready?
               </h4>
               <p className="text-slate-600 text-sm sm:text-base">
-                The beta period runs until Q2 2024. All beta users will receive special pricing when we launch.
+                Yes, you can upgrade to Plus at any point. Just reach out to your account manager who will be happy to demo the additional features.
               </p>
             </div>
             
             <div className="bg-slate-50 rounded-xl p-4 sm:p-6">
               <h4 className="font-semibold text-slate-900 mb-3 text-sm sm:text-base">
-                Can I upgrade or downgrade anytime?
+                Do you offer a free trial?
               </h4>
               <p className="text-slate-600 text-sm sm:text-base">
-                Yes, you can change your plan at any time. Changes take effect immediately with prorated billing.
+                Yes, we offer a free 7 day trial.
               </p>
             </div>
             
             <div className="bg-slate-50 rounded-xl p-4 sm:p-6">
               <h4 className="font-semibold text-slate-900 mb-3 text-sm sm:text-base">
-                What integrations are included?
+                What does price for life mean?
               </h4>
               <p className="text-slate-600 text-sm sm:text-base">
-                We support 100+ integrations including Slack, Microsoft 365, Google Workspace, and major payroll systems.
+                The per employee rate will remain fixed for as long as you are a PeopleCore customer. No contract renewal price jumps!
               </p>
             </div>
             
