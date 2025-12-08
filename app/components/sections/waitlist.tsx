@@ -1,28 +1,35 @@
 "use client"
 
-import { useState, useTransition, type FormEvent } from "react"
+import { useState, type FormEvent } from "react"
 import { motion } from "framer-motion"
 import { ArrowUpRight, Check } from "lucide-react"
 import { joinWaitlist } from "@/app/actions/waitlist"
 
 export function Waitlist() {
-  const [isPending, startTransition] = useTransition()
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [result, setResult] = useState<{ success: boolean; message: string } | null>(null)
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    if (isPending) return
+    if (isSubmitting) return
+
+    setIsSubmitting(true)
 
     const form = event.currentTarget
     const formData = new FormData(form)
 
-    startTransition(async () => {
+    try {
       const result = await joinWaitlist(formData)
       setResult(result)
       if (result.success) {
         form.reset()
       }
-    })
+    } catch (error) {
+      console.error("Waitlist submission failed:", error)
+      setResult({ success: false, message: "Something went wrong. Please try again." })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -78,13 +85,19 @@ export function Waitlist() {
               <input type="hidden" name="name" value="Waitlist User" />
               <button
                 type="submit"
-                disabled={isPending}
+                disabled={isSubmitting}
                 className="px-8 py-4 bg-white text-foreground rounded-full font-medium hover:bg-gray-100 transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
               >
-                {isPending ? "Joining..." : "Join waitlist"}
+                {isSubmitting ? "Joining..." : "Join waitlist"}
                 <ArrowUpRight className="w-5 h-5" />
               </button>
             </motion.form>
+          )}
+
+          {result && !result.success && (
+            <p className="mt-4 text-sm text-red-300">
+              {result.message}
+            </p>
           )}
 
           <motion.p

@@ -29,8 +29,9 @@ export async function joinWaitlist(formData: FormData) {
     const validatedData = waitlistSchema.parse({
       name: formData.get("name"),
       email: formData.get("email"),
-      company: formData.get("company"),
-      role: formData.get("role"),
+      // These fields are optional in the schema; map missing (null) values to undefined
+      company: formData.get("company") ?? undefined,
+      role: formData.get("role") ?? undefined,
       functionalities,
     })
 
