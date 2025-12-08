@@ -48,32 +48,27 @@ export async function joinWaitlist(formData: FormData) {
         await resend.emails.send({
           from: "PeopleCore <hi@peoplecore.co.nz>",
           to: [validatedData.email],
-          subject: "Welcome to PeopleCore Beta!",
+          subject: "Thanks for joining the PeopleCore beta waitlist!",
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-              <h1 style="color: #1e293b; margin-bottom: 24px;">Welcome to PeopleCore Beta!</h1>
+              <h1 style="color: #1e293b; margin-bottom: 24px;">Thanks for joining the PeopleCore beta waitlist!</h1>
               
               <p style="color: #475569; font-size: 16px; line-height: 1.6;">
-                Hi ${validatedData.name},
+                Hi,
               </p>
               
               <p style="color: #475569; font-size: 16px; line-height: 1.6;">
-                Thank you for joining the PeopleCore beta waitlist! You're now part of an exclusive group 
-                that will get early access to the world's most advanced conversational HR AI.
+                Thanks for joining the PeopleCore beta waitlist!
               </p>
               
               <div style="background: linear-gradient(135deg, #3b82f6, #8b5cf6); padding: 24px; border-radius: 12px; margin: 24px 0;">
                 <h2 style="color: white; margin: 0 0 16px 0;">What's Next?</h2>
                 <ul style="color: white; margin: 0; padding-left: 20px;">
-                  <li>We'll notify you as soon as beta access is available</li>
+                  <li>We'll notify you as soon as access is available</li>
                   <li>You'll receive exclusive updates on new features</li>
                   <li>Get special pricing when we launch publicly</li>
                 </ul>
               </div>
-              
-              <p style="color: #475569; font-size: 16px; line-height: 1.6;">
-                In the meantime, follow us on social media for the latest updates and HR automation tips.
-              </p>
               
               <p style="color: #475569; font-size: 16px; line-height: 1.6;">
                 Best regards,<br>

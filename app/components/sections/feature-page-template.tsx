@@ -92,6 +92,9 @@ function ScreenshotImage({
         alt={alt}
         fill
         className="object-contain"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 800px"
+        quality={90}
+        priority
         onError={() => setHasError(true)}
       />
     </div>
@@ -205,15 +208,15 @@ export function FeaturePageTemplate({
             className="section-padding"
             style={{ backgroundColor: bgColor }}
           >
-            <div className="container-tight">
-              <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="max-w-6xl mx-auto px-6">
+              <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 {/* Content */}
                 <motion.div
                   initial={{ opacity: 0, x: isEven ? -30 : 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
-                  className={isEven ? "" : "order-1 lg:order-2"}
+                  className={isEven ? "lg:col-span-5" : "lg:col-span-5 order-1 lg:order-2"}
                 >
                   <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">
                     {detail.title}
@@ -241,12 +244,12 @@ export function FeaturePageTemplate({
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className={isEven ? "" : "order-2 lg:order-1"}
+                  className={isEven ? "lg:col-span-7" : "lg:col-span-7 order-2 lg:order-1"}
                 >
                   <ScreenshotImage 
                     src={detail.image} 
                     alt={detail.title} 
-                    className="aspect-[4/3] w-full"
+                    className="aspect-[16/10] w-full"
                     accentColor={accentColor}
                     fallbackIcon={Icon}
                   />
