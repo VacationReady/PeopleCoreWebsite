@@ -200,7 +200,7 @@ export function Pricing() {
           <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto text-left">
             <div className="bg-slate-50 rounded-xl p-4 sm:p-6">
               <h4 className="font-semibold text-slate-900 mb-3 text-sm sm:text-base">
-                Can I upgrade to plus when I'm ready?
+                Can I upgrade to Plus when I'm ready?
               </h4>
               <p className="text-slate-600 text-sm sm:text-base">
                 Yes, you can upgrade to Plus at any point. Just reach out to your account manager who will be happy to demo the additional features.
