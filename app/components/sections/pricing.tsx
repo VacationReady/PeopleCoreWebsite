@@ -6,9 +6,9 @@ import { Button } from "@/app/components/ui/button"
 
 const plans = [
   {
-    name: "Beta Free",
-    price: "Free",
-    period: "During Beta",
+    name: "Core",
+    price: "$4",
+    period: "per employee/month",
     description: "Perfect for exploring PeopleCore's capabilities",
     badge: null,
     features: [
@@ -24,8 +24,8 @@ const plans = [
     color: "border-green-200 bg-green-50"
   },
   {
-    name: "Professional", 
-    price: "$12",
+    name: "Core Plus", 
+    price: "$8",
     period: "per employee/month",
     description: "Advanced AI automation for growing teams",
     badge: null,
