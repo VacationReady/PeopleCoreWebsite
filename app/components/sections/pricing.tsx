@@ -80,8 +80,7 @@ export function Pricing() {
             Simple, Transparent Pricing
           </h2>
           <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto mb-6 sm:mb-8 px-4">
-            Start free during our beta period. No hidden fees, no surprises. 
-            Just powerful AI-driven HR automation.
+            No hidden costs, implementation included, and priced for life.
           </p>
           
           <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 rounded-full border border-blue-200">
