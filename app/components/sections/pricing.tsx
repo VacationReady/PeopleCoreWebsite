@@ -12,12 +12,14 @@ const plans = [
     description: "Perfect for exploring PeopleCore's capabilities",
     badge: null,
     features: [
-      "Up to 50 employees",
-      "Core AI workflows",
-      "Basic reporting",
-      "Email support",
-      "Standard integrations",
-      "Mobile app access"
+      "Absence Management",
+      "Core Workflows", 
+      "Full Custom Reporting",
+      "Mobile App",
+      "Self Service",
+      "Document Management inc. E-signature and Read Acknowledgement",
+      "Standard Onboarding",
+      "Timesheets & Rotas"
     ],
     cta: "Start Free Beta",
     popular: false,
