@@ -9,7 +9,7 @@ const plans = [
     name: "Core",
     price: "$4",
     period: "per employee/month",
-    description: "Perfect for exploring PeopleCore's capabilities",
+    description: "Perfect for small businesses looking to modernise and streamline their back office functions",
     badge: null,
     features: [
       "Absence Management",
@@ -32,14 +32,14 @@ const plans = [
     description: "Advanced AI automation for growing teams",
     badge: null,
     features: [
-      "Unlimited employees",
-      "Advanced AI workflows", 
-      "Custom reporting & analytics",
-      "Priority support",
-      "All integrations",
-      "Advanced security",
-      "Custom workflows",
-      "API access"
+      "Everything in Core",
+      "Screen Designer",
+      "Rotas/Shifts",
+      "Surveys",
+      "Performance Management",
+      "Custom Permission Profiles",
+      "AI Powered Analytics",
+      "Custom Approval and Date Workflows"
     ],
     cta: "Join Waitlist",
     popular: false,
