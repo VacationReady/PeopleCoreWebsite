@@ -1,8 +1,13 @@
 "use client"
 
+import { useState, type FormEvent } from "react"
 import { motion } from "framer-motion"
-import { Check, Sparkles, Crown, Zap } from "lucide-react"
+import { Check, Sparkles, Crown, Zap, X, Mail, User, Building2 } from "lucide-react"
 import { Button } from "@/app/components/ui/button"
+import { Input } from "@/app/components/ui/input"
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/app/components/ui/card"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/app/components/ui/dialog"
+import { submitQuoteRequest } from "@/app/actions/quote"
 
 const plans = [
   {
@@ -68,6 +73,57 @@ const plans = [
 ]
 
 export function Pricing() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const companySizeOptions = [
+    { value: "1-5", label: "1-5 people" },
+    { value: "5-20", label: "5-20 people" },
+    { value: "20-50", label: "20-50 people" },
+    { value: "50-100", label: "50-100 people" },
+    { value: "100-250", label: "100-250 people" },
+    { value: "250+", label: "250+ people" },
+  ]
+
+  const handleQuoteRequest = (planName: string) => {
+    setSelectedPlan(planName)
+    setIsModalOpen(true)
+    setIsSubmitted(false)
+  }
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (isSubmitting || !selectedPlan) return
+
+    setIsSubmitting(true)
+
+    const formElement = event.currentTarget
+    const formData = new FormData(formElement)
+    formData.append("planName", selectedPlan)
+
+    try {
+      const result = await submitQuoteRequest(formData)
+
+      if (result.success) {
+        setIsSubmitted(true)
+        formElement.reset()
+      } else {
+        console.error(result.message)
+      }
+    } catch (error) {
+      console.error("Quote form submission failed:", error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setSelectedPlan(null)
+    setIsSubmitted(false)
+  }
   return (
     <section className="pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -155,6 +211,7 @@ export function Pricing() {
                     variant={plan.popular ? "gradient" : "outline"}
                     size="lg"
                     className="w-full py-3 sm:py-4 text-sm sm:text-base touch-manipulation"
+                    onClick={() => handleQuoteRequest(plan.name)}
                   >
                     {plan.cta}
                   </Button>
@@ -215,6 +272,161 @@ export function Pricing() {
           </div>
         </motion.div>
       </div>
+
+      {/* Quote Request Modal */}
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="max-w-md">
+          {!isSubmitted ? (
+            <>
+              <DialogHeader>
+                <DialogTitle>Request a Quote</DialogTitle>
+                <DialogDescription>
+                  Get pricing details for the <span className="font-semibold">{selectedPlan}</span> plan
+                </DialogDescription>
+              </DialogHeader>
+              
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="space-y-1.5">
+                  <label htmlFor="quote-name" className="text-sm font-medium text-foreground">
+                    Name
+                  </label>
+                  <Input
+                    id="quote-name"
+                    name="name"
+                    type="text"
+                    required
+                    placeholder="Your full name"
+                    leftIcon={User}
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label htmlFor="quote-email" className="text-sm font-medium text-foreground">
+                    Email address
+                  </label>
+                  <Input
+                    id="quote-email"
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="you@company.co.nz"
+                    leftIcon={Mail}
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label htmlFor="quote-company" className="text-sm font-medium text-foreground">
+                    Company name
+                  </label>
+                  <Input
+                    id="quote-company"
+                    name="company"
+                    type="text"
+                    required
+                    placeholder="Your organisation"
+                    leftIcon={Building2}
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label htmlFor="quote-companySize" className="text-sm font-medium text-foreground">
+                    Company size
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="quote-companySize"
+                      name="companySize"
+                      required
+                      className="flex h-11 w-full appearance-none rounded-lg border border-input bg-background px-4 pr-10 text-sm text-foreground shadow-sm transition-all duration-200 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-transparent"
+                      defaultValue=""
+                    >
+                      <option value="" disabled>
+                        Select a range
+                      </option>
+                      {companySizeOptions.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                    <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M5.23 7.21a.75.75 0 011.06.02L10 10.939l3.71-3.71a.75.75 0 111.06 1.061l-4.24 4.25a.75.75 0 01-1.06 0l-4.25-4.25a.75.75 0 01.02-1.06z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label htmlFor="quote-message" className="text-sm font-medium text-foreground">
+                    Additional notes (optional)
+                  </label>
+                  <textarea
+                    id="quote-message"
+                    name="message"
+                    rows={3}
+                    className="w-full rounded-lg border border-input bg-background px-4 py-3 text-sm text-foreground shadow-sm transition-all duration-200 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-transparent"
+                    placeholder="Any specific requirements or questions..."
+                  />
+                </div>
+
+                <div className="flex gap-3 pt-2">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="lg"
+                    className="flex-1"
+                    onClick={closeModal}
+                    disabled={isSubmitting}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    type="submit"
+                    variant="gradient"
+                    size="lg"
+                    className="flex-1"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Sending..." : "Request Quote"}
+                  </Button>
+                </div>
+              </form>
+            </>
+          ) : (
+            <div className="space-y-4 text-center">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <Mail className="h-5 w-5" />
+              </div>
+              <div className="space-y-1">
+                <div className="text-lg font-semibold text-foreground">
+                  Quote request received!
+                </div>
+                <p className="text-sm text-gray-500">
+                  We'll get back to you shortly with pricing details for the {selectedPlan} plan.
+                </p>
+              </div>
+              <Button
+                variant="gradient"
+                size="lg"
+                className="w-full"
+                onClick={closeModal}
+              >
+                Close
+              </Button>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   )
 }
