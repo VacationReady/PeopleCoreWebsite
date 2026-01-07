@@ -384,7 +384,7 @@ export function Pricing() {
                     type="button"
                     variant="outline"
                     size="lg"
-                    className="flex-1"
+                    className="flex-1 hover:bg-transparent hover:border-input"
                     onClick={closeModal}
                     disabled={isSubmitting}
                   >
@@ -394,7 +394,7 @@ export function Pricing() {
                     type="submit"
                     variant="gradient"
                     size="lg"
-                    className="flex-1"
+                    className="flex-1 hover:opacity-100"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? "Sending..." : "Request Quote"}
