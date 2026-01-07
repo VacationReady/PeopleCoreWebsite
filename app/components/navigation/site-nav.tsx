@@ -22,6 +22,8 @@ const navLinks = [
       { label: "Reporting", href: "/reporting", description: "Analytics & insights" },
       { label: "Workflows", href: "/workflows", description: "Custom automations" },
       { label: "Customisation", href: "/customisation", description: "Screen designer & rules engine" },
+      { label: "Surveys", href: "/surveys", description: "Employee feedback & engagement" },
+      { label: "News", href: "/news", description: "Company announcements & updates" },
     ]
   },
   { label: "Pricing", href: "/pricing" },

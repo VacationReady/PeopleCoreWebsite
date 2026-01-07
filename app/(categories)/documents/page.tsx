@@ -31,7 +31,7 @@ export default function DocumentsPage() {
       featureDetails={[
         {
           title: "Robust e-signature and acknowledgement functionality",
-          description: "Generate employment contracts, policy documents, and letters using AI. Your templates, your brand, zero manual work.",
+          description: "Comprehensive document management with e-signatures and acknowledgements.",
           benefits: [
             "On document e-signature and for any documents such as employment contracts.",
             "Require acknowledgement of documents like policies from any employees.",
