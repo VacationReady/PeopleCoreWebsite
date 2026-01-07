@@ -21,7 +21,7 @@ const plans = [
       "Standard Onboarding",
       "Timesheets & Rotas"
     ],
-    cta: "Start Free Beta",
+    cta: "Request a quote",
     popular: false,
     color: "border-green-200 bg-green-50"
   },
@@ -41,7 +41,7 @@ const plans = [
       "AI Powered Analytics",
       "Custom Approval and Date Workflows"
     ],
-    cta: "Join Waitlist",
+    cta: "Request a quote",
     popular: false,
     color: "border-blue-200 bg-blue-50"
   },
@@ -61,7 +61,7 @@ const plans = [
       "Custom integrations",
       "24/7 phone support"
     ],
-    cta: "Contact Sales",
+    cta: "Request a quote",
     popular: false,
     color: "border-purple-200 bg-purple-50"
   }
@@ -98,14 +98,13 @@ export function Pricing() {
                 key={plan.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -8, scale: 1.02 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`group relative rounded-2xl p-6 sm:p-8 overflow-hidden ${
+                className={`group relative rounded-2xl p-6 sm:p-8 overflow-hidden flex flex-col ${
                   plan.popular 
                     ? 'bg-gradient-to-br from-blue-50 to-purple-50 border-2 border-blue-200 shadow-xl pt-8 sm:pt-10' 
                     : 'bg-white border border-slate-200 shadow-lg'
-                } hover:shadow-xl transition-all duration-300`}
+                }`}
               >
                 {/* Popular badge */}
                 {plan.popular && plan.badge && (
@@ -117,30 +116,6 @@ export function Pricing() {
                 )}
 
                 {/* Plan header */}
-                {/* Floating particles on hover */}
-                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {[...Array(8)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-1 h-1 bg-blue-400 rounded-full"
-                      style={{
-                        left: `${20 + i * 10}%`,
-                        top: `${30 + (i % 2) * 40}%`,
-                      }}
-                      animate={{
-                        y: [-10, -20, -10],
-                        opacity: [0.3, 0.8, 0.3],
-                        scale: [0.8, 1.2, 0.8],
-                      }}
-                      transition={{
-                        duration: 2,
-                        delay: i * 0.2,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    />
-                  ))}
-                </div>
 
                 {/* Plan header */}
                 <div className="relative z-10 text-center mb-8">
@@ -156,7 +131,7 @@ export function Pricing() {
                 </div>
 
                 {/* Features */}
-                <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
+                <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 flex-grow">
                   {plan.features.map((feature, featureIndex) => (
                     <motion.li
                       key={featureIndex}
@@ -175,13 +150,15 @@ export function Pricing() {
                 </ul>
 
                 {/* CTA */}
-                <Button
-                  variant={plan.popular ? "gradient" : "outline"}
-                  size="lg"
-                  className="w-full py-3 sm:py-4 text-sm sm:text-base touch-manipulation"
-                >
-                  {plan.cta}
-                </Button>
+                <div className="mt-auto">
+                  <Button
+                    variant={plan.popular ? "gradient" : "outline"}
+                    size="lg"
+                    className="w-full py-3 sm:py-4 text-sm sm:text-base touch-manipulation"
+                  >
+                    {plan.cta}
+                  </Button>
+                </div>
               </motion.div>
             )
           })}
