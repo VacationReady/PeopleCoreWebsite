@@ -7,7 +7,7 @@ export default function NewsPage() {
   return (
     <FeaturePageTemplate
       icon={Newspaper}
-      accentColor="#F59E0B"
+      accentColor="#3B82F6"
       badge="News"
       title="Company news that gets read"
       description="Share important updates, announcements, and stories. Keep everyone informed and engaged with your company news."
@@ -38,7 +38,7 @@ export default function NewsPage() {
             "Target specific departments or roles",
             "Multi-language news support"
           ],
-          color: "#fef3c7",
+          color: "#eff6ff",
           image: "/screenshots/news-editor.png"
         },
         {
@@ -50,7 +50,7 @@ export default function NewsPage() {
             "Comment and reaction tracking",
             "Performance by department"
           ],
-          color: "#fef3c7",
+          color: "#eff6ff",
           image: "/screenshots/news-analytics.png"
         }
       ]}

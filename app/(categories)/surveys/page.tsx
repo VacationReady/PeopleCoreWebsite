@@ -7,7 +7,7 @@ export default function SurveysPage() {
   return (
     <FeaturePageTemplate
       icon={ClipboardList}
-      accentColor="#10B981"
+      accentColor="#3B82F6"
       badge="Surveys"
       title="Employee feedback made simple"
       description="Create, send, and analyze employee surveys. Get real insights to improve workplace culture and engagement."
@@ -38,7 +38,7 @@ export default function SurveysPage() {
             "Anonymous or attributed responses",
             "Multi-language support"
           ],
-          color: "#ecfdf5",
+          color: "#eff6ff",
           image: "/screenshots/surveys-builder.png"
         },
         {
@@ -50,7 +50,7 @@ export default function SurveysPage() {
             "Department and role segmentation",
             "Export to PDF and Excel"
           ],
-          color: "#ecfdf5",
+          color: "#eff6ff",
           image: "/screenshots/surveys-analytics.png"
         }
       ]}
