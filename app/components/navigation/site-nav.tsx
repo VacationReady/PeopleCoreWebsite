@@ -129,9 +129,9 @@ function MobileMenu({
     openCalendly()
   }
   
-  const handleFreeTrial = () => {
+  const handleLogin = () => {
     onClose()
-    openFreeTrial()
+    window.location.href = 'https://app.peoplecore.co.nz'
   }
   
   return (
@@ -202,10 +202,10 @@ function MobileMenu({
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="w-full border-emerald-500 text-emerald-600 hover:bg-emerald-50"
-                onClick={handleFreeTrial}
+                className="w-full border-emerald-500 text-emerald-600"
+                onClick={handleLogin}
               >
-                Try Free
+                Login
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
               <Button 
@@ -344,20 +344,20 @@ export function SiteNav() {
               <Button 
                 variant="outline" 
                 size="default" 
-                className="hidden sm:inline-flex group border-emerald-500 text-emerald-600 hover:bg-emerald-50 hover:border-emerald-600"
-                onClick={openFreeTrial}
+                className="hidden sm:inline-flex group border-emerald-500 text-emerald-600"
+                onClick={() => window.location.href = 'https://app.peoplecore.co.nz'}
               >
-                Try Free
-                <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
+                Login
+                <ArrowRight className="w-4 h-4 ml-1.5" aria-hidden="true" />
               </Button>
               <Button 
                 variant="gradient" 
                 size="default" 
-                className="hidden sm:inline-flex group shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
+                className="hidden sm:inline-flex group shadow-lg shadow-blue-500/25"
                 onClick={openCalendly}
               >
                 Book Demo
-                <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
+                <ArrowRight className="w-4 h-4 ml-1.5" aria-hidden="true" />
               </Button>
               
               {/* Mobile Menu Button */}
