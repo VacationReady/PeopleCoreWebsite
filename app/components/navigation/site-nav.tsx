@@ -69,24 +69,26 @@ function NavDropdown({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ duration: 0.15 }}
-            className="absolute top-full left-0 mt-2 w-72 p-2 rounded-xl bg-white shadow-xl border border-slate-200 z-50"
+            className="absolute top-full left-0 mt-2 w-[400px] p-2 rounded-xl bg-white shadow-xl border border-slate-200 z-50"
           >
-            {item.children.map((child) => (
-              <Link
-                key={child.label}
-                href={child.href}
-                className="flex flex-col gap-0.5 px-4 py-3 rounded-lg hover:bg-slate-50 transition-colors"
-              >
-                <span className="text-sm font-medium text-slate-900">
-                  {child.label}
-                </span>
-                {child.description && (
-                  <span className="text-xs text-slate-500">
-                    {child.description}
+            <div className="grid grid-cols-2 gap-1">
+              {item.children.map((child) => (
+                <Link
+                  key={child.label}
+                  href={child.href}
+                  className="flex flex-col gap-0.5 px-3 py-2.5 rounded-lg hover:bg-slate-50 transition-colors"
+                >
+                  <span className="text-xs font-medium text-slate-900 leading-tight">
+                    {child.label}
                   </span>
-                )}
-              </Link>
-            ))}
+                  {child.description && (
+                    <span className="text-[10px] text-slate-500 leading-tight">
+                      {child.description}
+                    </span>
+                  )}
+                </Link>
+              ))}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
