@@ -131,7 +131,7 @@ function MobileMenu({
   
   const handleLogin = () => {
     onClose()
-    window.location.href = 'https://app.peoplecore.co.nz'
+    window.location.href = 'https://app.peoplecore.co.nz/login'
   }
   
   return (
@@ -345,7 +345,7 @@ export function SiteNav() {
                 variant="outline" 
                 size="default" 
                 className="hidden sm:inline-flex group border-emerald-500 text-emerald-600"
-                onClick={() => window.location.href = 'https://app.peoplecore.co.nz'}
+                onClick={() => window.location.href = 'https://app.peoplecore.co.nz/login'}
               >
                 Login
                 <ArrowRight className="w-4 h-4 ml-1.5" aria-hidden="true" />
