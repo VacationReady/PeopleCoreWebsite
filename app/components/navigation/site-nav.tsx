@@ -24,6 +24,7 @@ const navLinks = [
       { label: "Customisation", href: "/customisation", description: "Screen designer & rules engine" },
       { label: "Surveys", href: "/surveys", description: "Employee feedback & engagement" },
       { label: "News", href: "/news", description: "Company announcements & updates" },
+      { label: "Onboarding", href: "/onboarding", description: "Seamless employee onboarding" },
     ]
   },
   { label: "Pricing", href: "/pricing" },
