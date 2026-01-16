@@ -1,9 +1,11 @@
 import { PageHeader } from "@/app/components/layout/page-header"
 import { SectionContainer } from "@/app/components/layout/section-container"
+import { SiteNav } from "@/app/components/navigation/site-nav"
 
 export default function TermsPage() {
   return (
     <main className="min-h-screen bg-gray-50">
+      <SiteNav />
       <PageHeader 
         title="Terms of Service"
         description="Legal terms governing your use of PeopleCore's services"
