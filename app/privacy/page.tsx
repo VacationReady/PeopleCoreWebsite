@@ -1,6 +1,7 @@
 import { PageHeader } from "@/app/components/layout/page-header"
 import { SectionContainer } from "@/app/components/layout/section-container"
 import { SiteNav } from "@/app/components/navigation/site-nav"
+import { Footer } from "@/app/components/sections/footer"
 
 export default function PrivacyPage() {
   return (
@@ -112,6 +113,7 @@ export default function PrivacyPage() {
           </div>
         </div>
       </SectionContainer>
+      <Footer />
     </main>
   )
 }
