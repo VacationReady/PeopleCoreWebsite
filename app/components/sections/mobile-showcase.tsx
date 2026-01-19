@@ -167,7 +167,7 @@ export function MobileShowcase() {
       </motion.div>
 
       {/* Phones container */}
-      <div className="relative h-[360px] md:h-[400px] flex items-center justify-center mt-20">
+      <div className="relative h-[360px] md:h-[400px] flex items-center justify-center mt-28">
         {/* Ambient glow behind phones */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] bg-primary/20 rounded-full blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[160px] h-[160px] bg-purple-400/20 rounded-full blur-2xl" />
