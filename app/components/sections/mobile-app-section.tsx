@@ -108,29 +108,6 @@ export function MobileAppSection() {
                 <ArrowRight className="w-4 h-4" />
               </button>
             </motion.div>
-
-            {/* App Store Badges */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.7 }}
-              className="flex items-center gap-6 pt-2"
-            >
-              <div className="flex items-center gap-2 text-sm text-gray-500">
-                <div className="flex">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <svg key={star} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                    </svg>
-                  ))}
-                </div>
-                <span>4.9/5 rating</span>
-              </div>
-              <div className="text-sm text-gray-500">
-                10K+ downloads
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* Right Column - Mobile Showcase */}

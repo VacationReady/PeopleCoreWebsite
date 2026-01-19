@@ -52,7 +52,7 @@ function PhoneFrame({ screenshot, rotation, translateX, translateY, zIndex, dela
       className="absolute cursor-pointer"
     >
       {/* Phone Device Frame */}
-      <div className="relative w-[140px] h-[300px] md:w-[160px] md:h-[340px]">
+      <div className="relative w-[160px] h-[340px] md:w-[180px] md:h:[380px]">
         {/* Phone outer shell with premium gradient */}
         <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-b from-gray-800 via-gray-900 to-black shadow-2xl shadow-black/40">
           {/* Subtle metallic edge highlight */}
