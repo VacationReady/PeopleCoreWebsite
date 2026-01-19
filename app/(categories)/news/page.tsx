@@ -1,6 +1,6 @@
 "use client"
 
-import { Newspaper, Bell, Share2, Eye } from "lucide-react"
+import { Newspaper, Bell, Smartphone, Eye } from "lucide-react"
 import { FeaturePageTemplate } from "@/app/components/sections/feature-page-template"
 
 export default function NewsPage() {
@@ -20,35 +20,34 @@ export default function NewsPage() {
         {
           icon: Eye,
           title: "Read Tracking",
-          description: "Know who's read your important updates with detailed engagement analytics."
+          description: "Know what traction your important updates are getting with detailed engagement analytics."
         },
         {
-          icon: Share2,
-          title: "Easy Sharing",
-          description: "Share news across channels - email, intranet, Slack, or mobile app."
+          icon: Smartphone,
+          title: "Mobile Friendly",
+          description: "Your staff can view all news and announcements on the go via our mobile app"
         }
       ]}
       featureDetails={[
         {
-          title: "Create compelling news stories",
-          description: "Write and format beautiful news articles with rich media, images, and videos. Schedule publications for maximum impact.",
+          title: "Create compelling company stories",
+          description: "Write and format beautiful articles with rich media, images, and videos.",
           benefits: [
             "Rich text editor with media support",
-            "Schedule and automate publishing",
+            "File uploads for newsletters and more",
             "Target specific departments or roles",
-            "Multi-language news support"
+            "Social engagement on all posts"
           ],
           color: "#eff6ff",
           image: "/screenshots/news-editor.png"
         },
         {
-          title: "Engagement insights",
-          description: "Track how your news is performing with detailed analytics. See read rates, engagement times, and employee feedback.",
+          title: "Modernise your workforce comms",
+          description: "Track how your news is performing with analytics. See read rates, employee feedback and share posts.",
           benefits: [
-            "Read receipt tracking",
-            "Engagement time analytics",
-            "Comment and reaction tracking",
-            "Performance by department"
+            "Realtime read tracking",
+            "Email announcements for posts",
+            "Pin & share the important ones"
           ],
           color: "#eff6ff",
           image: "/screenshots/news-analytics.png"
@@ -57,7 +56,7 @@ export default function NewsPage() {
       howItWorks={[
         { step: 1, title: "Write", description: "Create your news story with our rich editor" },
         { step: 2, title: "Target", description: "Choose who should see your announcement" },
-        { step: 3, title: "Publish", description: "Send immediately or schedule for later" },
+        { step: 3, title: "Publish", description: "Send immediately with email functionality" },
         { step: 4, title: "Track", description: "Monitor engagement and readership" }
       ]}
       ctaTitle="Keep your team connected"
