@@ -10,7 +10,7 @@ export default function SurveysPage() {
       accentColor="#3B82F6"
       badge="Surveys"
       title="Employee feedback made simple"
-      description="Create, send, and analyze employee surveys. Get real insights to improve workplace culture and engagement."
+      description="Create, send, and analyse employee surveys. Get real insights to improve workplace culture and engagement."
       highlights={[
         {
           icon: Users,
@@ -42,12 +42,12 @@ export default function SurveysPage() {
           image: "/screenshots/surveys-builder.png"
         },
         {
-          title: "Powerful analytics dashboard",
-          description: "Visualize responses with interactive charts and graphs. Track trends over time and segment results by department.",
+          title: "Mobile & Desktop Friendly",
+          description: "Ensure all employees can participate in surveys. Mobile app and desktop access ensures everyone can respond.",
           benefits: [
-            "Real-time response tracking",
-            "Trend analysis over time",
-            "Department and role segmentation",
+            "Dashboard completion, ensuring staff are never more than one click away",
+            "Brilliant visuals breaking down results of each survey",
+            "Department, role or ad hoc segmentation",
             "Export to PDF and Excel"
           ],
           color: "#eff6ff",
