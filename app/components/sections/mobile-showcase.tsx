@@ -52,18 +52,18 @@ function PhoneFrame({ screenshot, rotation, translateX, translateY, zIndex, dela
       className="absolute cursor-pointer"
     >
       {/* Phone Device Frame */}
-      <div className="relative w-[180px] h-[380px] md:w-[200px] md:h-[420px]">
+      <div className="relative w-[140px] h-[300px] md:w-[160px] md:h-[340px]">
         {/* Phone outer shell with premium gradient */}
         <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-b from-gray-800 via-gray-900 to-black shadow-2xl shadow-black/40">
           {/* Subtle metallic edge highlight */}
           <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-tr from-white/10 via-transparent to-white/5" />
           
           {/* Side buttons - volume */}
-          <div className="absolute -left-[2px] top-24 w-[3px] h-8 bg-gray-700 rounded-l-sm" />
-          <div className="absolute -left-[2px] top-36 w-[3px] h-8 bg-gray-700 rounded-l-sm" />
+          <div className="absolute -left-[2px] top-20 w-[3px] h-6 bg-gray-700 rounded-l-sm" />
+          <div className="absolute -left-[2px] top-28 w-[3px] h-6 bg-gray-700 rounded-l-sm" />
           
           {/* Side button - power */}
-          <div className="absolute -right-[2px] top-28 w-[3px] h-12 bg-gray-700 rounded-r-sm" />
+          <div className="absolute -right-[2px] top-24 w-[3px] h-10 bg-gray-700 rounded-r-sm" />
         </div>
         
         {/* Screen bezel */}
@@ -120,9 +120,9 @@ export function MobileShowcase() {
   const phones = [
     { 
       screenshot: mobileScreenshots[0], 
-      rotation: -15, 
-      translateX: -60, 
-      translateY: 20,
+      rotation: -12, 
+      translateX: -45, 
+      translateY: 15,
       zIndex: 10, 
       delay: 0.5 
     },
@@ -136,9 +136,9 @@ export function MobileShowcase() {
     },
     { 
       screenshot: mobileScreenshots[2], 
-      rotation: 15, 
-      translateX: 60, 
-      translateY: 20,
+      rotation: 12, 
+      translateX: 45, 
+      translateY: 15,
       zIndex: 10, 
       delay: 0.7 
     },
@@ -167,10 +167,10 @@ export function MobileShowcase() {
       </motion.div>
 
       {/* Phones container */}
-      <div className="relative h-[420px] md:h-[460px] flex items-center justify-center">
+      <div className="relative h-[320px] md:h-[360px] flex items-center justify-center mt-8">
         {/* Ambient glow behind phones */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-primary/20 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[200px] h-[200px] bg-purple-400/20 rounded-full blur-2xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] bg-primary/20 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[160px] h-[160px] bg-purple-400/20 rounded-full blur-2xl" />
         
         {/* Phone frames */}
         <div className="relative flex items-end justify-center">
