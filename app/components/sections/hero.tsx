@@ -9,6 +9,7 @@ import { WaitlistModal } from "./waitlist-modal"
 import { useCalendly } from "./calendly-modal"
 import { SiteNav } from "@/app/components/navigation/site-nav"
 import { requestDemoAccess } from "@/app/actions/demo-request"
+import { MobileShowcase } from "./mobile-showcase"
 
 
 function DemoEmailSection() {
@@ -357,9 +358,10 @@ export function Hero() {
               <DemoEmailSection />
             </motion.div>
             
-            {/* Right Column - Screenshot Showcase */}
-            <div className="hidden lg:block">
+            {/* Right Column - Screenshot Showcase + Mobile App */}
+            <div className="hidden lg:block space-y-8">
               <ScreenshotShowcase />
+              <MobileShowcase />
             </div>
           </div>
         </div>
