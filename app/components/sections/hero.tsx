@@ -358,10 +358,9 @@ export function Hero() {
               <DemoEmailSection />
             </motion.div>
             
-            {/* Right Column - Screenshot Showcase + Mobile App */}
-            <div className="hidden lg:block space-y-8">
+            {/* Right Column - Screenshot Showcase */}
+            <div className="hidden lg:block">
               <ScreenshotShowcase />
-              <MobileShowcase />
             </div>
           </div>
         </div>
