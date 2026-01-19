@@ -1,5 +1,5 @@
 import { MessageCircle, Mail, Phone, Calendar } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/app/components/ui/button"
 
 export function ContactSupport() {
   return (
