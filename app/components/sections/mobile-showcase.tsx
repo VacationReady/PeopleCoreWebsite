@@ -122,7 +122,7 @@ export function MobileShowcase() {
       screenshot: mobileScreenshots[0], 
       rotation: -12, 
       translateX: -45, 
-      translateY: 15,
+      translateY: 40,
       zIndex: 10, 
       delay: 0.5 
     },
@@ -130,7 +130,7 @@ export function MobileShowcase() {
       screenshot: mobileScreenshots[1], 
       rotation: 0, 
       translateX: 0, 
-      translateY: 0,
+      translateY: 25,
       zIndex: 20, 
       delay: 0.6 
     },
@@ -138,7 +138,7 @@ export function MobileShowcase() {
       screenshot: mobileScreenshots[2], 
       rotation: 12, 
       translateX: 45, 
-      translateY: 15,
+      translateY: 40,
       zIndex: 10, 
       delay: 0.7 
     },
@@ -167,7 +167,7 @@ export function MobileShowcase() {
       </motion.div>
 
       {/* Phones container */}
-      <div className="relative h-[360px] md:h-[400px] flex items-center justify-center mt-32">
+      <div className="relative h-[360px] md:h-[400px] flex items-center justify-center mt-8">
         {/* Ambient glow behind phones */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] bg-primary/20 rounded-full blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[160px] h-[160px] bg-purple-400/20 rounded-full blur-2xl" />
