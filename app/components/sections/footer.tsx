@@ -105,8 +105,6 @@ export function Footer() {
             © 2025 PeopleCore NZ Ltd. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-sm text-gray-400">
-            <span>Data hosted in Auckland</span>
-            <span>•</span>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full" />
               <span>All systems operational</span>

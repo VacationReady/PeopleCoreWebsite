@@ -15,12 +15,12 @@ export default function OnboardingPage() {
         {
           icon: ClipboardCheck,
           title: "Automated Workflows",
-          description: "Customizable onboarding workflows that guide new hires through every step of their journey, from offer acceptance to first day readiness."
+          description: "Fully customisable onboarding workflows that guide new hires through every step of their journey, leading to full first day readiness."
         },
         {
           icon: Shield,
           title: "Compliance Management",
-          description: "Ensure all legal requirements are met with automated compliance checks, document collection, and policy acknowledgments."
+          description: "Ensure all documents are collected, policies have been acknowledged and any forms have been filled in."
         },
         {
           icon: Clock,
@@ -31,13 +31,13 @@ export default function OnboardingPage() {
       featureDetails={[
         {
           title: "Comprehensive Onboarding Workflows",
-          description: "Design and implement customized onboarding journeys that adapt to different roles, departments, and employment types.",
+          description: "Design and implement custom onboarding journeys that adapt to different roles, departments, and employment types.",
           benefits: [
             "Role-specific onboarding templates for different positions and seniority levels.",
-            "Departmental customization to meet team-specific requirements and introductions.",
+            "Departmental customisation to meet team-specific requirements and introductions.",
             "Automated task assignments to HR, managers, IT, and other stakeholders.",
             "Real-time progress tracking for new hires and administrators.",
-            "Integration with existing HR systems for seamless data flow."
+            "Pre built templates to get started right away."
           ],
           color: "#eef2ff",
           image: "/screenshots/onboarding-workflows.png"
