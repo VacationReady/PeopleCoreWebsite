@@ -2,6 +2,7 @@
 
 import { UserPlus, ClipboardCheck, Shield, Clock } from "lucide-react"
 import { FeaturePageTemplate } from "@/app/components/sections/feature-page-template"
+import { MobilePhoneFrame } from "@/app/components/sections/mobile-phone-frame"
 
 export default function OnboardingPage() {
   return (
@@ -53,7 +54,8 @@ export default function OnboardingPage() {
             "Bulk document operations for efficient mass onboarding."
           ],
           color: "#eef2ff",
-          image: "/screenshots/onboarding-documents.png"
+          image: "/screenshots/onboarding-documents.png",
+          useMobileFrame: true
         }
       ]}
       howItWorks={[

@@ -7,6 +7,7 @@ import Image from "next/image"
 import { Footer } from "./footer"
 import { useCalendly } from "./calendly-modal"
 import { SiteNav } from "@/app/components/navigation/site-nav"
+import { MobilePhoneFrame } from "./mobile-phone-frame"
 
 interface FeatureHighlight {
   icon: LucideIcon
@@ -20,6 +21,7 @@ interface FeatureDetail {
   benefits: string[]
   color: string
   image?: string
+  useMobileFrame?: boolean
 }
 
 interface HowItWorksStep {
@@ -246,13 +248,23 @@ export function FeaturePageTemplate({
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className={isEven ? "lg:col-span-7" : "lg:col-span-7 order-2 lg:order-1"}
                 >
-                  <ScreenshotImage 
-                    src={detail.image} 
-                    alt={detail.title} 
-                    className="aspect-[16/10] w-full"
-                    accentColor={accentColor}
-                    fallbackIcon={Icon}
-                  />
+                  {detail.useMobileFrame ? (
+                    <MobilePhoneFrame 
+                      src={detail.image} 
+                      alt={detail.title} 
+                      className="my-8"
+                      accentColor={accentColor}
+                      fallbackIcon={Icon}
+                    />
+                  ) : (
+                    <ScreenshotImage 
+                      src={detail.image} 
+                      alt={detail.title} 
+                      className="aspect-[16/10] w-full"
+                      accentColor={accentColor}
+                      fallbackIcon={Icon}
+                    />
+                  )}
                 </motion.div>
               </div>
             </div>
