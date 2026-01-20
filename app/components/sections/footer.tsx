@@ -49,7 +49,7 @@ export function Footer() {
           {/* Product Links */}
           <div className="md:col-span-2">
             <h4 className="font-semibold text-foreground mb-4">Product</h4>
-            <div className="grid grid-cols-2 gap-x-1">
+            <div className="grid grid-cols-2 gap-x-0.5">
               <ul className="space-y-3">
                 {footerLinks.product.slice(0, 6).map((link) => (
                   <li key={link.name}>
