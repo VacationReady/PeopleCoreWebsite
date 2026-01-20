@@ -2,6 +2,7 @@
 
 import { ClipboardList, BarChart3, Users, Target } from "lucide-react"
 import { FeaturePageTemplate } from "@/app/components/sections/feature-page-template"
+import { MobilePhoneFrame } from "@/app/components/sections/mobile-phone-frame"
 
 export default function SurveysPage() {
   return (
@@ -51,7 +52,8 @@ export default function SurveysPage() {
             "Export to PDF and Excel"
           ],
           color: "#eff6ff",
-          image: "/screenshots/surveys-analytics.png"
+          image: "/screenshots/surveys-analytics.png",
+          useMobileFrame: true
         }
       ]}
       howItWorks={[
