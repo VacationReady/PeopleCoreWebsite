@@ -100,16 +100,7 @@ export function Waitlist() {
             </p>
           )}
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-sm text-gray-500 mt-6"
-          >
-            🇳🇿 Your data is handled in accordance with the Privacy Act 2020 and stored in Auckland
-          </motion.p>
-        </div>
+                  </div>
       </div>
     </section>
   )

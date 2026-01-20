@@ -13,7 +13,6 @@ const footerLinks = {
     { name: "AI Copilot", href: "/ai-copilot" },
   ],
   company: [
-    { name: "About", href: "#" },
     { name: "Pricing", href: "/pricing" },
     { name: "Contact", href: "/contact" },
     { name: "Knowledge Base", href: "/support" },
@@ -38,8 +37,8 @@ export function Footer() {
               peoplecore
             </Link>
             <p className="text-gray-500 mt-4 text-sm leading-relaxed">
-              🇳🇿 New Zealand's most advanced HRIS. 
-              Built for Holidays Act compliance.
+              New Zealand's most advanced HRIS. 
+              Built for ALL employees.
             </p>
           </div>
 
