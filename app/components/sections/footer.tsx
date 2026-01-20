@@ -47,17 +47,28 @@ export function Footer() {
           </div>
 
           {/* Product Links */}
-          <div>
+          <div className="md:col-span-2">
             <h4 className="font-semibold text-foreground mb-4">Product</h4>
-            <ul className="space-y-3">
-              {footerLinks.product.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-gray-500 hover:text-foreground transition-colors text-sm">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div className="grid grid-cols-2 gap-4">
+              <ul className="space-y-3">
+                {footerLinks.product.slice(0, 6).map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="text-gray-500 hover:text-foreground transition-colors text-sm">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <ul className="space-y-3">
+                {footerLinks.product.slice(6).map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="text-gray-500 hover:text-foreground transition-colors text-sm">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Company Links */}

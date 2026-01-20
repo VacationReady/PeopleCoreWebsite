@@ -122,7 +122,7 @@ export function MobileShowcase() {
       screenshot: mobileScreenshots[0], 
       rotation: -12, 
       translateX: -45, 
-      translateY: 40,
+      translateY: 80,
       zIndex: 10, 
       delay: 0.5 
     },
@@ -130,7 +130,7 @@ export function MobileShowcase() {
       screenshot: mobileScreenshots[1], 
       rotation: 0, 
       translateX: 0, 
-      translateY: 25,
+      translateY: 65,
       zIndex: 20, 
       delay: 0.6 
     },
@@ -138,7 +138,7 @@ export function MobileShowcase() {
       screenshot: mobileScreenshots[2], 
       rotation: 12, 
       translateX: 45, 
-      translateY: 40,
+      translateY: 80,
       zIndex: 10, 
       delay: 0.7 
     },
