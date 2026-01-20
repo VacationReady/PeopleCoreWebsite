@@ -263,10 +263,10 @@ export function Pricing() {
             
             <div className="bg-slate-50 rounded-xl p-4 sm:p-6">
               <h4 className="font-semibold text-slate-900 mb-3 text-sm sm:text-base">
-                Is my data secure?
+                Can I cancel my subscription anytime?
               </h4>
               <p className="text-slate-600 text-sm sm:text-base">
-                Absolutely. We're SOC 2 compliant with enterprise-grade security, encryption, and regular audits.
+                Yes, you can cancel at any time. There are no hidden fees, and your data can be exported if you decide to leave.
               </p>
             </div>
           </div>

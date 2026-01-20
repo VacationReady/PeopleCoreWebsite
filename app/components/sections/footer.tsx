@@ -6,11 +6,15 @@ import { useCalendly } from "./calendly-modal"
 const footerLinks = {
   product: [
     { name: "Leave Management", href: "/leave" },
+    { name: "Rotas/Timesheets", href: "/rotas-timesheets" },
     { name: "Documents", href: "/documents" },
-    { name: "Approvals", href: "/approvals" },
+    { name: "Action Items", href: "/action-items" },
     { name: "Reporting", href: "/reporting" },
     { name: "Workflows", href: "/workflows" },
-    { name: "AI Copilot", href: "/ai-copilot" },
+    { name: "Customisation", href: "/customisation" },
+    { name: "Surveys", href: "/surveys" },
+    { name: "News", href: "/news" },
+    { name: "Onboarding", href: "/onboarding" },
   ],
   company: [
     { name: "Pricing", href: "/pricing" },
@@ -20,7 +24,7 @@ const footerLinks = {
   legal: [
     { name: "Privacy", href: "/privacy" },
     { name: "Terms", href: "/terms" },
-    { name: "Security", href: "#" },
+    { name: "Security", href: "/security" },
   ],
 }
 
