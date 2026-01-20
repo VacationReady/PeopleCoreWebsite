@@ -62,7 +62,7 @@ function CalendlyModal({ open, onOpenChange }: CalendlyModalProps) {
           </div>
           <div>
             <h2 className="text-lg font-semibold text-slate-900">Book a Demo</h2>
-            <p className="text-sm text-slate-500">Schedule a personalized walkthrough of PeopleCore</p>
+            <p className="text-sm text-slate-500">Schedule a personalised walkthrough of PeopleCore</p>
           </div>
         </div>
         
