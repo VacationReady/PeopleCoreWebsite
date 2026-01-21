@@ -44,27 +44,26 @@ export async function requestDemoAccess(email: string) {
           `,
         })
 
-        // Send demo link to the user
+        // Send thank you email to the user
         await resend.emails.send({
           from: "PeopleCore <hi@peoplecore.co.nz>",
           to: [validatedData.email],
-          subject: "Your PeopleCore Demo Access",
+          subject: "Thanks for watching our PeopleCore demo",
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-              <h1 style="color: #1e293b; margin-bottom: 24px;">Your Demo is Ready! 🎬</h1>
+              <h1 style="color: #1e293b; margin-bottom: 24px;">Thanks for watching our demo! 🎬</h1>
               
               <p style="color: #475569; font-size: 16px; line-height: 1.6;">
-                Kia ora!
+                Thank you for taking the time to watch our 3-minute demo of PeopleCore.
               </p>
               
               <p style="color: #475569; font-size: 16px; line-height: 1.6;">
-                Thank you for your interest in PeopleCore. We're excited to show you how 
-                we're transforming HR for New Zealand businesses.
+                If you'd like to watch the demo again, you can access it anytime using the link below:
               </p>
               
               <div style="background: linear-gradient(135deg, #3b82f6, #8b5cf6); padding: 24px; border-radius: 12px; margin: 24px 0; text-align: center;">
                 <p style="color: white; margin: 0 0 16px 0; font-size: 18px; font-weight: bold;">
-                  Watch the 5-minute demo
+                  Watch the demo again
                 </p>
                 <a href="https://peoplecore.co.nz/demo" style="display: inline-block; background: white; color: #3b82f6; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold;">
                   Watch Now →
@@ -77,7 +76,7 @@ export async function requestDemoAccess(email: string) {
               </p>
               
               <p style="color: #475569; font-size: 16px; line-height: 1.6;">
-                Ngā mihi,<br>
+                Best regards,<br>
                 The PeopleCore Team
               </p>
             </div>
@@ -91,7 +90,8 @@ export async function requestDemoAccess(email: string) {
 
     return { 
       success: true, 
-      message: "Demo link sent! Check your inbox." 
+      message: "Demo link sent! Check your inbox.",
+      redirectUrl: "/demo"
     }
   } catch (error) {
     if (error instanceof z.ZodError) {

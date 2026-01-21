@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowUpRight, Mail, Play } from "lucide-react"
 import { WaitlistModal } from "./waitlist-modal"
@@ -13,6 +14,7 @@ import { MobileShowcase } from "./mobile-showcase"
 
 
 function DemoEmailSection() {
+  const router = useRouter()
   const [email, setEmail] = useState("")
   const [isHovered, setIsHovered] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -30,6 +32,10 @@ function DemoEmailSection() {
     
     if (result.success) {
       setIsSubmitted(true)
+      // Redirect to demo page
+      if (result.redirectUrl) {
+        router.push(result.redirectUrl)
+      }
     } else {
       setError(result.message)
     }
@@ -97,7 +103,7 @@ function DemoEmailSection() {
           {/* Duration Badge */}
           <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-sm text-white text-xs font-medium flex items-center gap-1.5">
             <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-            5:00
+            3:00
           </div>
 
           {/* Content Overlay */}
@@ -107,7 +113,7 @@ function DemoEmailSection() {
               Watch the Product Demo
             </h3>
             <p className="text-white/70 text-sm mb-4">
-              See how PeopleCore transforms HR in just 5 minutes
+              See how PeopleCore transforms HR in just 3 minutes
             </p>
 
             {/* Email Capture Form - Frosted Glass */}

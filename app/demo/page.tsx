@@ -3,12 +3,15 @@
 import Link from "next/link"
 import { ArrowRight, Calendar, FileText } from "lucide-react"
 import { Footer } from "@/app/components/sections/footer"
+import { SiteNav } from "@/app/components/navigation/site-nav"
 import { useCalendly } from "@/app/components/sections/calendly-modal"
 
 export default function DemoPage() {
   const { openCalendly } = useCalendly()
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <>
+      <SiteNav />
+      <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
       <section className="section-padding">
         <div className="container-tight">
@@ -134,5 +137,6 @@ export default function DemoPage() {
       
       <script src="https://player.vimeo.com/api/player.js" async />
     </main>
+    </>
   )
 }
