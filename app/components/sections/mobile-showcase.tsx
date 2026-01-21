@@ -32,7 +32,7 @@ function PhoneFrame({ screenshot, rotation, translateX, translateY, zIndex, dela
       initial={{ opacity: 0, y: 60, rotate: 0 }}
       animate={{ 
         opacity: 1, 
-        y: 0, 
+        y: translateY, 
         rotate: rotation,
         x: translateX,
       }}
