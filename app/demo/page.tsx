@@ -1,8 +1,12 @@
+"use client"
+
 import Link from "next/link"
 import { ArrowRight, Calendar, FileText } from "lucide-react"
 import { Footer } from "@/app/components/sections/footer"
+import { useCalendly } from "@/app/components/sections/calendly-modal"
 
 export default function DemoPage() {
+  const { openCalendly } = useCalendly()
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
@@ -35,17 +39,17 @@ export default function DemoPage() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-up">
-            <Link 
-              href="/contact?type=demo"
+            <button 
+              onClick={openCalendly}
               className="group inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
               <Calendar className="w-5 h-5" />
               Book an In-Depth Demo
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </button>
             
             <Link 
-              href="/contact?type=quote"
+              href="/quote"
               className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-foreground border-2 border-border rounded-full font-semibold text-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 hover:border-primary"
             >
               <FileText className="w-5 h-5" />
@@ -114,13 +118,13 @@ export default function DemoPage() {
               Let's discuss how PeopleCore can be tailored to your organization's unique needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/contact?type=demo"
+              <button 
+                onClick={openCalendly}
                 className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
                 Schedule Your Personal Demo
                 <ArrowRight className="w-5 h-5" />
-              </Link>
+              </button>
             </div>
           </div>
         </div>
