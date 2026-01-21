@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import { ArrowRight, Download, Shield, Zap } from "lucide-react"
 import { MobileShowcase } from "./mobile-showcase"
+import { useState } from "react"
 
 // Mobile app screenshots - add your screenshots to /public/screenshots/
 // Required files:
@@ -30,6 +31,10 @@ const features = [
 ]
 
 export function MobileAppSection() {
+  const handleDownloadClick = () => {
+    alert("Coming Soon!")
+  }
+
   return (
     <section className="section-padding bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-6">
@@ -99,11 +104,11 @@ export function MobileAppSection() {
               transition={{ duration: 0.5, delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4 pt-4"
             >
-              <button className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 transition-colors">
+              <button onClick={handleDownloadClick} className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 transition-colors">
                 Download for iOS
                 <ArrowRight className="w-4 h-4" />
               </button>
-              <button className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 rounded-full font-medium hover:bg-gray-50 transition-colors">
+              <button onClick={handleDownloadClick} className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 rounded-full font-medium hover:bg-gray-50 transition-colors">
                 Download for Android
                 <ArrowRight className="w-4 h-4" />
               </button>
@@ -138,8 +143,7 @@ export function MobileAppSection() {
           {[
             { number: "24/7", label: "Access" },
             { number: "100%", label: "Sync" },
-            { number: "iOS+", label: "Compatible" },
-            { number: "5★", label: "Rated" }
+            { number: "iOS+", label: "Compatible" }
           ].map((stat, index) => (
             <div key={index} className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-primary mb-1">{stat.number}</div>
