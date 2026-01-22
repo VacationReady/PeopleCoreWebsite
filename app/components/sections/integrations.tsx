@@ -56,24 +56,24 @@ const integrations = [
 ]
 
 // Floating animation variants for each icon
-const floatingVariants = {
-  animate: (custom: number) => ({
+const createFloatingVariants = (index: number) => ({
+  animate: {
     y: [0, -12, 0],
-    rotate: [0, custom % 2 === 0 ? 3 : -3, 0],
+    rotate: [0, index % 2 === 0 ? 3 : -3, 0],
     transition: {
       y: {
-        duration: 3 + custom * 0.5,
+        duration: 3 + index * 0.5,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
       rotate: {
-        duration: 4 + custom * 0.3,
+        duration: 4 + index * 0.3,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
     },
-  }),
-}
+  },
+})
 
 export function Integrations() {
   return (
@@ -118,8 +118,7 @@ export function Integrations() {
                     type: "spring",
                     stiffness: 200,
                   }}
-                  custom={index}
-                  variants={floatingVariants}
+                  variants={createFloatingVariants(index)}
                   animate="animate"
                   whileHover={{ scale: 1.15, rotate: 0 }}
                   className="group relative"
