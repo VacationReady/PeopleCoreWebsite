@@ -22,31 +22,31 @@ const GoogleIcon = () => (
 )
 
 const XeroIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-full h-full">
-    <circle cx="12" cy="12" r="12" fill="#13B5EA"/>
-    <path d="M16.5 8.5l-3.2 4.5 3.2 4.5h-2.3l-2.2-3.1-2.2 3.1H7.5l3.2-4.5-3.2-4.5h2.3l2.2 3.1 2.2-3.1h2.3z" fill="white"/>
+  <svg viewBox="0 0 48 48" className="w-full h-full">
+    <circle cx="24" cy="24" r="22" fill="#13B5EA"/>
+    <path d="M17 16l5.5 8L17 32h3.5l3.5-5 3.5 5H31l-5.5-8 5.5-8h-3.5l-3.5 5-3.5-5H17z" fill="white"/>
   </svg>
 )
 
 const OutlookIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-full h-full">
-    <rect x="2" y="4" width="10" height="16" rx="1" fill="#0078D4"/>
-    <circle cx="7" cy="12" r="3.5" fill="white"/>
-    <path d="M7 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="#0078D4"/>
-    <path d="M13 4v7l8-3.5V6a2 2 0 00-2-2h-6z" fill="#0078D4"/>
-    <path d="M13 13v7h6a2 2 0 002-2v-1.5l-8-3.5z" fill="#0078D4"/>
-    <path d="M13 11h8v2h-8z" fill="#0078D4"/>
+  <svg viewBox="0 0 48 48" className="w-full h-full">
+    <path d="M4 8h18v32H4c-1.1 0-2-.9-2-2V10c0-1.1.9-2 2-2z" fill="#0078D4"/>
+    <ellipse cx="13" cy="24" rx="6" ry="8" fill="white"/>
+    <path d="M13 18c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 10c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z" fill="#0078D4"/>
+    <path d="M24 8h20c1.1 0 2 .9 2 2v4L24 22V8z" fill="#0078D4"/>
+    <path d="M24 26l22 8v4c0 1.1-.9 2-2 2H24V26z" fill="#28A8EA"/>
+    <rect x="24" y="22" width="22" height="4" fill="#0078D4"/>
   </svg>
 )
 
 const TeamsIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-full h-full">
-    <rect x="2" y="6" width="14" height="14" rx="1" fill="#5059C9"/>
-    <rect x="5" y="10" width="5" height="6" fill="white"/>
-    <rect x="11" y="10" width="3" height="6" fill="white" opacity="0.7"/>
-    <circle cx="18.5" cy="7.5" r="3.5" fill="#7B83EB"/>
-    <path d="M18.5 6v3M17 7.5h3" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-    <circle cx="7.5" cy="7.5" r="1.5" fill="white"/>
+  <svg viewBox="0 0 48 48" className="w-full h-full">
+    <rect x="4" y="12" width="28" height="28" rx="2" fill="#5059C9"/>
+    <rect x="10" y="20" width="9" height="12" fill="white"/>
+    <rect x="20" y="20" width="7" height="12" fill="white" opacity="0.5"/>
+    <circle cx="14.5" cy="15" r="2.5" fill="white"/>
+    <circle cx="37" cy="14" r="7" fill="#7B83EB"/>
+    <path d="M34 9v10M29 14h10" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
   </svg>
 )
 
