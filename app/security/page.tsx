@@ -21,7 +21,7 @@ export default function SecurityPage() {
                   PeopleCore – Security
                 </h1>
                 <p className="text-gray-600">
-                  Last updated: 21 January 2026
+                  Last updated: 23 January 2026
                 </p>
               </div>
 

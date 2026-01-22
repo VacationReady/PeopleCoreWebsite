@@ -48,8 +48,7 @@ export function Waitlist() {
               your HR?
             </h2>
             <p className="text-lg text-gray-400 mb-10">
-              Join 200+ NZ businesses on the waitlist. Get early access to the 
-              only HRIS built specifically for New Zealand employment law.
+              Get early access to the only HRIS built specifically for New Zealand employment law.
             </p>
           </motion.div>
 

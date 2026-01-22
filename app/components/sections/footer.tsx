@@ -116,7 +116,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-100 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm">
-            © 2025 PeopleCore NZ Ltd. All rights reserved.
+            © 2026 PeopleCore NZ Ltd. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-sm text-gray-400">
             <div className="flex items-center gap-2">

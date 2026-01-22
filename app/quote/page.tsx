@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { ArrowRight, CheckCircle2 } from "lucide-react"
+import { SiteNav } from "@/app/components/navigation/site-nav"
 import { Footer } from "@/app/components/sections/footer"
 import { submitQuoteRequest } from "@/app/actions/quote"
 import { motion, AnimatePresence } from "framer-motion"
@@ -66,6 +67,7 @@ export default function QuotePage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      <SiteNav />
       <section className="section-padding">
         <div className="container-tight max-w-3xl">
           <AnimatePresence mode="wait">

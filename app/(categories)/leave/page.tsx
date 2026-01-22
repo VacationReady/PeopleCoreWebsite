@@ -333,7 +333,7 @@ export default function LeavePage() {
               Ready to simplify leave?
             </h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-10">
-              Join 200+ NZ businesses using PeopleCore for compliant, effortless leave management.
+              Experience compliant, effortless leave management built for New Zealand.
             </p>
             <button
               onClick={openCalendly}
