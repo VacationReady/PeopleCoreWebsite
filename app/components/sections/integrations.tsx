@@ -22,31 +22,33 @@ const GoogleIcon = () => (
 )
 
 const XeroIcon = () => (
-  <svg viewBox="0 0 48 48" className="w-full h-full">
-    <circle cx="24" cy="24" r="22" fill="#13B5EA"/>
-    <path d="M17 16l5.5 8L17 32h3.5l3.5-5 3.5 5H31l-5.5-8 5.5-8h-3.5l-3.5 5-3.5-5H17z" fill="white"/>
+  <svg viewBox="0 0 64 64" className="w-full h-full">
+    <circle cx="32" cy="32" r="30" fill="#13B5EA"/>
+    <path d="M20 32l-8-11h5l5.5 7.5L28 21h5l-8 11 8 11h-5l-5.5-7.5L17 43h-5l8-11z" fill="white" fontWeight="bold"/>
+    <path d="M36 26c0-2.2 1.8-4 4-4s4 1.8 4 4v1h-8v-1zm8 3v1c0 3.3-2.7 6-6 6s-6-2.7-6-6v-4c0-3.3 2.7-6 6-6s6 2.7 6 6v3zm-6-7c-2.2 0-4 1.8-4 4v4c0 2.2 1.8 4 4 4s4-1.8 4-4v-1h-6v-2h6v-1c0-2.2-1.8-4-4-4z" fill="white"/>
+    <path d="M46 22h2v14h-2V22zm4 3c0-1.1.9-2 2-2h2v2h-2v11h-2V25z" fill="white"/>
   </svg>
 )
 
 const OutlookIcon = () => (
-  <svg viewBox="0 0 48 48" className="w-full h-full">
-    <path d="M4 8h18v32H4c-1.1 0-2-.9-2-2V10c0-1.1.9-2 2-2z" fill="#0078D4"/>
-    <ellipse cx="13" cy="24" rx="6" ry="8" fill="white"/>
-    <path d="M13 18c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 10c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z" fill="#0078D4"/>
-    <path d="M24 8h20c1.1 0 2 .9 2 2v4L24 22V8z" fill="#0078D4"/>
-    <path d="M24 26l22 8v4c0 1.1-.9 2-2 2H24V26z" fill="#28A8EA"/>
-    <rect x="24" y="22" width="22" height="4" fill="#0078D4"/>
+  <svg viewBox="0 0 64 64" className="w-full h-full">
+    <path d="M6 10h22v44H6c-2.2 0-4-1.8-4-4V14c0-2.2 1.8-4 4-4z" fill="#0078D4"/>
+    <ellipse cx="17" cy="32" rx="8" ry="11" fill="white"/>
+    <path d="M17 24c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 13c-2.8 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5z" fill="#0078D4"/>
+    <path d="M30 10h28c2.2 0 4 1.8 4 4v6L30 28V10z" fill="#0078D4"/>
+    <path d="M30 36l32 10v6c0 2.2-1.8 4-4 4H30V36z" fill="#50D9FF"/>
+    <rect x="30" y="28" width="32" height="8" fill="#0078D4"/>
   </svg>
 )
 
 const TeamsIcon = () => (
-  <svg viewBox="0 0 48 48" className="w-full h-full">
-    <rect x="4" y="12" width="28" height="28" rx="2" fill="#5059C9"/>
-    <rect x="10" y="20" width="9" height="12" fill="white"/>
-    <rect x="20" y="20" width="7" height="12" fill="white" opacity="0.5"/>
-    <circle cx="14.5" cy="15" r="2.5" fill="white"/>
-    <circle cx="37" cy="14" r="7" fill="#7B83EB"/>
-    <path d="M34 9v10M29 14h10" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+  <svg viewBox="0 0 64 64" className="w-full h-full">
+    <rect x="6" y="14" width="38" height="38" rx="2" fill="#5059C9"/>
+    <path d="M14 10c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4z" fill="white"/>
+    <rect x="14" y="26" width="12" height="18" rx="1" fill="white"/>
+    <rect x="28" y="26" width="10" height="18" rx="1" fill="white" opacity="0.5"/>
+    <circle cx="48" cy="18" r="10" fill="#7B83EB"/>
+    <path d="M42 18h12M48 12v12" stroke="white" strokeWidth="3" strokeLinecap="round"/>
   </svg>
 )
 
